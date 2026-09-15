@@ -16,25 +16,48 @@ if (header) {
 
 // --- 2. Mobile Hamburger Menu Toggle ---
 if (menuBtn && navMenu) {
+  let backdrop = document.querySelector('.nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  const toggleMenu = (open) => {
+    const shouldOpen = open !== undefined ? open : !navMenu.classList.contains('active');
+    if (shouldOpen) {
+      menuBtn.classList.add('active');
+      navMenu.classList.add('active');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    } else {
+      menuBtn.classList.remove('active');
+      navMenu.classList.remove('active');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
   menuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    menuBtn.classList.toggle('active');
-    navMenu.classList.toggle('active');
+    toggleMenu();
+  });
+
+  backdrop.addEventListener('click', () => {
+    toggleMenu(false);
   });
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-      menuBtn.classList.remove('active');
-      navMenu.classList.remove('active');
+      toggleMenu(false);
     }
   });
 
   // Close menu on link click
   navMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      menuBtn.classList.remove('active');
-      navMenu.classList.remove('active');
+      toggleMenu(false);
     });
   });
 }

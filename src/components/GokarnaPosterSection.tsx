@@ -48,35 +48,35 @@ export default function GokarnaPosterSection() {
         
         {/* Poster Controls Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
-          <div>
-            <span className="text-[#D4AF37] font-['Cinzel'] tracking-widest text-xs font-bold uppercase flex items-center gap-1.5">
+          <div className="text-center md:text-left">
+            <span className="text-[#D4AF37] font-['Cinzel'] tracking-widest text-xs font-bold uppercase inline-flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
               Official Sightseeing Flyer
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold font-['Cinzel'] text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold font-['Cinzel'] text-white mt-1">
               Gokarna Nearest Places to Visit
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <a
               href="/html/packages.html"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#FFF7A1] text-xs font-bold hover:bg-[#D4AF37]/30 transition-all"
+              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#FFF7A1] text-xs font-bold hover:bg-[#D4AF37]/30 transition-all flex-1 sm:flex-initial text-center"
             >
               <ExternalLink className="w-3.5 h-3.5" />
-              Open Original packages.html
+              <span>Original HTML</span>
             </a>
 
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="tel:8073756776"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#D4AF37] text-[#050814] text-xs font-extrabold hover:bg-[#FFF7A1] transition-all shadow-md"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[#D4AF37] text-[#050814] text-xs font-extrabold hover:bg-[#FFF7A1] transition-all shadow-md flex-1 sm:flex-initial text-center"
             >
               <Phone className="w-3.5 h-3.5" />
-              Call Harish.G (8073756776)
+              <span>Call 8073756776</span>
             </motion.a>
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function GokarnaPosterSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="tel:8073756776"
-              className="inline-block px-8 py-3.5 rounded-full bg-black/60 border-2 border-[#D4AF37] text-[#FFF7A1] font-['Cinzel'] font-bold text-2xl sm:text-3xl hover:bg-[#D4AF37]/20 transition-all shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
+              className="inline-block px-5 sm:px-8 py-3 sm:py-3.5 rounded-full bg-black/60 border-2 border-[#D4AF37] text-[#FFF7A1] font-['Cinzel'] font-bold text-lg sm:text-2xl md:text-3xl hover:bg-[#D4AF37]/20 transition-all shadow-[0_5px_15px_rgba(0,0,0,0.5)] max-w-full"
             >
               8073756776 (Harish.G)
             </motion.a>
