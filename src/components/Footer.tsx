@@ -73,6 +73,28 @@ export default function Footer({ setActiveTab }: FooterProps) {
               <li>
                 <button
                   onClick={() => {
+                    setActiveTab('transfers');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
+                >
+                  Airport Transfers (Goa / Hubli)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setActiveTab('calculator');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
+                >
+                  Trip Fare & Route Calculator
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
                     setActiveTab('fleet');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
@@ -106,23 +128,23 @@ export default function Footer({ setActiveTab }: FooterProps) {
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('about');
+                    setActiveTab('guide');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  About Atmabala Travels
+                  Stays & Temple Darshan Guide
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('contact');
+                    setActiveTab('testimonials');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Contact & Bookings
+                  Guest Reviews & Stories
                 </button>
               </li>
             </ul>

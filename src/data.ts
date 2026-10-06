@@ -1,9 +1,9 @@
-import { FleetVehicle, TravelPackage, TouristDestination } from './types';
+import { FleetVehicle, TravelPackage, TouristDestination, AirportTransferRoute, HotelStayOption, CustomerTestimonial } from './types';
 
 export const COMPANY_DETAILS = {
   name: 'ATMABALA Travels',
   tagline: 'Your Journey, Our Drive.',
-  subtitle: 'Premium car rentals and coastal travel packages for every adventure.',
+  subtitle: 'Premium car rentals, airport transfers, and bespoke coastal tour packages across Gokarna, Kumta, and Karwar.',
   founder: 'Harish. G',
   phone: '+91 8073756776',
   rawPhone: '8073756776',
@@ -17,7 +17,8 @@ export const COMPANY_DETAILS = {
     happyCustomers: '15,000+',
     successfulTrips: '850+',
     premiumCars: '45+',
-    rating: '4.9 ★'
+    rating: '4.9 ★',
+    yearsServing: '12+ Years'
   }
 };
 
@@ -37,6 +38,20 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
     features: ['Chilled Air Conditioning', 'Bluetooth Audio System', 'Generous Legroom', 'Clean & Sanitized Interiors']
   },
   {
+    id: 'ertiga-smart',
+    name: 'Maruti Ertiga Hybrid',
+    category: 'Compact MUV',
+    capacity: '6 Passengers',
+    luggage: '3 Bags',
+    ac: true,
+    image: '/images/maruti-ertiga.jpg',
+    tagline: 'Budget-friendly 6-seater for small groups and airport transfers.',
+    description: 'Affordable and flexible seating with superior mileage and comfort on coastal ghat roads.',
+    pricePerKm: 16,
+    perDayEstimate: 2900,
+    features: ['Rear AC Vents', 'Foldable 3rd Row', 'USB Fast Charging', 'Smooth Suspension']
+  },
+  {
     id: 'innova-crysta',
     name: 'Innova Crysta',
     category: 'Luxury MPV',
@@ -52,7 +67,7 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
   },
   {
     id: 'tempo-traveller',
-    name: 'Tempo Traveller',
+    name: 'Tempo Traveller (12-20 Seater)',
     category: 'Mini Bus / Van',
     capacity: '12 to 20 Passengers',
     luggage: '10+ Bags & Luggage Deck',
@@ -63,63 +78,280 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
     pricePerKm: 26,
     perDayEstimate: 5500,
     features: ['Pushback Recliner Seats', 'High Ceiling Air Flow', 'LED Entertainment TV', 'Dedicated Luggage Carrier']
+  }
+];
+
+export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
+  {
+    id: 'goa-mopa-gokarna',
+    source: 'Goa Mopa Airport (GOX)',
+    destination: 'Gokarna Beach / Hotels',
+    distanceKm: 165,
+    driveTime: '3.5 Hours',
+    sedanFare: 4200,
+    suvFare: 5200,
+    crystaFare: 6200,
+    tempoFare: 8800,
+    popular: true,
+    highlights: ['Direct Highway NH-66 Route', 'Flight Tracking & Meet/Greet', 'Zero Toll Surprise (All Included)'],
+    image: '/images/fleet-innova-silver.jpg'
   },
   {
-    id: 'ertiga-smart',
-    name: 'Maruti Ertiga Hybrid',
-    category: 'Compact MUV',
-    capacity: '6 Passengers',
-    luggage: '3 Bags',
-    ac: true,
-    image: '/images/maruti-ertiga.jpg',
-    tagline: 'Budget-friendly 6-seater for small groups and airport transfers.',
-    description: 'Affordable and flexible seating with superior mileage and comfort on coastal ghat roads.',
-    pricePerKm: 16,
-    perDayEstimate: 2900,
-    features: ['Rear AC Vents', 'Foldable 3rd Row', 'USB Fast Charging', 'Smooth Suspension']
+    id: 'goa-dabolim-gokarna',
+    source: 'Goa Dabolim Airport (GOI)',
+    destination: 'Gokarna Beach / Hotels',
+    distanceKm: 145,
+    driveTime: '3 Hours',
+    sedanFare: 3800,
+    suvFare: 4800,
+    crystaFare: 5800,
+    tempoFare: 8200,
+    popular: true,
+    highlights: ['South Goa Coastal Scenic Drive', 'Airport Arrival Waiting Included', 'Late Night / Early Morning Available'],
+    image: '/images/innova-crysta.jpg'
+  },
+  {
+    id: 'hubli-airport-gokarna',
+    source: 'Hubli Airport / Hubli Junction (HBX)',
+    destination: 'Gokarna / Kumta',
+    distanceKm: 152,
+    driveTime: '3.2 Hours',
+    sedanFare: 3600,
+    suvFare: 4500,
+    crystaFare: 5500,
+    tempoFare: 7800,
+    popular: true,
+    highlights: ['Smooth Yellapur Western Ghats Highway', 'Train & Flight Synchronized Pickup', 'Tea/Refreshment Stop of Choice'],
+    image: '/images/swift-dzire.jpg'
+  },
+  {
+    id: 'kumta-railway-gokarna',
+    source: 'Kumta Railway Station (KT)',
+    destination: 'Gokarna Town / Kudle / Om Beach',
+    distanceKm: 32,
+    driveTime: '45 Mins',
+    sedanFare: 950,
+    suvFare: 1300,
+    crystaFare: 1600,
+    tempoFare: 2400,
+    popular: true,
+    highlights: ['Instant Station Platform Pickup', 'Ideal for Vande Bharat & Konkan Express Trains', 'Direct Hotel Drop to Shacks'],
+    image: '/images/maruti-ertiga.jpg'
+  },
+  {
+    id: 'karwar-station-gokarna',
+    source: 'Karwar Railway Station / Madgaon',
+    destination: 'Gokarna / Kumta',
+    distanceKm: 65,
+    driveTime: '1.2 Hours',
+    sedanFare: 1900,
+    suvFare: 2400,
+    crystaFare: 2900,
+    tempoFare: 4200,
+    popular: false,
+    highlights: ['Coastal NH-66 Bridge Views', 'Fastest Transfer for Goa border arrivals', 'Doorstep Drop at Resort'],
+    image: '/images/swift-dzire.jpg'
+  },
+  {
+    id: 'mangalore-airport-gokarna',
+    source: 'Mangalore International Airport (IXE)',
+    destination: 'Murudeshwar / Gokarna',
+    distanceKm: 230,
+    driveTime: '4.5 Hours',
+    sedanFare: 5600,
+    suvFare: 6800,
+    crystaFare: 8200,
+    tempoFare: 11500,
+    popular: false,
+    highlights: ['Cover Coastal NH-66 & Murudeshwar en route', 'Comfortable Cruise in Luxury AC', 'Family Luggage Capacity'],
+    image: '/images/tempo-traveller.jpg'
   }
 ];
 
 export const POPULAR_PACKAGES: TravelPackage[] = [
   {
-    id: 'kumta-tour',
-    title: 'Kumta City & Beach Tour',
-    duration: '1 Day',
-    highlights: ['Vannalli Beach', 'Mangrove Boardwalk', 'Apsara Konda Waterfall', 'Kumta Heritage Market'],
-    route: 'Kumta → Vannalli → Apsara Konda → Boardwalk → Kumta',
-    popularFor: 'Serene uncrowded beaches & natural sunset viewpoints',
+    id: 'gokarna-1day-classic',
+    title: 'Gokarna Complete 1-Day Highlights',
+    category: 'beach',
+    duration: '1 Full Day (8-9 Hours)',
+    highlights: ['Mahabaleshwar & Mahaganapati Temple', 'Om Beach Sunset Cove', 'Kudle Beach & Hilltop Lookout', 'Shiva Cave & Kotiteertha Lake'],
+    route: 'Gokarna Town → Kotiteertha → Shiva Cave → Kudle Beach → Om Beach Sunset',
+    popularFor: 'The definitive first-time Gokarna experience covering spirituality, viewpoints & beach shacks.',
     recommendedVehicle: 'Swift Dzire or Ertiga',
-    startingPrice: '₹ 2,200'
+    startingPrice: '₹ 1,800',
+    badge: 'Most Popular',
+    image: '/images/gokarna-beach.jpg'
   },
   {
-    id: 'gokarna-weekend',
-    title: 'Gokarna Coastal Weekend',
-    duration: '2 Days / 1 Night',
-    highlights: ['Mahabaleshwar & Mahaganapati Temple', 'Om Beach & Kudle Beach Trek', 'Yana Rocks Monoliths', 'Vibhuti Waterfalls'],
-    route: 'Gokarna → Om Beach → Kudle → Yana Caves → Vibhuti Falls',
-    popularFor: 'Beach cafes, spiritual darshan, and forest nature exploration',
-    recommendedVehicle: 'Innova Crysta or Dzire',
-    startingPrice: '₹ 4,800'
+    id: 'sacred-pilgrimage-circuit',
+    title: 'Sacred Coastal Shiva Pilgrimage Circuit',
+    category: 'pilgrimage',
+    duration: '1 Full Day or 2 Days',
+    highlights: ['Mahabaleshwar Atmalinga Darshan', 'Kotiteertha Holy Bathing Tank', 'Idagunji Mahaganapati Temple', 'Murdeshwar 123-Ft Shiva & Gopuram Lift'],
+    route: 'Gokarna → Kotiteertha → Idagunji Temple → Murudeshwar Beach & Temple → Return',
+    popularFor: 'Devotional families & elders seeking blessed darshans with stress-free doorstep temple drops.',
+    recommendedVehicle: 'Innova Crysta or Ertiga',
+    startingPrice: '₹ 3,400',
+    badge: 'Spiritual Choice',
+    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80'
   },
   {
-    id: 'karwar-scenic',
-    title: 'Karwar Scenic Coastal Route',
-    duration: '3 Days / 2 Nights',
-    highlights: ['Rabindranath Tagore Beach', 'INS Chapal Warship Museum', 'Devbagh Island Jetty', 'Sadashivgad Fort Sunset'],
-    route: 'Kumta/Gokarna → Ankola → Karwar Coastal Highway → Sadashivgad',
-    popularFor: 'Spectacular Kali river estuary, water sports & seafood',
-    recommendedVehicle: 'Innova Crysta or Tempo Traveller',
-    startingPrice: '₹ 7,500'
-  },
-  {
-    id: 'murdeshwar-jog',
-    title: 'Murdeshwar & Jog Falls Tour',
+    id: 'yana-vibhooti-rainforest',
+    title: 'Yana Caves & Vibhooti Waterfall Adventure',
+    category: 'nature',
     duration: '1 Full Day',
-    highlights: ['Murdeshwar Giant Shiva Statue', 'Raja Gopuram Lift & Beach', 'Jog Falls (India\'s 2nd Highest Plunge Waterfall)', 'Sharavati Valley View'],
-    route: 'Gokarna → Honnavar → Murdeshwar → Jog Falls → Return',
-    popularFor: 'Iconic pilgrimage & scenic Western Ghats rainforest vistas',
+    highlights: ['Yana Towering Limestone Monoliths', 'Bhairaveshwara & Mohini Shikhara', 'Vibhooti Forest Natural Plunge Pool', 'Sahyadri Rainforest Ghat Cruise'],
+    route: 'Gokarna → Kumta Ghats → Yana Monoliths → Vibhuti Falls → Forest Tea Stop → Gokarna',
+    popularFor: 'Hiking, refreshing swim in natural limestone pool, and geologic wonders.',
+    recommendedVehicle: 'Innova Crysta or Swift Dzire',
+    startingPrice: '₹ 2,900',
+    badge: 'Nature & Trek',
+    image: 'https://images.unsplash.com/photo-1506509689886-c5679957d3bf?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'honnavar-backwater-mangrove',
+    title: 'Honnavar Eco-Boating & Sharavati Backwaters',
+    category: 'nature',
+    duration: '1 Day (Morning to Evening)',
+    highlights: ['Sharavati Riverfront Speedboating', 'Mangrove Forest Elevated Boardwalk', 'Apsara Konda Waterfall & Pond of Angels', 'Kasarkod Eco-Beach Sunset'],
+    route: 'Gokarna → Kumta → Honnavar Boardwalk → Sharavati Boating → Apsara Konda → Gokarna',
+    popularFor: 'Calm emerald boat cruises, bird watching, and uncrowded sunset boardwalks.',
+    recommendedVehicle: 'Ertiga Hybrid or Dzire',
+    startingPrice: '₹ 2,600',
+    badge: 'Relaxing Cruise',
+    image: 'https://images.unsplash.com/photo-1622619472658-29be97e974e4?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'murdeshwar-jog-falls',
+    title: 'Murdeshwar Temple & Jog Falls Expedition',
+    category: 'outstation',
+    duration: '1 Full Day (10-12 Hours)',
+    highlights: ['Murdeshwar Shiva Statue on Sea Cliff', '20-Storey Raja Gopuram Lift', 'Jog Falls (India\'s 2nd Highest Waterfall)', 'Sharavati Valley Rainforest Vistas'],
+    route: 'Gokarna → Honnavar → Murdeshwar → Sharavati Valley → Jog Falls → Return',
+    popularFor: 'Breathtaking Western Ghats waterfalls and coastal architectural grandeur.',
     recommendedVehicle: 'Innova Crysta or Tempo Traveller',
-    startingPrice: '₹ 4,200'
+    startingPrice: '₹ 4,400',
+    badge: 'Iconic Grand Tour',
+    image: 'https://images.unsplash.com/photo-1524220300957-612ce6ba1a30?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'dandeli-adventure-safari',
+    title: 'Dandeli Jungle Safari & River Rafting',
+    category: 'nature',
+    duration: '2 Days / 1 Night',
+    highlights: ['Kali River White Water Rafting', 'Dandeli Wildlife Jungle Safari', 'Syntheri Rocks Canyon', 'Kayaking & Natural Jacuzzi Bath'],
+    route: 'Gokarna → Ankola → Yellapur → Dandeli Jungle Camps → Return',
+    popularFor: 'Adrenaline junkies, water sports, deep forest wildlife and campfires.',
+    recommendedVehicle: 'Innova Crysta or Tempo Traveller',
+    startingPrice: '₹ 6,800',
+    badge: 'Adventure Thrill',
+    image: 'https://images.unsplash.com/photo-1544413660-299165566b1d?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'karwar-scenic-coast',
+    title: 'Karwar Scenic Coast & Sadashivgad Heritage',
+    category: 'outstation',
+    duration: '1 Full Day',
+    highlights: ['INS Chapal Warship Sea Museum', 'Rabindranath Tagore Beach', 'Sadashivgad Hilltop Fort & Kali Bridge', 'Devbagh Beach Watersports'],
+    route: 'Gokarna → Ankola → Karwar Marine Highway → Sadashivgad → Return',
+    popularFor: 'Seafood delicacies, naval museum heritage, and estuary panoramas.',
+    recommendedVehicle: 'Dzire or Innova Crysta',
+    startingPrice: '₹ 3,200',
+    badge: 'Coastal Heritage',
+    image: '/images/kudle-beach.jpg'
+  }
+];
+
+export const HOTEL_STAY_RECOMMENDATIONS: HotelStayOption[] = [
+  {
+    id: 'kudle-beach-resorts',
+    name: 'Kudle Ocean Shacks & Boutique Resorts',
+    location: 'Kudle Beach, Gokarna',
+    type: 'Beachfront Resort',
+    priceRange: '₹ 1,500 – ₹ 4,500 / night',
+    features: ['Direct Sand Access', 'Sunset Balcony Cafes', 'Yoga & Massage Nearby', 'Atmabala Cab Pickup at Hill Gate'],
+    nearTo: 'Kudle Beach & Trek Path',
+    image: '/images/kudle-beach.jpg'
+  },
+  {
+    id: 'om-beach-cliff-stays',
+    name: 'Om Beach Cliff Villas & Shacks',
+    location: 'Om Beach Road, Gokarna',
+    type: 'Eco Cottage',
+    priceRange: '₹ 2,000 – ₹ 6,000 / night',
+    features: ['Cliffside Panoramic Sea View', 'Proximity to Namaste Cafe & Boat Jetty', 'Peaceful Breezy Nights', 'Direct Vehicle Parking'],
+    nearTo: 'Om Beach & Half Moon Trek',
+    image: '/images/gokarna-beach.jpg'
+  },
+  {
+    id: 'town-temple-heritage-stays',
+    name: 'Town Heritage Lodges & Homestays',
+    location: 'Car Street / Main Town, Gokarna',
+    type: 'Heritage Homestay',
+    priceRange: '₹ 900 – ₹ 2,800 / night',
+    features: ['Walking Distance to Mahabaleshwar Temple', 'Traditional Brahmin Bhojana Halls', 'Safe for Senior Citizens & Families', 'Early Morning Darshan Ease'],
+    nearTo: 'Mahabaleshwar Temple & Kotiteertha',
+    image: 'https://images.unsplash.com/photo-1620766182966-c6eb5ed2b788?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'kumta-coastal-resorts',
+    name: 'Kumta Riverfront & Palm Cottages',
+    location: 'Vannalli / Aghanashini, Kumta',
+    type: 'Beachfront Resort',
+    priceRange: '₹ 1,800 – ₹ 5,000 / night',
+    features: ['Zero Crowd Virgin Golden Beaches', 'Serene Coconut Groves', 'Authentic Coastal Karavali Food', 'Ideal Midway Hub for Murudeshwar & Yana'],
+    nearTo: 'Vannalli Beach & Mangrove Boardwalk',
+    image: '/images/gokarna-main-beach.jpg'
+  }
+];
+
+export const WHY_CHOOSE_ATMABALA = [
+  {
+    title: 'Transparent Pricing — Zero Hidden Surges',
+    competitor: 'Vague phone quotes, sudden extra charges for luggage/AC, or unexpected driver "bhatta" at trip end.',
+    atmabala: 'All-inclusive fixed quotes upfront. Tolls, state tax, AC, and driver allowances clearly outlined before departure.',
+    icon: 'ShieldCheck'
+  },
+  {
+    title: 'Spotless, Sanitized & Premium AC Fleet',
+    competitor: 'Random aged cabs with noisy AC, worn interiors, or rattling suspension on ghat roads.',
+    atmabala: 'Showroom-maintained Swift Dzires, Ertiga Hybrids, Innova Crystas & Tempo Travellers with sanitized chilled AC.',
+    icon: 'Sparkles'
+  },
+  {
+    title: 'Born & Raised Gokarna Resident Drivers',
+    competitor: 'Outsider drivers dependent on poor GPS network who miss hidden beach gates and sacred timing windows.',
+    atmabala: 'Polite, multi-lingual local experts who know secret sunset viewpoints, puja timings, and best coastal eateries.',
+    icon: 'MapPin'
+  },
+  {
+    title: 'Punctual Flight & Train Meet-and-Greet',
+    competitor: 'Cabs arriving late or canceling at the last minute at remote train stations late at night.',
+    atmabala: 'Live flight and train tracking with driver arriving 15 minutes prior to platform or terminal exit.',
+    icon: 'Clock'
+  }
+];
+
+export const FAQS_AND_TRAVEL_TIPS = [
+  {
+    question: 'How do I book a cab from Goa Airport (Mopa or Dabolim) to Gokarna?',
+    answer: 'Simply share your flight number and landing time on our WhatsApp or call +91 8073756776. Our driver will track your flight, wait at the arrivals gate with a name placard, and bring you smoothly across NH-66 in approximately 3 to 3.5 hours.'
+  },
+  {
+    question: 'What is the dress code and darshan timing for Mahabaleshwar Temple?',
+    answer: 'For entering the inner sanctum to touch the sacred Atmalinga: Men must wear a traditional Dhoti (shirts/vests not allowed inside the inner garbhagriha), and women must wear Sarees or Salwar Kameez. Normal darshan hours are 6:00 AM to 12:30 PM and 5:00 PM to 8:00 PM.'
+  },
+  {
+    question: 'Can your cabs accommodate large groups for pilgrimage and college trips?',
+    answer: 'Yes! We have 6-seater Ertiga Hybrids, 7-seater Innova Crystas, and 12-to-20 seater luxury Tempo Travellers with high roof pushback recliners, ample boot space, and roof carriers.'
+  },
+  {
+    question: 'Are there hidden toll or night driving charges?',
+    answer: 'No. When Harish G provides you an Atmabala Travels quote, it includes the vehicle rental, fuel, driver allowance, and standard highway tolls. Everything is 100% transparent.'
+  },
+  {
+    question: 'Do you help arrange hotel, resort, or beach shack accommodations in Gokarna?',
+    answer: 'Yes! Having operated in Gokarna for over 12 years, we maintain direct partnerships with vetted beachfront shacks on Kudle & Om Beach, family homestays near the temple, and luxury resorts in Kumta.'
   }
 ];
 
@@ -155,7 +387,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '4',
     title: 'Om Beach',
     category: 'beach',
-    image: 'https://images.unsplash.com/photo-1590528005256-42d3c907b3b3?auto=format&fit=crop&w=600&q=80',
+    image: '/images/gokarna-beach.jpg',
     distanceFromGokarna: '6 km from Gokarna center',
     bestTimeToVisit: 'Afternoon till Sunset (3:30 PM - 7:00 PM)',
     description: 'World-famous crescent beach naturally contoured into two semi-circular coves resembling the auspicious spiritual Sanskrit symbol Om (ॐ).'
@@ -164,7 +396,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '5',
     title: 'Kudle Beach',
     category: 'beach',
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80',
+    image: '/images/kudle-beach.jpg',
     distanceFromGokarna: '2 km from Gokarna center',
     bestTimeToVisit: 'Late afternoon & sunset cafe dinners',
     description: 'Sweeping golden sand beach enclosed by towering rocky hills with vibrant beachside shacks, yoga corners, and tranquil tides.'
@@ -185,7 +417,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     image: 'https://images.unsplash.com/photo-1624514064560-fca3aa9a4eb0?auto=format&fit=crop&w=600&q=80',
     distanceFromGokarna: '1.5 km near Kudle road',
     bestTimeToVisit: 'Daylight hours with flashlights',
-    description: 'Mystical rock cave associated with the mythological emergence of Lord Shiva from the ear of a cow (Gokarna meaning cows ear).'
+    description: 'Mystical rock cave associated with the mythological emergence of Lord Shiva from the ear of a cow (Gokarna meaning cow\'s ear).'
   },
   {
     id: '8',
@@ -260,3 +492,92 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     description: 'A vast man-made sacred lake surrounded by ancient stone shrines, temples, and banyan trees where pilgrims take holy cleansing baths.'
   }
 ];
+
+export const CUSTOMER_TESTIMONIALS: CustomerTestimonial[] = [
+  {
+    id: 'test-1',
+    name: 'Rajesh & Sunita Kulkarni',
+    location: 'Bengaluru, Karnataka',
+    date: 'September 2026',
+    tripType: 'Sacred Coastal Pilgrimage Circuit',
+    vehicleUsed: 'Innova Crysta (7-Seater AC)',
+    rating: 5,
+    comment: 'We travelled with my elderly parents for Mahabaleshwar Atmalinga and Murudeshwar darshan. Harish G was wonderful — driver dropped us right at the car street entrance so my mother did not have to walk far, guided us on dhoti dress codes, and waited patiently. The Innova Crysta was spotless and comfortable on ghat roads. Absolutely 5 stars!',
+    avatarText: 'RK',
+    verifiedBadge: 'Verified Family Pilgrimage',
+    destinationTag: 'Gokarna & Murudeshwar',
+    photo: '/images/innova-crysta.jpg'
+  },
+  {
+    id: 'test-2',
+    name: 'Aditi Sharma & Friends',
+    location: 'Mumbai, Maharashtra',
+    date: 'August 2026',
+    tripType: 'Goa Mopa Airport to Gokarna & Beach Trek',
+    vehicleUsed: 'Maruti Ertiga Hybrid AC',
+    rating: 5,
+    comment: 'Our flight to Goa Mopa was delayed by almost 1.5 hours, but our driver was waiting right at arrivals with a name board! No cancellation, no surge drama. He drove us smoothly down NH-66 directly to our Kudle beach shack gate and even recommended hidden sunset cafes. Fair, transparent rates — best cab operator in Gokarna.',
+    avatarText: 'AS',
+    verifiedBadge: 'Verified Airport Transfer',
+    destinationTag: 'Goa Mopa ➔ Kudle Beach',
+    photo: '/images/kudle-beach.jpg'
+  },
+  {
+    id: 'test-3',
+    name: 'Aniruddh Menon',
+    location: 'Pune, Maharashtra',
+    date: 'August 2026',
+    tripType: 'Yana Caves & Vibhooti Waterfall Forest Trip',
+    vehicleUsed: 'Swift Dzire AC',
+    rating: 5,
+    comment: 'Booked a 1-day trip to Yana Rocks and Vibhooti Falls from Kumta. The ghat roads through Sahyadri can be narrow, but our driver handled every curve with utmost safety and calm. Chilled AC, crisp seats, and zero unexpected tolls or driver bhatta demands at the end. What Harish quoted on WhatsApp was exactly what we paid.',
+    avatarText: 'AM',
+    verifiedBadge: 'Verified Couple Trek',
+    destinationTag: 'Kumta ➔ Yana & Vibhooti',
+    photo: 'https://images.unsplash.com/photo-1506509689886-c5679957d3bf?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'test-4',
+    name: 'Dr. Vinay Hegde',
+    location: 'Hubli, Karnataka',
+    date: 'July 2026',
+    tripType: 'Honnavar Mangrove Boardwalk & Sharavati Boating',
+    vehicleUsed: 'Swift Dzire AC',
+    rating: 5,
+    comment: 'Having used local taxis in Uttara Kannada for years, Atmabala Travels is leagues ahead of typical roadside operators. Everything was arranged with a single phone call with Harish G. Driver was on time at Kumta, assisted with boating tickets at Honnavar, and vehicle was in showroom condition.',
+    avatarText: 'VH',
+    verifiedBadge: 'Verified Local Resident',
+    destinationTag: 'Kumta & Honnavar',
+    photo: 'https://images.unsplash.com/photo-1622619472658-29be97e974e4?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'test-5',
+    name: 'Sneha & Rahul Deshmukh',
+    location: 'Hyderabad, Telangana',
+    date: 'June 2026',
+    tripType: '3-Day Coastal Karnataka & Karwar Heritage',
+    vehicleUsed: 'Innova Crysta AC',
+    rating: 5,
+    comment: 'Atmabala made our 3-day anniversary trip seamless. From Om Beach to the INS Chapal Warship Museum in Karwar, our driver knew the best seaside restaurants for Karavali seafood and viewpoints that aren’t even on Google Maps. We will only book with Atmabala whenever we visit Gokarna!',
+    avatarText: 'SD',
+    verifiedBadge: 'Verified Holiday Tour',
+    destinationTag: 'Gokarna ➔ Karwar Coastal',
+    photo: '/images/gokarna-beach.jpg'
+  },
+  {
+    id: 'test-6',
+    name: 'Vikramaditya Rao & College Batch',
+    location: 'Chennai, Tamil Nadu',
+    date: 'May 2026',
+    tripType: 'Kumta Railway Station Pickup (14 Pax Reunion)',
+    vehicleUsed: 'Tempo Traveller Luxury 17-Seater',
+    rating: 5,
+    comment: 'We were a group of 14 friends arriving by the late-night Konkan Express at Kumta station. The Tempo Traveller was already parked outside platform 1 with AC running and plenty of luggage deck space. Pushback recliner seats and high ceiling made traveling together so fun and comfortable.',
+    avatarText: 'VR',
+    verifiedBadge: 'Verified Group Trip (14 Pax)',
+    destinationTag: 'Kumta Station ➔ Gokarna',
+    photo: '/images/tempo-traveller.jpg'
+  }
+];
+
+

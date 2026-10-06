@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Phone, MessageCircle, MapPin, Car, Calendar, ArrowRight, ShieldCheck, Clock, Award, Sparkles } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Car, Calendar, ArrowRight, ShieldCheck, Clock, Award, Sparkles, Plane, Calculator } from 'lucide-react';
 import { motion } from 'motion/react';
 import { FLEET_VEHICLES, COMPANY_DETAILS } from '../data';
 
@@ -7,12 +7,13 @@ interface HeroProps {
   onOpenBooking: () => void;
   onSelectVehicleForBooking: (vehicleId: string) => void;
   onViewPackages: () => void;
+  onNavigateTab?: (tab: string) => void;
 }
 
-export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewPackages }: HeroProps) {
+export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewPackages, onNavigateTab }: HeroProps) {
   const todayStr = new Date().toISOString().split('T')[0];
   const [pickup, setPickup] = useState('Gokarna Town / Beach');
-  const [vehicle, setVehicle] = useState('swift-dzire');
+  const [vehicle, setVehicle] = useState('innova-crysta');
   const [tripType, setTripType] = useState('Gokarna Local Sightseeing');
   const [date, setDate] = useState(todayStr);
 
@@ -81,9 +82,39 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg sm:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed mb-8">
-              {COMPANY_DETAILS.subtitle} Reliable taxi services, Goa & Hubli airport transfers, and private beach & temple pilgrimage tours.
+            <p className="text-lg sm:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed mb-6">
+              {COMPANY_DETAILS.subtitle} Goa Mopa & Dabolim airport transfers, station drops, temple pilgrimage circuits, and scenic beach trails.
             </p>
+
+            {/* Quick Feature Badges */}
+            <div className="flex flex-wrap items-center gap-2 mb-8">
+              <button
+                type="button"
+                onClick={() => onNavigateTab ? onNavigateTab('transfers') : undefined}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-[#FF6500]/10 hover:text-[#FF6500] text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
+              >
+                <Plane className="w-3.5 h-3.5 text-[#FF6500]" />
+                <span>Goa / Hubli Airport Cabs</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onNavigateTab ? onNavigateTab('calculator') : undefined}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-[#0B192C]/10 hover:text-[#0B192C] text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
+              >
+                <Calculator className="w-3.5 h-3.5 text-[#25D366]" />
+                <span>Trip Fare Estimator</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onViewPackages}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <span>7 Curated Tour Packages</span>
+              </button>
+            </div>
 
             {/* Primary Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
@@ -136,7 +167,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-900">Verified Drivers</div>
-                  <div className="text-[11px] text-slate-500">Local Route Experts</div>
+                  <div className="text-[11px] text-slate-500">Local Gokarna Natives</div>
                 </div>
               </div>
 
@@ -145,8 +176,8 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                   <Award className="w-5 h-5 text-[#FF6500] shrink-0" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-900">Fair Pricing</div>
-                  <div className="text-[11px] text-slate-500">Zero Hidden Fees</div>
+                  <div className="text-xs font-bold text-slate-900">4.9 ★ Rating</div>
+                  <div className="text-[11px] text-slate-500">15,000+ Happy Guests</div>
                 </div>
               </div>
             </div>
@@ -163,28 +194,28 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.3 }}
-              className="relative w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 group"
+              className="relative w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 group"
             >
               <img
-                src="/images/swift-dzire.jpg"
-                alt="Atmabala Travels Premium Car"
+                src="/images/innova-crysta.jpg"
+                alt="Atmabala Travels Luxury Fleet"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = '/images/innova-crysta.jpg';
+                  (e.currentTarget as HTMLImageElement).src = '/images/swift-dzire.jpg';
                 }}
                 className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-6">
                 <span className="text-[#FF6500] text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-[#FF6500]" />
-                  Premium Fleet
+                  Premium Showroom Fleet
                 </span>
-                <h3 className="text-white text-2xl font-bold">Swift Dzire, Innova & Tempo Travellers</h3>
-                <p className="text-slate-300 text-xs mt-1">Immaculate condition • Air conditioned • Ample luggage room</p>
+                <h3 className="text-white text-2xl font-bold">Innova Crysta, Ertiga & Tempo Travellers</h3>
+                <p className="text-slate-300 text-xs mt-1">Immaculate condition • Chilled AC • Ample luggage room</p>
               </div>
             </motion.div>
 
             {/* Quick Fare Inquiry Form */}
-            <div className="w-full mt-6 bg-white rounded-2xl shadow-xl border border-slate-200/90 p-5 sm:p-6">
+            <div className="w-full mt-6 bg-white rounded-3xl shadow-xl border border-slate-200/90 p-5 sm:p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-base font-bold text-[#0B192C] flex items-center gap-2">
                   <Car className="w-4 h-4 text-[#FF6500]" />
@@ -204,12 +235,12 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                     className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
                   >
                     <option value="Gokarna Town / Beach">Gokarna Town / Beach</option>
-                    <option value="Gokarna Road Railway Station">Gokarna Road Railway Station (GOK)</option>
-                    <option value="Kumta Town / Railway Station">Kumta Town / Railway Station (KT)</option>
-                    <option value="Goa Airport (Dabolim / MOPA)">Goa Airport (Dabolim / MOPA)</option>
-                    <option value="Hubli Airport / Railway Station">Hubli Airport / Railway Station</option>
-                    <option value="Karwar Coastal Town">Karwar Coastal Town</option>
-                    <option value="Murdeshwar Temple">Murdeshwar Temple</option>
+                    <option value="Kumta Railway Station (KT)">Kumta Railway Station (KT)</option>
+                    <option value="Goa Mopa Airport (GOX)">Goa Mopa Airport (GOX)</option>
+                    <option value="Goa Dabolim Airport (GOI)">Goa Dabolim Airport (GOI)</option>
+                    <option value="Hubli Airport / Junction">Hubli Airport / Junction (HBX)</option>
+                    <option value="Karwar Railway Station">Karwar Railway Station</option>
+                    <option value="Murudeshwar Temple">Murudeshwar Temple</option>
                   </select>
                 </div>
 
@@ -240,11 +271,11 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                       className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
                     >
                       <option value="Gokarna Local Sightseeing">Gokarna Local Sightseeing</option>
-                      <option value="Kumta & Apsara Konda Tour">Kumta & Apsara Konda Tour</option>
+                      <option value="Sacred Coastal Pilgrimage">Sacred Coastal Pilgrimage</option>
                       <option value="Yana Caves & Vibhuti Falls">Yana Caves & Vibhuti Falls</option>
+                      <option value="Honnavar Boating & Mangroves">Honnavar Boating & Mangroves</option>
                       <option value="Murdeshwar & Jog Falls Tour">Murdeshwar & Jog Falls Tour</option>
                       <option value="Airport Pickup / Drop">Airport Pickup / Drop</option>
-                      <option value="Custom Outstation Tour">Custom Outstation Tour</option>
                     </select>
                   </div>
 
@@ -264,10 +295,10 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-[#FF6500] hover:bg-[#E55A00] text-white font-bold rounded-lg text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-3 bg-[#FF6500] hover:bg-[#E55A00] text-white font-bold rounded-xl text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4 text-white" />
-                  Get Fare Quote on WhatsApp
+                  Get Live Quote on WhatsApp
                 </motion.button>
               </form>
             </div>

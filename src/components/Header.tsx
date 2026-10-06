@@ -34,11 +34,14 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
 
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'transfers', label: 'Airport Transfers' },
+    { id: 'calculator', label: 'Fare Calculator' },
+    { id: 'packages', label: 'Tour Packages' },
     { id: 'fleet', label: 'Our Fleet' },
-    { id: 'packages', label: 'Packages' },
-    { id: 'poster', label: 'Gokarna Poster (15 Places)' },
-    { id: 'about', label: 'About Us' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'poster', label: '15 Places Poster' },
+    { id: 'guide', label: 'Stays & Guide' },
+    { id: 'testimonials', label: 'Reviews' },
+    { id: 'about', label: 'About' },
   ];
 
   return (

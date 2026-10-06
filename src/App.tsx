@@ -7,9 +7,14 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import FleetSection from './components/FleetSection';
+import AirportTransfersSection from './components/AirportTransfersSection';
+import FareCalculator from './components/FareCalculator';
 import PackagesSection from './components/PackagesSection';
+import CompetitorComparisonSection from './components/CompetitorComparisonSection';
+import FleetSection from './components/FleetSection';
 import GokarnaPosterSection from './components/GokarnaPosterSection';
+import StayAndPilgrimageGuide from './components/StayAndPilgrimageGuide';
+import TestimonialsCarousel from './components/TestimonialsCarousel';
 import StatsAndParallax from './components/StatsAndParallax';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
@@ -66,8 +71,13 @@ export default function App() {
                 setActiveTab('packages');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
+              onNavigateTab={(tab) => {
+                setActiveTab(tab);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             />
-            <FleetSection onBookVehicle={handleBookVehicle} />
+            <FareCalculator />
+            <AirportTransfersSection />
             <PackagesSection
               onSelectPackage={handleSelectPackage}
               onViewPosterPlaces={() => {
@@ -75,9 +85,29 @@ export default function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
+            <CompetitorComparisonSection />
+            <FleetSection onBookVehicle={handleBookVehicle} />
+            <TestimonialsCarousel onOpenBooking={handleOpenBooking} />
+            <StayAndPilgrimageGuide />
             <StatsAndParallax onOpenBooking={handleOpenBooking} />
             <AboutSection />
             <ContactSection />
+          </div>
+        )}
+
+        {activeTab === 'transfers' && (
+          <div className="pt-20">
+            <AirportTransfersSection />
+            <FareCalculator />
+            <StatsAndParallax onOpenBooking={handleOpenBooking} />
+          </div>
+        )}
+
+        {activeTab === 'calculator' && (
+          <div className="pt-20">
+            <FareCalculator />
+            <AirportTransfersSection />
+            <CompetitorComparisonSection />
           </div>
         )}
 
@@ -107,9 +137,25 @@ export default function App() {
           </div>
         )}
 
+        {activeTab === 'guide' && (
+          <div className="pt-20">
+            <StayAndPilgrimageGuide />
+            <StatsAndParallax onOpenBooking={handleOpenBooking} />
+          </div>
+        )}
+
+        {activeTab === 'testimonials' && (
+          <div className="pt-20">
+            <TestimonialsCarousel onOpenBooking={handleOpenBooking} />
+            <CompetitorComparisonSection />
+            <StatsAndParallax onOpenBooking={handleOpenBooking} />
+          </div>
+        )}
+
         {activeTab === 'about' && (
           <div className="pt-20">
             <AboutSection />
+            <CompetitorComparisonSection />
             <StatsAndParallax onOpenBooking={handleOpenBooking} />
           </div>
         )}
