@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, Mail, MapPin, Compass } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Compass, ExternalLink } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data';
 
 interface FooterProps {
@@ -223,7 +223,21 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <div className="space-y-3 text-xs sm:text-sm text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#FF6500] shrink-0 mt-0.5" />
-                <span>Gokarna & Kumta Hubs, Uttara Kannada, Karnataka</span>
+                <div>
+                  <span className="font-semibold text-white block">Main Office:</span>
+                  <p className="text-slate-300 text-xs mt-0.5 leading-relaxed">
+                    {COMPANY_DETAILS.locations.gokarna}
+                  </p>
+                  <a
+                    href={COMPANY_DETAILS.locations.gokarnaMapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 text-[#FF6500] text-xs font-semibold hover:underline mt-1"
+                  >
+                    <span>Open in Google Maps</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#FF6500] shrink-0" />

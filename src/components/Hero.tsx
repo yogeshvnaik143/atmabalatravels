@@ -54,16 +54,23 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="lg:col-span-7 flex flex-col items-start text-left z-10"
           >
-            {/* Location & Trust Pill */}
-            <motion.div
+            {/* Location & Trust Pill with Exact Maps Link */}
+            <motion.a
+              href="https://maps.app.goo.gl/gGgVsEcqELeYQrYG7"
+              target="_blank"
+              rel="noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B192C]/10 text-[#0B192C] text-xs sm:text-sm font-bold uppercase tracking-wider mb-6 border border-[#0B192C]/10 shadow-2xs"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B192C]/10 text-[#0B192C] text-xs sm:text-sm font-bold tracking-wider mb-6 border border-[#0B192C]/10 shadow-2xs hover:bg-[#FF6500]/10 hover:border-[#FF6500]/30 transition-all group"
+              title="View exact office location on Google Maps"
             >
-              <MapPin className="w-4 h-4 text-[#FF6500] animate-bounce" />
-              <span>Gokarna • Kumta • Karwar • Coastal Karnataka</span>
-            </motion.div>
+              <MapPin className="w-4 h-4 text-[#FF6500] group-hover:scale-110 transition-transform" />
+              <span>Gokarna Hub: Kamat Complex (near Canara Bank)</span>
+              <span className="text-[10px] bg-[#FF6500] text-white px-2 py-0.5 rounded-full uppercase font-black tracking-wider ml-1">
+                View on Map ↗
+              </span>
+            </motion.a>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B192C] tracking-tight leading-[1.15] mb-6">

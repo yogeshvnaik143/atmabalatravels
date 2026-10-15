@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Users, Briefcase, Snowflake, Phone, MessageCircle, Check, Sparkles } from 'lucide-react';
+import { Users, Briefcase, Snowflake, Phone, MessageCircle, Check, Sparkles, Play, Pause, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FLEET_VEHICLES } from '../data';
 import { FleetVehicle } from '../types';
@@ -10,6 +10,7 @@ interface FleetSectionProps {
 
 export default function FleetSection({ onBookVehicle }: FleetSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [isFleetMarqueePaused, setIsFleetMarqueePaused] = useState<boolean>(false);
 
   const categories = [
     { id: 'all', label: 'All Fleet' },
@@ -65,6 +66,62 @@ export default function FleetSection({ onBookVehicle }: FleetSectionProps) {
             })}
           </div>
         </motion.div>
+
+        {/* Left-to-Right Fleet Marquee Ribbon */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-3 px-1">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B192C]/10 text-[#0B192C] text-xs font-bold">
+              <span className="w-2 h-2 rounded-full bg-[#FF6500] animate-pulse" />
+              <span>Fleet Showcase: Continuous Left-to-Right Flow</span>
+            </span>
+            <button
+              onClick={() => setIsFleetMarqueePaused(!isFleetMarqueePaused)}
+              className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 flex items-center gap-1.5 cursor-pointer shadow-xs"
+            >
+              {isFleetMarqueePaused ? <Play className="w-3 h-3 text-emerald-600" /> : <Pause className="w-3 h-3 text-amber-600" />}
+              <span>{isFleetMarqueePaused ? 'Resume' : 'Pause'}</span>
+            </button>
+          </div>
+
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-100 via-white to-slate-100 border border-slate-200 p-3 sm:p-4 shadow-sm pause-on-hover">
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-slate-100 to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-slate-100 to-transparent z-10" />
+
+            <div
+              className="animate-marquee-ltr flex gap-4"
+              style={{ animationPlayState: isFleetMarqueePaused ? 'paused' : undefined }}
+            >
+              {[...FLEET_VEHICLES, ...FLEET_VEHICLES].map((veh, i) => (
+                <div
+                  key={`${veh.id}-marquee-${i}`}
+                  onClick={() => onBookVehicle(veh)}
+                  className="w-64 sm:w-72 shrink-0 bg-white p-3 rounded-xl border border-slate-200 hover:border-[#FF6500] hover:shadow-lg transition-all cursor-pointer flex items-center gap-3 group"
+                >
+                  <img
+                    src={veh.image}
+                    alt={veh.name}
+                    className="w-16 h-14 rounded-lg object-cover shrink-0 border border-slate-100 group-hover:scale-105 transition-transform"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between text-[10px] text-slate-400">
+                      <span>{veh.category}</span>
+                      <span className="font-bold text-[#FF6500]">₹{veh.pricePerKm}/km</span>
+                    </div>
+                    <h4 className="text-xs font-bold text-[#0B192C] truncate group-hover:text-[#FF6500] transition-colors mt-0.5">
+                      {veh.name}
+                    </h4>
+                    <div className="flex items-center justify-between mt-1 text-[10px] text-slate-500">
+                      <span>{veh.capacity}</span>
+                      <span className="text-[#0B192C] font-semibold group-hover:underline flex items-center gap-0.5">
+                        Book <ArrowRight className="w-2.5 h-2.5" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Fleet Grid with motion layout */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

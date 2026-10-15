@@ -42,6 +42,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
     { id: 'guide', label: 'Stays & Guide' },
     { id: 'testimonials', label: 'Reviews' },
     { id: 'about', label: 'About' },
+    { id: 'contact', label: 'Office & Map' },
   ];
 
   return (

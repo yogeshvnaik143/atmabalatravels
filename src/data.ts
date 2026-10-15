@@ -10,8 +10,11 @@ export const COMPANY_DETAILS = {
   whatsappUrl: 'https://wa.me/918073756776',
   email: 'bookings@atmabalatravels.com',
   locations: {
-    gokarna: 'Main Bus Stand Road, Gokarna, Uttara Kannada, Karnataka 581326',
-    kumta: 'National Highway Main Hub, Kumta, Uttara Kannada, Karnataka 581343'
+    gokarna: 'Welcome Digital Point, Kamat complex, near Canara Bank, Ganjigadde, Gokarna, Karnataka 581326',
+    kumta: 'National Highway Main Hub, Kumta, Uttara Kannada, Karnataka 581343',
+    gokarnaMapsUrl: 'https://maps.app.goo.gl/gGgVsEcqELeYQrYG7',
+    gokarnaEmbedUrl: 'https://maps.google.com/maps?q=Mahabala+Tours+%26+Travels,+Welcome+Digital+Point,+Kamat+complex,+near+Canara+Bank,+Ganjigadde,+Gokarna,+Karnataka+581326&t=&z=16&ie=UTF8&iwloc=&output=embed',
+    officeName: 'Mahabala Tours & Travels (Atmabala Travels Head Office)'
   },
   stats: {
     happyCustomers: '15,000+',

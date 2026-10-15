@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plane, Clock, ShieldCheck, ArrowRight, MessageCircle, Phone, CheckCircle2, Sparkles, Navigation, Luggage } from 'lucide-react';
+import { Plane, Clock, ShieldCheck, ArrowRight, MessageCircle, Phone, CheckCircle2, Sparkles, Navigation, Luggage, Play, Pause } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AIRPORT_TRANSFER_ROUTES } from '../data';
 import { AirportTransferRoute } from '../types';
@@ -10,6 +10,7 @@ interface AirportTransfersSectionProps {
 
 export default function AirportTransfersSection({ onBookTransfer }: AirportTransfersSectionProps) {
   const [activeFilter, setActiveFilter] = useState<'all' | 'airports' | 'railway'>('all');
+  const [isMarqueePaused, setIsMarqueePaused] = useState<boolean>(false);
 
   const filteredRoutes = AIRPORT_TRANSFER_ROUTES.filter((r) => {
     if (activeFilter === 'airports') return r.source.toLowerCase().includes('airport');
@@ -87,6 +88,60 @@ Please let me know driver details and availability.`;
             </button>
           </div>
         </motion.div>
+
+        {/* Left-to-Right Route Marquee Ticker */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-3 px-1">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF6500]/20 text-[#FF6500] text-xs font-bold border border-[#FF6500]/30">
+              <span className="w-2 h-2 rounded-full bg-[#FF6500] animate-pulse" />
+              <span>Route Marquee: Moving Left to Right</span>
+            </span>
+            <button
+              onClick={() => setIsMarqueePaused(!isMarqueePaused)}
+              className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs font-semibold hover:text-white flex items-center gap-1.5 cursor-pointer"
+            >
+              {isMarqueePaused ? <Play className="w-3 h-3 text-emerald-400" /> : <Pause className="w-3 h-3 text-amber-400" />}
+              <span>{isMarqueePaused ? 'Resume' : 'Pause'}</span>
+            </button>
+          </div>
+
+          <div className="relative overflow-hidden rounded-2xl bg-slate-900/90 border border-slate-700/80 p-3 sm:p-4 shadow-xl pause-on-hover">
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-slate-900 to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-slate-900 to-transparent z-10" />
+
+            <div
+              className="animate-marquee-ltr flex gap-4"
+              style={{ animationPlayState: isMarqueePaused ? 'paused' : undefined }}
+            >
+              {[...AIRPORT_TRANSFER_ROUTES, ...AIRPORT_TRANSFER_ROUTES].map((r, i) => (
+                <div
+                  key={`${r.id}-marquee-${i}`}
+                  onClick={() => handleBookRoute(r, 'Sedan (Dzire)', r.sedanFare)}
+                  className="w-72 sm:w-80 shrink-0 bg-slate-800/95 p-3.5 rounded-xl border border-slate-700 hover:border-[#FF6500] transition-colors cursor-pointer flex items-center gap-3.5 group shadow-md"
+                >
+                  <img
+                    src={r.image}
+                    alt={r.source}
+                    className="w-16 h-16 rounded-lg object-cover shrink-0 border border-slate-600 group-hover:scale-105 transition-transform"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 text-[10px] text-[#D4AF37] font-semibold">
+                      <Clock className="w-3 h-3" />
+                      <span>{r.driveTime} ({r.distanceKm} km)</span>
+                    </div>
+                    <h4 className="text-xs font-bold text-white truncate mt-0.5 group-hover:text-[#FF6500] transition-colors">
+                      {r.source}
+                    </h4>
+                    <div className="flex items-center justify-between mt-1 text-[11px]">
+                      <span className="text-slate-400">Sedan: <strong className="text-white">₹{r.sedanFare.toLocaleString('en-IN')}</strong></span>
+                      <span className="text-[#25D366] font-bold text-[10px] flex items-center gap-0.5">Book →</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Airport Route Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

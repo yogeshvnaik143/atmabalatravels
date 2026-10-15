@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Phone, MessageCircle, Mail, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Send, CheckCircle2, AlertCircle, ExternalLink, Navigation, Compass } from 'lucide-react';
 import { motion } from 'motion/react';
 import { COMPANY_DETAILS, FLEET_VEHICLES } from '../data';
 
@@ -107,28 +107,89 @@ export default function ContactSection() {
               </div>
             </motion.div>
 
-            {/* Hub Locations */}
+            {/* Hub Locations & Interactive Exact Google Map */}
             <motion.div
-              whileHover={{ y: -4 }}
-              className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4"
+              whileHover={{ y: -2 }}
+              className="bg-white p-6 rounded-2xl border-2 border-slate-200/80 shadow-md space-y-4"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#0B192C]/10 text-[#0B192C] flex items-center justify-center shrink-0">
-                  <MapPin className="w-6 h-6" />
+              <div>
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#FF6500]/10 text-[#FF6500] flex items-center justify-center shrink-0">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold tracking-wide uppercase mb-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        Exact Google Maps Location
+                      </div>
+                      <h4 className="text-base font-bold text-[#0B192C]">
+                        {COMPANY_DETAILS.locations.officeName}
+                      </h4>
+                      <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                        {COMPANY_DETAILS.locations.gokarna}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-base font-bold text-[#0B192C]">Gokarna Hub</h4>
-                  <p className="text-xs text-slate-600 mt-1">{COMPANY_DETAILS.locations.gokarna}</p>
+
+                {/* Google Maps Actions */}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <a
+                    href={COMPANY_DETAILS.locations.gokarnaMapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0B192C] text-white text-xs font-bold hover:bg-[#FF6500] transition-colors shadow-sm"
+                  >
+                    <Navigation className="w-3.5 h-3.5 text-[#FF6500]" />
+                    <span>Open in Google Maps</span>
+                    <ExternalLink className="w-3 h-3 text-slate-300 ml-0.5" />
+                  </a>
+
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=Welcome+Digital+Point,+Kamat+complex,+near+Canara+Bank,+Ganjigadde,+Gokarna,+Karnataka+581326`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-semibold transition-colors"
+                  >
+                    <Compass className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Get Directions</span>
+                  </a>
+                </div>
+
+                {/* Embedded Live Google Map */}
+                <div className="mt-4 rounded-xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100 relative h-48 sm:h-52">
+                  <iframe
+                    src={COMPANY_DETAILS.locations.gokarnaEmbedUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Exact Office Location - Atmabala Travels Gokarna"
+                    className="w-full h-full"
+                  />
+                  <a
+                    href={COMPANY_DETAILS.locations.gokarnaMapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute top-2 right-2 bg-white/95 backdrop-blur-xs text-[#0B192C] text-[10px] font-bold px-2 py-1 rounded shadow-md border border-slate-200 hover:text-[#FF6500] flex items-center gap-1"
+                  >
+                    <span>View Larger Map</span>
+                    <ExternalLink className="w-2.5 h-2.5" />
+                  </a>
                 </div>
               </div>
 
+              {/* Kumta Operating Base */}
               <div className="pt-4 border-t border-slate-100 flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#0B192C]/10 text-[#0B192C] flex items-center justify-center shrink-0">
-                  <MapPin className="w-6 h-6" />
+                <div className="w-10 h-10 rounded-xl bg-[#0B192C]/10 text-[#0B192C] flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-[#0B192C]">Kumta Operating Base</h4>
-                  <p className="text-xs text-slate-600 mt-1">{COMPANY_DETAILS.locations.kumta}</p>
+                  <h4 className="text-sm font-bold text-[#0B192C]">Kumta Operating Base</h4>
+                  <p className="text-xs text-slate-600 mt-0.5">{COMPANY_DETAILS.locations.kumta}</p>
                 </div>
               </div>
             </motion.div>

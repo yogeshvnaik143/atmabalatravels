@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, MapPin, Clock, Search, ExternalLink, X, MessageCircle, Sparkles } from 'lucide-react';
+import { Phone, MapPin, Clock, Search, ExternalLink, X, MessageCircle, Sparkles, Play, Pause, Zap, Eye, LayoutGrid } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TOURIST_DESTINATIONS } from '../data';
 import { TouristDestination } from '../types';
@@ -8,6 +8,9 @@ export default function GokarnaPosterSection() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedPlace, setSelectedPlace] = useState<TouristDestination | null>(null);
+  const [isMarqueePaused, setIsMarqueePaused] = useState<boolean>(false);
+  const [marqueeSpeed, setMarqueeSpeed] = useState<'normal' | 'slow' | 'fast'>('normal');
+  const [viewMode, setViewMode] = useState<'both' | 'marquee' | 'grid'>('both');
 
   // Lock scroll when modal is open and handle Escape key
   useEffect(() => {
@@ -42,6 +45,15 @@ export default function GokarnaPosterSection() {
     return matchesCategory && matchesSearch;
   });
 
+  // Dual array for infinite gapless marquee
+  const marqueePlaces = [...TOURIST_DESTINATIONS, ...TOURIST_DESTINATIONS];
+
+  const speedClass = marqueeSpeed === 'slow'
+    ? 'animate-marquee-ltr-slow'
+    : marqueeSpeed === 'fast'
+    ? 'animate-marquee-ltr-fast'
+    : 'animate-marquee-ltr';
+
   return (
     <section id="poster" className="py-20 bg-[#050814] text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +63,7 @@ export default function GokarnaPosterSection() {
           <div className="text-center md:text-left">
             <span className="text-[#D4AF37] font-['Cinzel'] tracking-widest text-xs font-bold uppercase inline-flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
-              Official Sightseeing Flyer
+              Official Sightseeing Flyer & Marquee
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold font-['Cinzel'] text-white mt-1">
               Gokarna Nearest Places to Visit
@@ -59,11 +71,42 @@ export default function GokarnaPosterSection() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+            {/* View Mode Switcher */}
+            <div className="bg-slate-900 border border-slate-800 p-1 rounded-full inline-flex items-center gap-1">
+              <button
+                onClick={() => setViewMode('both')}
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  viewMode === 'both' ? 'bg-[#D4AF37] text-[#0a1128] shadow-xs' : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Zap className="w-3 h-3" />
+                <span>Marquee + Grid</span>
+              </button>
+              <button
+                onClick={() => setViewMode('marquee')}
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  viewMode === 'marquee' ? 'bg-[#D4AF37] text-[#0a1128] shadow-xs' : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Eye className="w-3 h-3" />
+                <span>Marquee Only</span>
+              </button>
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  viewMode === 'grid' ? 'bg-[#D4AF37] text-[#0a1128] shadow-xs' : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <LayoutGrid className="w-3 h-3" />
+                <span>Poster Grid</span>
+              </button>
+            </div>
+
             <a
               href="/html/packages.html"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#FFF7A1] text-xs font-bold hover:bg-[#D4AF37]/30 transition-all flex-1 sm:flex-initial text-center"
+              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#FFF7A1] text-xs font-bold hover:bg-[#D4AF37]/30 transition-all text-center"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Original HTML</span>
@@ -73,7 +116,7 @@ export default function GokarnaPosterSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="tel:8073756776"
-              className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-[#D4AF37] text-[#050814] text-xs font-extrabold hover:bg-[#FFF7A1] transition-all shadow-md flex-1 sm:flex-initial text-center"
+              className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#D4AF37] text-[#050814] text-xs font-extrabold hover:bg-[#FFF7A1] transition-all shadow-md text-center"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>Call 8073756776</span>
@@ -81,8 +124,115 @@ export default function GokarnaPosterSection() {
           </div>
         </div>
 
+        {/* ============================================================== */}
+        {/* LEFT-TO-RIGHT MARQUEE OF ALL 15 TOURIST LOCATIONS               */}
+        {/* ============================================================== */}
+        {(viewMode === 'both' || viewMode === 'marquee') && (
+          <div className="mb-12">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-4 px-1">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 text-[#FFF7A1] text-xs font-bold font-['Cinzel']">
+                  <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-ping" />
+                  <span>Tourist Places: Left-to-Right Live Flow</span>
+                </span>
+                <span className="text-xs text-slate-400 hidden sm:inline">
+                  (Gliding left to right • Hover to pause • Click to open details)
+                </span>
+              </div>
+
+              {/* Controls */}
+              <div className="flex items-center gap-2">
+                <div className="bg-slate-900 border border-slate-800 rounded-lg p-0.5 flex items-center text-[11px] font-semibold text-slate-400">
+                  <span className="px-2 text-slate-500">Speed:</span>
+                  {(['slow', 'normal', 'fast'] as const).map((s) => (
+                    <button
+                      key={s}
+                      onClick={() => setMarqueeSpeed(s)}
+                      className={`px-2 py-0.5 rounded capitalize cursor-pointer transition-colors ${
+                        marqueeSpeed === s ? 'bg-[#D4AF37] text-[#0a1128] font-bold' : 'hover:bg-slate-800'
+                      }`}
+                    >
+                      {s}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setIsMarqueePaused(!isMarqueePaused)}
+                  className="px-3 py-1 bg-slate-900 border border-slate-800 hover:border-[#D4AF37]/50 rounded-lg text-xs font-bold text-[#FFF7A1] flex items-center gap-1.5 shadow-xs cursor-pointer"
+                  title={isMarqueePaused ? 'Resume scrolling' : 'Pause scrolling'}
+                >
+                  {isMarqueePaused ? (
+                    <>
+                      <Play className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
+                      <span>Play</span>
+                    </>
+                  ) : (
+                    <>
+                      <Pause className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                      <span>Pause</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Continuous Marquee Track */}
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0a1128] via-[#100c24] to-[#160a2b] p-4 sm:p-6 border-2 border-[#D4AF37]/50 shadow-2xl pause-on-hover">
+              {/* Fade Edges */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#0a1128] to-transparent z-10" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#160a2b] to-transparent z-10" />
+
+              <div
+                className={`${speedClass} flex gap-6 py-2`}
+                style={{
+                  animationPlayState: isMarqueePaused ? 'paused' : undefined,
+                }}
+              >
+                {marqueePlaces.map((place, idx) => (
+                  <div
+                    key={`${place.id}-marquee-${idx}`}
+                    onClick={() => setSelectedPlace(place)}
+                    className="w-64 sm:w-72 shrink-0 flex flex-col items-center text-center cursor-pointer group bg-black/40 p-3 rounded-xl border border-[#D4AF37]/30 hover:border-[#FFF7A1] transition-all hover:scale-102"
+                  >
+                    {/* Gold Framed Image */}
+                    <div className="relative w-full h-44 rounded-lg overflow-hidden border-[3px] border-[#D4AF37] shadow-lg group-hover:border-[#FFF7A1] transition-all bg-slate-900">
+                      <img
+                        src={place.image}
+                        alt={place.title}
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
+                        }}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/25 group-hover:bg-transparent transition-colors" />
+                      <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 text-[10px] font-bold text-[#FFF7A1] backdrop-blur-xs border border-[#D4AF37]/30">
+                        {place.distanceFromGokarna}
+                      </span>
+                    </div>
+
+                    {/* Great Vibes Title */}
+                    <h3 className="font-['Great_Vibes'] text-[#F1C40F] text-2xl sm:text-3xl mt-2.5 font-normal tracking-wide drop-shadow-[2px_2px_4px_rgba(0,0,0,0.9)] group-hover:text-[#FFF7A1] transition-colors leading-tight">
+                      {place.title}
+                    </h3>
+
+                    <p className="text-[11px] text-slate-300 mt-1 line-clamp-2 px-1">
+                      {place.description}
+                    </p>
+
+                    <span className="text-[10px] text-[#D4AF37] mt-2 underline decoration-[#D4AF37]/50 font-semibold group-hover:text-white">
+                      Click to View Route & Cab Details →
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Search & Category Filter */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mb-10">
+        <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mb-8">
           <div className="flex flex-wrap gap-2 w-full sm:w-auto">
             {categories.map((c) => (
               <button
@@ -111,90 +261,94 @@ export default function GokarnaPosterSection() {
           </div>
         </div>
 
-        {/* ================= DIGITAL POSTER CONTAINER ================= */}
-        <div className="rounded-xl p-6 sm:p-10 lg:p-14 bg-gradient-to-br from-[#0a1128] via-[#100c24] to-[#160a2b] border-4 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.25)] relative overflow-hidden">
-          
-          {/* Ornate Gold Border Styling */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-['Cinzel'] tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-[#FFF7A1] via-[#D4AF37] to-[#996515] drop-shadow-md">
-              ATMABALA
-            </h1>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black font-['Cinzel'] tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#FFF7A1] via-[#D4AF37] to-[#996515] mt-1 drop-shadow-md">
-              GOKARNA TRAVELS
-            </h2>
-            <p className="text-[#FFF7A1]/80 text-xs sm:text-sm font-medium tracking-widest uppercase mt-2">
-              Nearest Places To Visit Around Gokarna & Uttara Kannada
-            </p>
-          </div>
+        {/* ============================================================== */}
+        {/* POSTER GRID CONTAINER                                          */}
+        {/* ============================================================== */}
+        {(viewMode === 'both' || viewMode === 'grid') && (
+          <div className="rounded-xl p-6 sm:p-10 lg:p-14 bg-gradient-to-br from-[#0a1128] via-[#100c24] to-[#160a2b] border-4 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.25)] relative overflow-hidden">
+            
+            {/* Ornate Gold Border Styling */}
+            <div className="text-center mb-12">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-['Cinzel'] tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-[#FFF7A1] via-[#D4AF37] to-[#996515] drop-shadow-md">
+                ATMABALA
+              </h1>
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black font-['Cinzel'] tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-[#FFF7A1] via-[#D4AF37] to-[#996515] mt-1 drop-shadow-md">
+                GOKARNA TRAVELS
+              </h2>
+              <p className="text-[#FFF7A1]/80 text-xs sm:text-sm font-medium tracking-widest uppercase mt-2">
+                Nearest Places To Visit Around Gokarna & Uttara Kannada
+              </p>
+            </div>
 
-          {/* 3-Column Poster Grid with motion layout */}
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-            <AnimatePresence>
-              {filteredPlaces.map((place) => (
-                <motion.div
-                  layout
-                  key={place.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  whileHover={{ scale: 1.03, y: -4 }}
-                  transition={{ duration: 0.25 }}
-                  onClick={() => setSelectedPlace(place)}
-                  className="flex flex-col items-center text-center cursor-pointer group"
-                >
-                  {/* Gold Framed Image */}
-                  <div className="relative w-full h-56 rounded-lg overflow-hidden border-[5px] border-[#D4AF37] shadow-xl group-hover:border-[#FFF7A1] transition-all bg-slate-900">
-                    <img
-                      src={place.image}
-                      alt={place.title}
-                      onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
-                      }}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                    <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-bold text-[#FFF7A1] backdrop-blur-xs">
-                      {place.distanceFromGokarna}
+            {/* 3-Column Poster Grid with motion layout */}
+            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+              <AnimatePresence>
+                {filteredPlaces.map((place) => (
+                  <motion.div
+                    layout
+                    key={place.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    whileHover={{ scale: 1.03, y: -4 }}
+                    transition={{ duration: 0.25 }}
+                    onClick={() => setSelectedPlace(place)}
+                    className="flex flex-col items-center text-center cursor-pointer group"
+                  >
+                    {/* Gold Framed Image */}
+                    <div className="relative w-full h-56 rounded-lg overflow-hidden border-[5px] border-[#D4AF37] shadow-xl group-hover:border-[#FFF7A1] transition-all bg-slate-900">
+                      <img
+                        src={place.image}
+                        alt={place.title}
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
+                        }}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                      <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-bold text-[#FFF7A1] backdrop-blur-xs">
+                        {place.distanceFromGokarna}
+                      </span>
+                    </div>
+
+                    {/* Cursive Great Vibes Title */}
+                    <h3 className="font-['Great_Vibes'] text-[#F1C40F] text-3xl sm:text-4xl mt-4 font-normal tracking-wide drop-shadow-[2px_3px_5px_rgba(0,0,0,0.9)] group-hover:text-[#FFF7A1] transition-colors leading-tight">
+                      {place.title}
+                    </h3>
+
+                    <p className="text-xs text-slate-300 mt-1 max-w-xs line-clamp-2">
+                      {place.description}
+                    </p>
+
+                    <span className="text-[11px] text-[#D4AF37] mt-2 underline decoration-[#D4AF37]/40 font-semibold group-hover:text-white">
+                      View Route & Cab Details →
                     </span>
-                  </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
 
-                  {/* Cursive Great Vibes Title */}
-                  <h3 className="font-['Great_Vibes'] text-[#F1C40F] text-3xl sm:text-4xl mt-4 font-normal tracking-wide drop-shadow-[2px_3px_5px_rgba(0,0,0,0.9)] group-hover:text-[#FFF7A1] transition-colors leading-tight">
-                    {place.title}
-                  </h3>
+            {/* Poster Footer / Contact Bar */}
+            <div className="text-center mt-16 pt-8 border-t-2 border-dashed border-[#D4AF37]/40 flex flex-col items-center">
+              <span className="text-xs uppercase tracking-widest text-[#FFF7A1]/80 mb-2 font-['Cinzel']">
+                Direct Booking & Inquiries
+              </span>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="tel:8073756776"
+                className="inline-block px-5 sm:px-8 py-3 sm:py-3.5 rounded-full bg-black/60 border-2 border-[#D4AF37] text-[#FFF7A1] font-['Cinzel'] font-bold text-lg sm:text-2xl md:text-3xl hover:bg-[#D4AF37]/20 transition-all shadow-[0_5px_15px_rgba(0,0,0,0.5)] max-w-full"
+              >
+                8073756776 (Harish.G)
+              </motion.a>
+              <p className="text-xs text-slate-400 mt-3">
+                Prompt door-to-door cab service for all 15 tourist locations across Gokarna & Kumta.
+              </p>
+            </div>
 
-                  <p className="text-xs text-slate-300 mt-1 max-w-xs line-clamp-2">
-                    {place.description}
-                  </p>
-
-                  <span className="text-[11px] text-[#D4AF37] mt-2 underline decoration-[#D4AF37]/40 font-semibold group-hover:text-white">
-                    View Route & Cab Details →
-                  </span>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* Poster Footer / Contact Bar */}
-          <div className="text-center mt-16 pt-8 border-t-2 border-dashed border-[#D4AF37]/40 flex flex-col items-center">
-            <span className="text-xs uppercase tracking-widest text-[#FFF7A1]/80 mb-2 font-['Cinzel']">
-              Direct Booking & Inquiries
-            </span>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="tel:8073756776"
-              className="inline-block px-5 sm:px-8 py-3 sm:py-3.5 rounded-full bg-black/60 border-2 border-[#D4AF37] text-[#FFF7A1] font-['Cinzel'] font-bold text-lg sm:text-2xl md:text-3xl hover:bg-[#D4AF37]/20 transition-all shadow-[0_5px_15px_rgba(0,0,0,0.5)] max-w-full"
-            >
-              8073756776 (Harish.G)
-            </motion.a>
-            <p className="text-xs text-slate-400 mt-3">
-              Prompt door-to-door cab service for all 15 tourist locations across Gokarna & Kumta.
-            </p>
           </div>
-
-        </div>
+        )}
 
         {/* Place Detail Modal with AnimatePresence */}
         <AnimatePresence>
