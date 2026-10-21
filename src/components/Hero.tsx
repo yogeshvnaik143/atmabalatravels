@@ -106,6 +106,15 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
 
               <button
                 type="button"
+                onClick={() => onNavigateTab ? onNavigateTab('tariffs') : undefined}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition-all border border-emerald-300 cursor-pointer"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Official Tariff & Rates</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={() => onNavigateTab ? onNavigateTab('calculator') : undefined}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-[#0B192C]/10 hover:text-[#0B192C] text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
               >
@@ -119,7 +128,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>7 Curated Tour Packages</span>
+                <span>12+ Sightseeing Packages</span>
               </button>
             </div>
 

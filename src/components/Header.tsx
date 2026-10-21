@@ -34,6 +34,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
 
   const navItems = [
     { id: 'home', label: 'Home' },
+    { id: 'tariffs', label: 'Tariff & Rates' },
     { id: 'transfers', label: 'Airport Transfers' },
     { id: 'calculator', label: 'Fare Calculator' },
     { id: 'packages', label: 'Tour Packages' },

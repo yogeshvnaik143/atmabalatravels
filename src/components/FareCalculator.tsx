@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Calculator, MapPin, Car, ArrowRight, ShieldCheck, Clock, CheckCircle2, MessageCircle, Sparkles, Navigation } from 'lucide-react';
 import { motion } from 'motion/react';
-import { FLEET_VEHICLES, COMPANY_DETAILS } from '../data';
+import { FLEET_VEHICLES, COMPANY_DETAILS, ONE_WAY_DROPS, GOA_DROPS } from '../data';
 import { FleetVehicle } from '../types';
 
 interface FareCalculatorProps {
@@ -9,49 +9,116 @@ interface FareCalculatorProps {
 }
 
 const POPULAR_LOCATIONS = [
-  { id: 'gokarna-town', name: 'Gokarna Town / Bus Stand', type: 'local', distFromGokarna: 0 },
+  { id: 'gokarna-town', name: 'Gokarna Town / Bus Stand / Office', type: 'local', distFromGokarna: 0 },
   { id: 'kudle-beach', name: 'Kudle Beach / Shacks', type: 'local', distFromGokarna: 2 },
   { id: 'om-beach', name: 'Om Beach / Cafes', type: 'local', distFromGokarna: 6 },
   { id: 'kumta-station', name: 'Kumta Railway Station (KT)', type: 'station', distFromGokarna: 32 },
   { id: 'kumta-town', name: 'Kumta Town Hub', type: 'local', distFromGokarna: 30 },
-  { id: 'goa-mopa', name: 'Goa Mopa Airport (GOX)', type: 'airport', distFromGokarna: 165 },
-  { id: 'goa-dabolim', name: 'Goa Dabolim Airport (GOI)', type: 'airport', distFromGokarna: 145 },
-  { id: 'hubli-airport', name: 'Hubli Airport / Junction (HBX)', type: 'airport', distFromGokarna: 152 },
-  { id: 'karwar-station', name: 'Karwar Railway Station', type: 'station', distFromGokarna: 62 },
+  { id: 'ankola', name: 'Ankola Town', type: 'local', distFromGokarna: 28 },
+  { id: 'honavara', name: 'Honavara / Eco-Beach', type: 'coastal', distFromGokarna: 45 },
+  { id: 'karwar', name: 'Karwar / Karwar Station', type: 'coastal', distFromGokarna: 62 },
   { id: 'murudeshwar', name: 'Murudeshwar Shiva Temple', type: 'sightseeing', distFromGokarna: 78 },
-  { id: 'yana-caves', name: 'Yana Rocks & Caves', type: 'sightseeing', distFromGokarna: 50 },
+  { id: 'goa-dabolim', name: 'Goa Dabolim Airport (GOI)', type: 'airport', distFromGokarna: 145 },
+  { id: 'goa-mopa', name: 'Goa Mopa Airport (GOX)', type: 'airport', distFromGokarna: 165 },
+  { id: 'goa-calangute', name: 'Goa Calangute / Baga', type: 'goa', distFromGokarna: 160 },
+  { id: 'goa-panjim', name: 'Goa Panjim', type: 'goa', distFromGokarna: 140 },
+  { id: 'goa-palolem', name: 'Goa Palolem / Agonda', type: 'goa', distFromGokarna: 90 },
+  { id: 'goa-madgaon', name: 'Goa Madgaon (Margao)', type: 'station', distFromGokarna: 110 },
+  { id: 'hubli-airport', name: 'Hubli / Alnavar / Airport (HBX)', type: 'airport', distFromGokarna: 152 },
+  { id: 'sirsi', name: 'Sirsi', type: 'ghat', distFromGokarna: 82 },
   { id: 'jog-falls', name: 'Jog Falls (Western Ghats)', type: 'sightseeing', distFromGokarna: 112 },
-  { id: 'honnavar', name: 'Honnavar Mangrove Boardwalk', type: 'sightseeing', distFromGokarna: 45 },
-  { id: 'dandeli', name: 'Dandeli River Adventure', type: 'sightseeing', distFromGokarna: 135 }
+  { id: 'udupi', name: 'Udupi / Sri Krishna Matha', type: 'city', distFromGokarna: 175 },
+  { id: 'dandeli', name: 'Dandeli (City / Jungle)', type: 'sightseeing', distFromGokarna: 135 },
+  { id: 'mangalore', name: 'Mangalore / Airport (IXE)', type: 'airport', distFromGokarna: 230 },
+  { id: 'hampi', name: 'Hampi Heritage Ruins', type: 'long-distance', distFromGokarna: 320 },
+  { id: 'kolluru', name: 'Kolluru (Mookambika Temple)', type: 'sightseeing', distFromGokarna: 130 },
+  { id: 'shivamogga', name: 'Shivamogga (Shimoga)', type: 'city', distFromGokarna: 200 },
+  { id: 'sringeri', name: 'Sringeri (Sharada Peetham)', type: 'sightseeing', distFromGokarna: 215 },
+  { id: 'horanadu', name: 'Horanadu (Annapoorneshwari)', type: 'sightseeing', distFromGokarna: 250 },
+  { id: 'bangalore', name: 'Bangalore (Bengaluru)', type: 'long-distance', distFromGokarna: 490 },
+  { id: 'mysore', name: 'Mysore (Mysuru)', type: 'long-distance', distFromGokarna: 480 },
+  { id: 'kukke', name: 'Kukke Subramanya', type: 'sightseeing', distFromGokarna: 290 },
+  { id: 'yana-caves', name: 'Yana Rocks & Caves', type: 'sightseeing', distFromGokarna: 50 },
 ];
 
 export default function FareCalculator({ onOpenBookingWithDetails }: FareCalculatorProps) {
   const [pickupId, setPickupId] = useState('goa-mopa');
   const [dropId, setDropId] = useState('gokarna-town');
-  const [selectedVehicleId, setSelectedVehicleId] = useState('innova-crysta');
+  const [selectedVehicleId, setSelectedVehicleId] = useState('swift-dzire');
   const [tripType, setTripType] = useState<'oneway' | 'roundtrip'>('oneway');
 
   const pickupLocation = POPULAR_LOCATIONS.find(l => l.id === pickupId) || POPULAR_LOCATIONS[0];
   const dropLocation = POPULAR_LOCATIONS.find(l => l.id === dropId) || POPULAR_LOCATIONS[1];
   const selectedVehicle = FLEET_VEHICLES.find(v => v.id === selectedVehicleId) || FLEET_VEHICLES[0];
 
+  // Exact catalog rate lookup
+  const catalogMatch = useMemo(() => {
+    if (tripType !== 'oneway') return null;
+    const isBasePickup = pickupId.includes('gokarna') || pickupId.includes('kumta');
+    const isBaseDrop = dropId.includes('gokarna') || dropId.includes('kumta');
+    if (!isBasePickup && !isBaseDrop) return null;
+
+    const targetId = isBasePickup ? dropId : pickupId;
+    const isSedan4 = selectedVehicle.category.includes('Sedan') || selectedVehicle.id.includes('dzire');
+
+    // Check Goa Drops
+    if (targetId.includes('mopa')) {
+      return { fare: isSedan4 ? 6000 : 7000, source: 'Official Goa Drop Catalog', inclusions: 'Toll + AC + Driver Bata + Goa State Border Permit' };
+    }
+    if (targetId.includes('dabolim')) {
+      return { fare: isSedan4 ? 4500 : 5500, source: 'Official Goa Drop Catalog', inclusions: 'Toll + AC + Driver Bata + Goa State Border Permit' };
+    }
+    if (targetId.includes('calangute')) {
+      return { fare: isSedan4 ? 6000 : 7000, source: 'Official Goa Drop Catalog', inclusions: 'Toll + AC + Driver Bata + Goa State Border Permit' };
+    }
+    if (targetId.includes('panjim')) {
+      return { fare: isSedan4 ? 5000 : 5500, source: 'Official Goa Drop Catalog', inclusions: 'Toll + AC + Driver Bata + Goa State Border Permit' };
+    }
+    if (targetId.includes('palolem')) {
+      return { fare: isSedan4 ? 3500 : 4000, source: 'Official Goa Drop Catalog', inclusions: 'Toll + AC + Driver Bata + Goa State Border Permit' };
+    }
+    if (targetId.includes('madgaon')) {
+      return { fare: isSedan4 ? 4000 : 4500, source: 'Official Goa Drop Catalog', inclusions: 'Toll + AC + Driver Bata + Goa State Border Permit' };
+    }
+
+    // Check One-Way Drops
+    if (targetId.includes('ankola')) return { fare: isSedan4 ? 1200 : 1500, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('kumta')) return { fare: isSedan4 ? 1500 : 1800, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('honavar')) return { fare: isSedan4 ? 2500 : 2800, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('karwar')) return { fare: isSedan4 ? 2800 : 3300, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('jog')) return { fare: isSedan4 ? 3800 : 4300, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('hubli')) return { fare: isSedan4 ? 4000 : 5000, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('sirsi')) return { fare: isSedan4 ? 3000 : 3500, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('udupi')) return { fare: isSedan4 ? 5000 : 6000, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('dandeli')) return { fare: isSedan4 ? 4000 : 5000, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('mangalore')) return { fare: isSedan4 ? 6500 : 7500, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('hampi')) return { fare: isSedan4 ? 8500 : 9500, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('kolluru')) return { fare: isSedan4 ? 4500 : 5500, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('shivamogga')) return { fare: isSedan4 ? 6000 : 7000, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('sringeri')) return { fare: isSedan4 ? 7000 : 8000, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('horanadu')) return { fare: isSedan4 ? 8000 : 9500, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('bangalore')) return { fare: isSedan4 ? 14500 : 17500, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('mysore')) return { fare: isSedan4 ? 14000 : 17000, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+    if (targetId.includes('kukke')) return { fare: isSedan4 ? 10000 : 12000, source: 'Official One-Way Drop Catalog', inclusions: 'Toll + AC + Driver Bata Included' };
+
+    return null;
+  }, [pickupId, dropId, tripType, selectedVehicle]);
+
   // Calculate estimated distance
   const estimatedKm = useMemo(() => {
     if (pickupId === dropId) return 10;
-    // Special route distance matrix or triangulation
     const pDist = pickupLocation.distFromGokarna;
     const dDist = dropLocation.distFromGokarna;
 
     if (pickupId.includes('gokarna') || dropId.includes('gokarna')) {
       return Math.max(12, pDist + dDist);
     }
-    // If between two non-gokarna points
     return Math.max(25, Math.abs(pDist - dDist) + 20);
   }, [pickupId, dropId, pickupLocation, dropLocation]);
 
   // Estimated driving duration
   const estimatedTime = useMemo(() => {
-    const hours = estimatedKm / 42; // average coastal/ghat driving speed
+    const hours = estimatedKm / 42;
     if (hours < 1) {
       return `${Math.round(hours * 60)} Mins`;
     }
@@ -62,20 +129,20 @@ export default function FareCalculator({ onOpenBookingWithDetails }: FareCalcula
 
   // Estimated fare calculation
   const calculatedFare = useMemo(() => {
+    if (catalogMatch) {
+      return catalogMatch.fare;
+    }
     let ratePerKm = selectedVehicle.pricePerKm;
     let baseKm = estimatedKm;
     if (tripType === 'roundtrip') {
-      baseKm = estimatedKm * 1.8; // roundtrip with waiting
+      baseKm = estimatedKm * 1.8;
     }
 
     let calculated = Math.round(baseKm * ratePerKm);
-
-    // Apply baseline minimums for short local vs outstation
-    const minFare = selectedVehicle.id === 'innova-crysta' ? 2200 : selectedVehicle.id === 'tempo-traveller' ? 3500 : 1200;
+    const minFare = selectedVehicle.id.includes('crysta') ? 2200 : selectedVehicle.id.includes('tempo') ? 3500 : 1200;
     const finalFare = Math.max(calculated, minFare);
-    // Round to nearest 50 for clean quote
     return Math.ceil(finalFare / 50) * 50;
-  }, [estimatedKm, selectedVehicle, tripType]);
+  }, [estimatedKm, selectedVehicle, tripType, catalogMatch]);
 
   const handleWhatsAppQuote = () => {
     const text = `Hi Harish G, I calculated a fare on Atmabala Travels website:
@@ -299,16 +366,22 @@ Please confirm availability and lock my booking.`;
               </div>
 
               {/* Main Total Amount Box */}
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 border border-slate-700 text-center mb-6 shadow-inner">
+              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-5 border border-slate-700 text-center mb-6 shadow-inner relative">
+                {catalogMatch && (
+                  <div className="mb-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    <span>Official Catalog Tariff Match</span>
+                  </div>
+                )}
                 <span className="text-xs text-slate-400 uppercase tracking-wider block font-semibold mb-1">
-                  Estimated Trip Fare
+                  {catalogMatch ? 'Locked Catalog Tariff' : 'Estimated Trip Fare'}
                 </span>
                 <div className="text-4xl sm:text-5xl font-black text-white tracking-tight">
                   <span className="text-[#FF6500] mr-1">₹</span>
                   {calculatedFare.toLocaleString('en-IN')}
                 </div>
-                <p className="text-[11px] text-slate-400 mt-2">
-                  *Exact quote may vary by waiting time & peak holiday dates. 0 hidden taxes.
+                <p className="text-[11px] text-slate-300 mt-2 font-medium">
+                  {catalogMatch ? catalogMatch.inclusions : '*Includes AC cab, fuel, chauffeur & highway tolls. 0 hidden charges.'}
                 </p>
               </div>
 

@@ -13,15 +13,17 @@ export default function FleetSection({ onBookVehicle }: FleetSectionProps) {
   const [isFleetMarqueePaused, setIsFleetMarqueePaused] = useState<boolean>(false);
 
   const categories = [
-    { id: 'all', label: 'All Fleet' },
+    { id: 'all', label: 'All Fleet (6 Models)' },
     { id: 'Sedan', label: 'Sedans (4+1)' },
-    { id: 'Luxury MPV', label: 'Innova / MPV' },
-    { id: 'Mini Bus / Van', label: 'Tempo Traveller' },
+    { id: 'MUV', label: 'Ertiga (6+1)' },
+    { id: 'Luxury MPV', label: 'Innova Crysta' },
+    { id: 'Luxury Van', label: 'Force Urbania (9+1)' },
+    { id: 'Mini Coach', label: 'Tempo Traveler (12+1)' },
   ];
 
   const filteredFleet = selectedCategory === 'all'
     ? FLEET_VEHICLES
-    : FLEET_VEHICLES.filter(v => v.category === selectedCategory);
+    : FLEET_VEHICLES.filter(v => v.category.toLowerCase().includes(selectedCategory.toLowerCase()));
 
   return (
     <section id="fleet" className="py-20 bg-white">

@@ -16,11 +16,13 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
   const [viewMode, setViewMode] = useState<'both' | 'marquee' | 'grid'>('both');
 
   const filterTabs = [
-    { id: 'all', label: 'All Packages (7)' },
-    { id: 'beach', label: '🏖️ Beaches & Town' },
-    { id: 'pilgrimage', label: '🛕 Sacred Darshan' },
-    { id: 'nature', label: '🌿 Waterfalls & Forests' },
-    { id: 'outstation', label: '🛣️ Coastal Outstation' },
+    { id: 'all', label: `All Catalog Tours (${POPULAR_PACKAGES.length})` },
+    { id: 'nature', label: '🌿 Waterfalls & Caves' },
+    { id: 'pilgrimage', label: '🛕 Sacred Shrines' },
+    { id: 'combo', label: '⭐ Mountains & Sea' },
+    { id: 'heritage', label: '🏛️ Heritage Circuits' },
+    { id: 'outstation', label: '🛣️ Grand Outstation' },
+    { id: 'beach', label: '🏖️ Local Beaches' },
   ];
 
   const filteredPackages = selectedCategory === 'all'

@@ -1,4 +1,16 @@
-import { FleetVehicle, TravelPackage, TouristDestination, AirportTransferRoute, HotelStayOption, CustomerTestimonial } from './types';
+import {
+  FleetVehicle,
+  TravelPackage,
+  TouristDestination,
+  AirportTransferRoute,
+  HotelStayOption,
+  CustomerTestimonial,
+  Sightseeing1DayItem,
+  OneWayDropItem,
+  GoaDropItem,
+  HourlyRentalItem,
+  KmWiseTariff
+} from './types';
 
 export const COMPANY_DETAILS = {
   name: 'ATMABALA Travels',
@@ -28,59 +40,87 @@ export const COMPANY_DETAILS = {
 export const FLEET_VEHICLES: FleetVehicle[] = [
   {
     id: 'swift-dzire',
-    name: 'Swift Dzire',
-    category: 'Sedan',
+    name: 'Sedan 4+1 A/c (Swift Dzire / Etios)',
+    category: 'Sedan (4+1)',
     capacity: '4 + 1 Passengers',
     luggage: '2 Medium Bags',
     ac: true,
     image: '/images/swift-dzire.jpg',
-    tagline: 'Economical & comfortable sedan for couples, families, and city hops.',
-    description: 'Perfect for local Gokarna temple visits, Kumta town travel, and quick coastal hops with chilled AC and smooth driving.',
-    pricePerKm: 14,
+    tagline: 'Economical & comfortable AC sedan for couples, small families & outstation drops.',
+    description: 'Crisp chilled AC, smooth suspension for coastal highways and Ghats. Officially rated at ₹13/km (300 km/day base).',
+    pricePerKm: 13,
     perDayEstimate: 2400,
-    features: ['Chilled Air Conditioning', 'Bluetooth Audio System', 'Generous Legroom', 'Clean & Sanitized Interiors']
+    features: ['Chilled Air Conditioning', 'Bluetooth Audio System', 'Generous Legroom', 'Clean & Sanitized Interiors', 'Toll & Bata Transparent']
   },
   {
     id: 'ertiga-smart',
-    name: 'Maruti Ertiga Hybrid',
-    category: 'Compact MUV',
-    capacity: '6 Passengers',
-    luggage: '3 Bags',
+    name: 'Ertiga 6+1 A/c',
+    category: 'MUV (6+1)',
+    capacity: '6 + 1 Passengers',
+    luggage: '3-4 Bags',
     ac: true,
     image: '/images/maruti-ertiga.jpg',
-    tagline: 'Budget-friendly 6-seater for small groups and airport transfers.',
-    description: 'Affordable and flexible seating with superior mileage and comfort on coastal ghat roads.',
+    tagline: 'High-utility 6+1 family car with dual AC & versatile foldable luggage layout.',
+    description: 'Perfect for group temple tours, beach hopping, and airport drops. Officially rated at ₹16/km (300 km/day base).',
     pricePerKm: 16,
     perDayEstimate: 2900,
-    features: ['Rear AC Vents', 'Foldable 3rd Row', 'USB Fast Charging', 'Smooth Suspension']
+    features: ['Dual Zone AC Vents', 'Foldable 3rd Row', 'USB Fast Charging', 'Smooth Ghat Suspension', '6+1 Passenger Seating']
   },
   {
     id: 'innova-crysta',
-    name: 'Innova Crysta',
-    category: 'Luxury MPV',
-    capacity: '6+1 / 7+1 Passengers',
+    name: 'Innova Crysta 6+1 A/c',
+    category: 'Luxury MPV (6+1)',
+    capacity: '6 + 1 Passengers',
     luggage: '4 Large Bags',
     ac: true,
     image: '/images/innova-crysta.jpg',
-    tagline: 'Spacious luxury comfort for coastal highways and family vacations.',
-    description: 'The undisputed king of road comfort. Plush captain seats, dual-zone AC, and generous luggage capacity for long journeys.',
-    pricePerKm: 20,
+    tagline: 'Plush Captain Seat luxury comfort for coastal highways and VIP family vacations.',
+    description: 'The premier benchmark of road comfort in Karnataka. Executive reclining captain seats, dual-zone digital AC, and supreme ride stability.',
+    pricePerKm: 19,
     perDayEstimate: 3800,
-    features: ['Captain Seat Comfort', 'Dual Zone Climate Control', 'Highway Cruising Stability', 'Roof Carrier Available']
+    features: ['Plush Captain Seats', 'Individual AC Louvers', 'Highway Cruising Stability', 'Roof Carrier Available', 'Generous Boot Space']
+  },
+  {
+    id: 'innova-crysta-7plus1',
+    name: 'Innova Crysta 7+1 A/c',
+    category: 'Luxury MPV (7+1)',
+    capacity: '7 + 1 Passengers',
+    luggage: '4 Large Bags',
+    ac: true,
+    image: '/images/fleet-innova-silver.jpg',
+    tagline: 'Executive 7+1 seating for larger families and pilgrimage groups.',
+    description: 'Spacious bench configuration accommodating up to 7 passengers with generous boot space and full climate control.',
+    pricePerKm: 21,
+    perDayEstimate: 4200,
+    features: ['7+1 Executive Seating', 'Rear Digital AC', 'Premium Leather Upholstery', 'Highway Stability Control', 'Luggage Carrier Ready']
+  },
+  {
+    id: 'urbania-9plus1',
+    name: 'Urbania 9+1 A/c',
+    category: 'Luxury Van (9+1)',
+    capacity: '9 + 1 Passengers',
+    luggage: '6-8 Large Bags',
+    ac: true,
+    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80',
+    tagline: 'Next-gen luxury van with individual reclining seats, panoramic windows & high ceiling.',
+    description: 'Ultra-modern Force Urbania 9+1. Walk-in cabin height, individual AC vents, reading lights, and international-standard ergonomics.',
+    pricePerKm: 24,
+    perDayEstimate: 4800,
+    features: ['9+1 Luxury Reclining Seats', 'Walk-in Tall Cabin', 'Panoramic Tinted Windows', 'Individual USB Charging', 'Dedicated Luggage Bay']
   },
   {
     id: 'tempo-traveller',
-    name: 'Tempo Traveller (12-20 Seater)',
-    category: 'Mini Bus / Van',
-    capacity: '12 to 20 Passengers',
-    luggage: '10+ Bags & Luggage Deck',
+    name: 'Tempo Traveler 12+1 A/c',
+    category: 'Mini Coach (12+1 to 20)',
+    capacity: '12 + 1 to 20 Passengers',
+    luggage: '12+ Bags & Luggage Deck',
     ac: true,
     image: '/images/tempo-traveller.jpg',
-    tagline: 'Group adventures, corporate retreats, and large family pilgrim tours.',
-    description: 'Individual pushback luxury seats, high roof walk-in aisle, premium surround sound, and ample boot space for luggage.',
+    tagline: 'Large family pilgrimages, wedding parties, corporate offsites & student batches.',
+    description: 'Individual pushback luxury seats, high roof walk-in aisle, premium surround audio system, and heavy-duty rooftop luggage carrier.',
     pricePerKm: 26,
     perDayEstimate: 5500,
-    features: ['Pushback Recliner Seats', 'High Ceiling Air Flow', 'LED Entertainment TV', 'Dedicated Luggage Carrier']
+    features: ['Pushback Recliner Seats', 'High Ceiling Dual AC Flow', 'LED Entertainment TV', 'Heavy-Duty Rooftop Carrier', 'Experienced Ghat Chauffeur']
   }
 ];
 
@@ -91,12 +131,12 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     destination: 'Gokarna Beach / Hotels',
     distanceKm: 165,
     driveTime: '3.5 Hours',
-    sedanFare: 4200,
-    suvFare: 5200,
-    crystaFare: 6200,
-    tempoFare: 8800,
+    sedanFare: 6000,
+    suvFare: 7000,
+    crystaFare: 7800,
+    tempoFare: 9800,
     popular: true,
-    highlights: ['Direct Highway NH-66 Route', 'Flight Tracking & Meet/Greet', 'Zero Toll Surprise (All Included)'],
+    highlights: ['Catalog Rate: 4+1 ₹6,000 | 6+1 ₹7,000', 'Goa Border Permit & All Tolls Included', 'Flight Tracking & Meet/Greet at Terminal'],
     image: '/images/fleet-innova-silver.jpg'
   },
   {
@@ -105,12 +145,12 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     destination: 'Gokarna Beach / Hotels',
     distanceKm: 145,
     driveTime: '3 Hours',
-    sedanFare: 3800,
-    suvFare: 4800,
-    crystaFare: 5800,
-    tempoFare: 8200,
+    sedanFare: 4500,
+    suvFare: 5500,
+    crystaFare: 6500,
+    tempoFare: 8800,
     popular: true,
-    highlights: ['South Goa Coastal Scenic Drive', 'Airport Arrival Waiting Included', 'Late Night / Early Morning Available'],
+    highlights: ['Catalog Rate: 4+1 ₹4,500 | 6+1 ₹5,500', 'South Goa Coastal Scenic Highway NH-66', 'Goa Border Permit, Toll & Driver Bata Included'],
     image: '/images/innova-crysta.jpg'
   },
   {
@@ -119,12 +159,12 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     destination: 'Gokarna / Kumta',
     distanceKm: 152,
     driveTime: '3.2 Hours',
-    sedanFare: 3600,
-    suvFare: 4500,
-    crystaFare: 5500,
-    tempoFare: 7800,
+    sedanFare: 4000,
+    suvFare: 5000,
+    crystaFare: 5800,
+    tempoFare: 8000,
     popular: true,
-    highlights: ['Smooth Yellapur Western Ghats Highway', 'Train & Flight Synchronized Pickup', 'Tea/Refreshment Stop of Choice'],
+    highlights: ['Catalog Rate: 4+1 ₹4,000 | 6+1 ₹5,000', 'Smooth Yellapur Western Ghats Route', 'Synchronized Flight / Train Arrival Pickup'],
     image: '/images/swift-dzire.jpg'
   },
   {
@@ -133,12 +173,12 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     destination: 'Gokarna Town / Kudle / Om Beach',
     distanceKm: 32,
     driveTime: '45 Mins',
-    sedanFare: 950,
-    suvFare: 1300,
-    crystaFare: 1600,
-    tempoFare: 2400,
+    sedanFare: 1500,
+    suvFare: 1800,
+    crystaFare: 2200,
+    tempoFare: 3000,
     popular: true,
-    highlights: ['Instant Station Platform Pickup', 'Ideal for Vande Bharat & Konkan Express Trains', 'Direct Hotel Drop to Shacks'],
+    highlights: ['Catalog Rate: 4+1 ₹1,500 | 6+1 ₹1,800', 'Direct Platform Exit Pickup for Konkan & Vande Bharat Trains', 'Doorstep Drop to Shacks or Hilltop Hotels'],
     image: '/images/maruti-ertiga.jpg'
   },
   {
@@ -147,12 +187,12 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     destination: 'Gokarna / Kumta',
     distanceKm: 65,
     driveTime: '1.2 Hours',
-    sedanFare: 1900,
-    suvFare: 2400,
-    crystaFare: 2900,
-    tempoFare: 4200,
+    sedanFare: 2800,
+    suvFare: 3300,
+    crystaFare: 3900,
+    tempoFare: 5000,
     popular: false,
-    highlights: ['Coastal NH-66 Bridge Views', 'Fastest Transfer for Goa border arrivals', 'Doorstep Drop at Resort'],
+    highlights: ['Catalog Rate: 4+1 ₹2,800 | 6+1 ₹3,300', 'Coastal NH-66 Kali River Bridge Views', 'Fastest Transfer for Goa border arrivals'],
     image: '/images/swift-dzire.jpg'
   },
   {
@@ -161,108 +201,350 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     destination: 'Murudeshwar / Gokarna',
     distanceKm: 230,
     driveTime: '4.5 Hours',
-    sedanFare: 5600,
-    suvFare: 6800,
-    crystaFare: 8200,
-    tempoFare: 11500,
+    sedanFare: 6500,
+    suvFare: 7500,
+    crystaFare: 8800,
+    tempoFare: 12000,
     popular: false,
-    highlights: ['Cover Coastal NH-66 & Murudeshwar en route', 'Comfortable Cruise in Luxury AC', 'Family Luggage Capacity'],
+    highlights: ['Catalog Rate: 4+1 ₹6,500 | 6+1 ₹7,500', 'Scenic Coastal Highway NH-66 via Udupi & Kundapura', 'Toll, AC & Driver Bata All Included'],
     image: '/images/tempo-traveller.jpg'
   }
 ];
 
 export const POPULAR_PACKAGES: TravelPackage[] = [
   {
-    id: 'gokarna-1day-classic',
-    title: 'Gokarna Complete 1-Day Highlights',
-    category: 'beach',
-    duration: '1 Full Day (8-9 Hours)',
-    highlights: ['Mahabaleshwar & Mahaganapati Temple', 'Om Beach Sunset Cove', 'Kudle Beach & Hilltop Lookout', 'Shiva Cave & Kotiteertha Lake'],
-    route: 'Gokarna Town → Kotiteertha → Shiva Cave → Kudle Beach → Om Beach Sunset',
-    popularFor: 'The definitive first-time Gokarna experience covering spirituality, viewpoints & beach shacks.',
-    recommendedVehicle: 'Swift Dzire or Ertiga',
-    startingPrice: '₹ 1,800',
-    badge: 'Most Popular',
-    image: '/images/gokarna-beach.jpg'
-  },
-  {
-    id: 'sacred-pilgrimage-circuit',
-    title: 'Sacred Coastal Shiva Pilgrimage Circuit',
-    category: 'pilgrimage',
-    duration: '1 Full Day or 2 Days',
-    highlights: ['Mahabaleshwar Atmalinga Darshan', 'Kotiteertha Holy Bathing Tank', 'Idagunji Mahaganapati Temple', 'Murdeshwar 123-Ft Shiva & Gopuram Lift'],
-    route: 'Gokarna → Kotiteertha → Idagunji Temple → Murudeshwar Beach & Temple → Return',
-    popularFor: 'Devotional families & elders seeking blessed darshans with stress-free doorstep temple drops.',
-    recommendedVehicle: 'Innova Crysta or Ertiga',
-    startingPrice: '₹ 3,400',
-    badge: 'Spiritual Choice',
-    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'yana-vibhooti-rainforest',
-    title: 'Yana Caves & Vibhooti Waterfall Adventure',
+    id: 'yana-vibhutifalls',
+    title: 'Yana Caves & Vibhuti Waterfall Day Tour',
     category: 'nature',
     duration: '1 Full Day',
-    highlights: ['Yana Towering Limestone Monoliths', 'Bhairaveshwara & Mohini Shikhara', 'Vibhooti Forest Natural Plunge Pool', 'Sahyadri Rainforest Ghat Cruise'],
-    route: 'Gokarna → Kumta Ghats → Yana Monoliths → Vibhuti Falls → Forest Tea Stop → Gokarna',
-    popularFor: 'Hiking, refreshing swim in natural limestone pool, and geologic wonders.',
-    recommendedVehicle: 'Innova Crysta or Swift Dzire',
-    startingPrice: '₹ 2,900',
-    badge: 'Nature & Trek',
+    highlights: ['Yana Towering Limestone Monoliths', 'Bhairaveshwara & Mohini Shikhara', 'Vibhuti Forest Natural Plunge Pool', 'All Tolls, Parking, AC Cab & Driver Bata Included'],
+    route: 'Gokarna → Kumta Ghats → Yana Monoliths → Vibhuti Waterfalls → Return',
+    popularFor: 'Geological rock wonders and refreshing plunge bath in natural limestone stream.',
+    recommendedVehicle: 'Sedan 4+1 (₹3,000) or Ertiga 6+1 (₹3,500)',
+    startingPrice: '₹ 3,000',
+    badge: 'Catalog Best Seller',
     image: 'https://images.unsplash.com/photo-1506509689886-c5679957d3bf?auto=format&fit=crop&w=600&q=80'
   },
   {
-    id: 'honnavar-backwater-mangrove',
-    title: 'Honnavar Eco-Boating & Sharavati Backwaters',
+    id: 'yana-mirjan-vibhutifalls',
+    title: 'Yana Monoliths, Mirjan Fort & Vibhuti Falls',
     category: 'nature',
-    duration: '1 Day (Morning to Evening)',
-    highlights: ['Sharavati Riverfront Speedboating', 'Mangrove Forest Elevated Boardwalk', 'Apsara Konda Waterfall & Pond of Angels', 'Kasarkod Eco-Beach Sunset'],
-    route: 'Gokarna → Kumta → Honnavar Boardwalk → Sharavati Boating → Apsara Konda → Gokarna',
-    popularFor: 'Calm emerald boat cruises, bird watching, and uncrowded sunset boardwalks.',
-    recommendedVehicle: 'Ertiga Hybrid or Dzire',
-    startingPrice: '₹ 2,600',
-    badge: 'Relaxing Cruise',
-    image: 'https://images.unsplash.com/photo-1622619472658-29be97e974e4?auto=format&fit=crop&w=600&q=80'
+    duration: '1 Full Day',
+    highlights: ['16th-Century Mirjan Pepper Queen Fort', 'Yana Rock Formations & Cave Shrine', 'Turquoise Vibhuti Falls Bath', 'All Inclusive (AC Cab, Toll, Parking, Bata)'],
+    route: 'Gokarna → Mirjan Historical Fort → Yana Caves → Vibhuti Falls → Return',
+    popularFor: 'Heritage exploration paired with Sahyadri waterfalls and tropical nature.',
+    recommendedVehicle: 'Sedan 4+1 (₹3,200) or Ertiga 6+1 (₹3,800)',
+    startingPrice: '₹ 3,200',
+    badge: 'Heritage & Nature',
+    image: 'https://images.unsplash.com/photo-1623946059868-8091807d0d0f?auto=format&fit=crop&w=600&q=80'
   },
   {
-    id: 'murdeshwar-jog-falls',
-    title: 'Murdeshwar Temple & Jog Falls Expedition',
+    id: 'sightseeing-murdeshwar',
+    title: 'Murdeshwar Coastal Temple Sightseeing',
+    category: 'pilgrimage',
+    duration: '1 Full Day',
+    highlights: ['123-Ft Colossal Lord Shiva Statue', '20-Storey Raja Gopuram with Sea-View Lift', 'Murdeshwar Beach & Watersports', 'Idagunji Ganapati en route'],
+    route: 'Gokarna → Honnavar → Murdeshwar Temple & Kanduka Hill → Return',
+    popularFor: 'Spectacular seaside architectural marvel and Lord Shiva darshan.',
+    recommendedVehicle: 'Sedan 4+1 (₹3,500) or Ertiga 6+1 (₹4,000)',
+    startingPrice: '₹ 3,500',
+    badge: 'Iconic Temple',
+    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'jog-falls-murdeshwar',
+    title: 'Jog Falls & Murdeshwar Grand Day Tour',
     category: 'outstation',
     duration: '1 Full Day (10-12 Hours)',
-    highlights: ['Murdeshwar Shiva Statue on Sea Cliff', '20-Storey Raja Gopuram Lift', 'Jog Falls (India\'s 2nd Highest Waterfall)', 'Sharavati Valley Rainforest Vistas'],
-    route: 'Gokarna → Honnavar → Murdeshwar → Sharavati Valley → Jog Falls → Return',
-    popularFor: 'Breathtaking Western Ghats waterfalls and coastal architectural grandeur.',
-    recommendedVehicle: 'Innova Crysta or Tempo Traveller',
-    startingPrice: '₹ 4,400',
-    badge: 'Iconic Grand Tour',
+    highlights: ['Jog Falls (India\'s 2nd Highest Plunge Waterfall)', 'Sharavati Valley Rainforest Vistas', 'Murdeshwar Shiva Temple & Sea Cliff', 'All Tolls, AC, Parking & Bata Included'],
+    route: 'Gokarna → Honnavar → Sharavati Valley → Jog Falls → Murdeshwar → Return',
+    popularFor: 'Western Ghats waterfalls combined with coastal Arabian Sea majesty.',
+    recommendedVehicle: 'Sedan 4+1 (₹4,800) or Ertiga 6+1 (₹5,800)',
+    startingPrice: '₹ 4,800',
+    badge: 'Grand Tour',
     image: 'https://images.unsplash.com/photo-1524220300957-612ce6ba1a30?auto=format&fit=crop&w=600&q=80'
   },
   {
-    id: 'dandeli-adventure-safari',
-    title: 'Dandeli Jungle Safari & River Rafting',
-    category: 'nature',
-    duration: '2 Days / 1 Night',
-    highlights: ['Kali River White Water Rafting', 'Dandeli Wildlife Jungle Safari', 'Syntheri Rocks Canyon', 'Kayaking & Natural Jacuzzi Bath'],
-    route: 'Gokarna → Ankola → Yellapur → Dandeli Jungle Camps → Return',
-    popularFor: 'Adrenaline junkies, water sports, deep forest wildlife and campfires.',
-    recommendedVehicle: 'Innova Crysta or Tempo Traveller',
-    startingPrice: '₹ 6,800',
-    badge: 'Adventure Thrill',
-    image: 'https://images.unsplash.com/photo-1544413660-299165566b1d?auto=format&fit=crop&w=600&q=80'
+    id: 'yana-murdeshwar',
+    title: 'Yana Rock Monoliths & Murdeshwar Temple',
+    category: 'combo',
+    duration: '1 Full Day',
+    highlights: ['Towering Yana Caves in Deep Rainforest', 'Bhairaveshwara & Mohini Shikhara', 'Murdeshwar Shiva Statue on Sea Cliff', 'Scenic Coastal & Ghat Highway'],
+    route: 'Gokarna → Yana Monoliths → Coastal NH-66 → Murdeshwar → Return',
+    popularFor: 'Combining geological mountain wonders with sacred coastal temple vibes.',
+    recommendedVehicle: 'Sedan 4+1 (₹4,000) or Ertiga 6+1 (₹4,500)',
+    startingPrice: '₹ 4,000',
+    badge: 'Mountains & Sea',
+    image: 'https://images.unsplash.com/photo-1506509689886-c5679957d3bf?auto=format&fit=crop&w=600&q=80'
   },
   {
-    id: 'karwar-scenic-coast',
-    title: 'Karwar Scenic Coast & Sadashivgad Heritage',
-    category: 'outstation',
+    id: 'yana-vibhuti-murdeshwar',
+    title: 'Yana Caves, Vibhuti Falls & Murdeshwar Trio',
+    category: 'combo',
+    duration: '1 Full Day (Early Start)',
+    highlights: ['Yana Monoliths Rainforest Trek', 'Vibhuti Forest Natural Limestone Pool Bath', 'Murdeshwar Shiva Statue & Sunset Beach', 'Complete Coastal Karnataka Highlights'],
+    route: 'Gokarna → Yana → Vibhuti Falls → Murdeshwar Temple & Beach → Return',
+    popularFor: 'The ultimate all-in-one day package for families and friends visiting Gokarna.',
+    recommendedVehicle: 'Sedan 4+1 (₹5,000) or Ertiga 6+1 (₹6,000)',
+    startingPrice: '₹ 5,000',
+    badge: 'Ultimate Trio',
+    image: 'https://images.unsplash.com/photo-1623946059868-8091807d0d0f?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'jog-honavara',
+    title: 'Jog Falls & Honnavar Eco-Boating Tour',
+    category: 'nature',
     duration: '1 Full Day',
-    highlights: ['INS Chapal Warship Sea Museum', 'Rabindranath Tagore Beach', 'Sadashivgad Hilltop Fort & Kali Bridge', 'Devbagh Beach Watersports'],
-    route: 'Gokarna → Ankola → Karwar Marine Highway → Sadashivgad → Return',
-    popularFor: 'Seafood delicacies, naval museum heritage, and estuary panoramas.',
-    recommendedVehicle: 'Dzire or Innova Crysta',
-    startingPrice: '₹ 3,200',
-    badge: 'Coastal Heritage',
-    image: '/images/kudle-beach.jpg'
+    highlights: ['Majestic Jog Falls Mist & Viewpoints', 'Sharavati River Speedboating & Mangrove Boardwalk', 'Apsara Konda Natural Pool & Sunset Point', 'All Inclusive Fixed Fare'],
+    route: 'Gokarna → Honnavar Riverfront → Sharavati Valley → Jog Falls → Return',
+    popularFor: 'Emerald backwaters, mangrove boardwalk strolls and roaring waterfalls.',
+    recommendedVehicle: 'Sedan 4+1 (₹4,500) or Ertiga 6+1 (₹5,500)',
+    startingPrice: '₹ 4,500',
+    badge: 'Water & Mist',
+    image: 'https://images.unsplash.com/photo-1622619472658-29be97e974e4?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'murdeshwar-kolluru',
+    title: 'Murdeshwar & Kolluru Mookambika Darshan',
+    category: 'pilgrimage',
+    duration: '1 Full Day',
+    highlights: ['Murdeshwar 123-Ft Shiva & Gopuram', 'Kolluru Sri Mookambika Devi Temple in Kodachadri Foothills', 'Souparnika River Sacred Bathing', 'Doorstep Temple Drop & Wait'],
+    route: 'Gokarna → Murdeshwar → Kundapura Highway → Kolluru Temple → Return',
+    popularFor: 'Devotional families seeking deep spiritual blessings and peaceful darshans.',
+    recommendedVehicle: 'Sedan 4+1 (₹4,600) or Ertiga 6+1 (₹5,500)',
+    startingPrice: '₹ 4,600',
+    badge: 'Sacred Pilgrimage',
+    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'murdeshwar-udupi',
+    title: 'Murdeshwar, Udupi Krishna Matha & Malpe',
+    category: 'pilgrimage',
+    duration: '1 Full Day',
+    highlights: ['Murdeshwar Shiva Temple Complex', 'Udupi Sri Krishna Matha & Kanakana Kindi', 'Malpe Sea Walkway / Beach', 'Authentic Udupi Satvik Lunch Stop'],
+    route: 'Gokarna → Murdeshwar → Kundapura → Udupi Town → Return',
+    popularFor: 'Lord Krishna devotion, divine temples and coastal Konkan heritage.',
+    recommendedVehicle: 'Sedan 4+1 (₹5,700) or Ertiga 6+1 (₹6,800)',
+    startingPrice: '₹ 5,700',
+    badge: 'Coastal Temples',
+    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'murdeshwar-kolluru-udupi',
+    title: 'Murdeshwar, Kolluru & Udupi Triumvirate',
+    category: 'pilgrimage',
+    duration: '1 Full Day (Early Departure)',
+    highlights: ['Murdeshwar Shiva & Gopuram', 'Kollur Goddess Mookambika Shrine', 'Udupi Sri Krishna Temple Darshan', 'Complete Coastal South Kanara Yatra'],
+    route: 'Gokarna → Murdeshwar → Kolluru → Udupi → Return',
+    popularFor: 'Covering 3 celebrated coastal shrines in a comfortable, air-conditioned vehicle.',
+    recommendedVehicle: 'Sedan 4+1 (₹6,200) or Ertiga 6+1 (₹7,300)',
+    startingPrice: '₹ 6,200',
+    badge: 'Triple Darshan',
+    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'murdeshwar-kolluru-sringeri',
+    title: 'Murdeshwar, Kolluru & Sringeri Sharada Peetham',
+    category: 'pilgrimage',
+    duration: '1 Full Day / Extended Yatra',
+    highlights: ['Murdeshwar Shiva Temple', 'Kollur Mookambika Devi Temple', 'Adi Shankaracharya Sringeri Sharada Peetham', 'Tunga River Holy Fish Feeding & Vidyashankara Temple'],
+    route: 'Gokarna → Murdeshwar → Kolluru → Agumbe Ghats → Sringeri → Return',
+    popularFor: 'The ultimate Western Ghats spiritual circuit for senior citizens and devout families.',
+    recommendedVehicle: 'Sedan 4+1 (₹7,300) or Ertiga 6+1 (₹8,700)',
+    startingPrice: '₹ 7,300',
+    badge: 'Grand Pilgrimage',
+    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'sirsi-banavasi-sahasraling',
+    title: 'Sirsi, Banavasi & Sahasralinga Heritage Tour',
+    category: 'heritage',
+    duration: '1 Full Day',
+    highlights: ['Sirsi Shri Marikamba Temple (Golden Rath)', 'Banavasi 9th-Century Madhukeshwara Temple (Kadamba Capital)', 'Sahasralinga 1000 Shivalingas Carved in Shalmala Riverbed', 'Fragrant Arecanut & Spice Plantations'],
+    route: 'Gokarna → Devimane Ghat → Sirsi → Sahasralinga → Banavasi → Return',
+    popularFor: 'Ancient Karnataka history, riverbed stone carvings and peaceful Malenadu forests.',
+    recommendedVehicle: 'Sedan 4+1 (₹4,500) or Ertiga 6+1 (₹5,500)',
+    startingPrice: '₹ 4,500',
+    badge: 'Ancient Heritage',
+    image: 'https://images.unsplash.com/photo-1600387802805-4d4ebdc3eb4c?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 'gokarna-local-hourly',
+    title: 'Gokarna Local Beaches & Temple Package',
+    category: 'beach',
+    duration: 'Flexible (4 to 12 Hours)',
+    highlights: ['Mahabaleshwar Temple & Kotiteertha', 'Om Beach & Half Moon Viewpoint', 'Kudle Beach & Sunset Hilltop', 'Hourly Packages from ₹1,500 (4 hrs / 40 km)'],
+    route: 'Gokarna Town → Kotiteertha → Shiva Cave → Kudle Beach → Om Beach',
+    popularFor: 'Flexible local sightseeing at your own pace with chilled AC and friendly local driver.',
+    recommendedVehicle: 'Sedan 4+1 (from ₹1,500) or Ertiga 6+1 (from ₹2,000)',
+    startingPrice: '₹ 1,500',
+    badge: 'Local Classic',
+    image: '/images/gokarna-beach.jpg'
   }
+];
+
+// 1-DAY SIGHTSEEING CATALOG (from Official Tariff Card)
+export const SIGHTSEEING_1DAY_PACKAGES: Sightseeing1DayItem[] = [
+  {
+    id: 'yana-vibhutifalls',
+    place: 'Yana, Vibhutifalls',
+    rate4Plus1: 3000,
+    rate6Plus1: 3500,
+    description: 'Bhairaveshwara & Mohini rock monoliths in dense forest + pristine natural limestone plunge pool.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'yana-mirjan-vibhutifalls',
+    place: 'Yana, Mirjan, Vibhutifalls',
+    rate4Plus1: 3200,
+    rate6Plus1: 3800,
+    description: '16th century Mirjan Fort pepper-queen citadel + Yana monoliths + turquoise Vibhuti falls bath.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'sightseeing-murdeshwar',
+    place: 'Sightseeing Murdeshwar',
+    rate4Plus1: 3500,
+    rate6Plus1: 4000,
+    description: '123-ft colossal Shiva sea statue, 20-storey Raja Gopuram with sea-view lift & pristine beach stroll.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'jog-falls-murdeshwar',
+    place: 'Jog falls, Murdeshwar',
+    rate4Plus1: 4800,
+    rate6Plus1: 5800,
+    description: 'Sharavati valley misty Jog Falls cascade combined with iconic cliff-side Murdeshwar Shiva temple.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'yana-murdeshwar',
+    place: 'Yana, Murdeshwar',
+    rate4Plus1: 4000,
+    rate6Plus1: 4500,
+    description: 'Spectacular geological rock monoliths of Yana combined with coastal Murdeshwar ocean temple.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'yana-vibhuti-murdeshwar',
+    place: 'Yana, Vibhuti, Murdeshwar',
+    rate4Plus1: 5000,
+    rate6Plus1: 6000,
+    description: 'The ultimate coastal nature & temple trio: Yana caves, Vibhuti forest waterfall & Murdeshwar sunset.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'jog-honavara',
+    place: 'Jog, Honavara',
+    rate4Plus1: 4500,
+    rate6Plus1: 5500,
+    description: 'Roaring Jog Falls expedition followed by serene Honnavar Sharavati river boating & Mangrove Boardwalk.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'murdeshwar-kolluru',
+    place: 'Murdeshwar, Kolluru',
+    rate4Plus1: 4600,
+    rate6Plus1: 5500,
+    description: 'Coastal Shiva blessing at Murdeshwar followed by sacred Mookambika Temple darshan at Kollur foothills.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'murdeshwar-udupi',
+    place: 'Murdeshwar, Udupi',
+    rate4Plus1: 5700,
+    rate6Plus1: 6800,
+    description: 'Murdeshwar Shiva temple + Udupi Sri Krishna Matha, Kanakana Kindi & Malpe beach promenade.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'murdeshwar-kolluru-udupi',
+    place: 'Murdeshwar, Kolluru, Udupi',
+    rate4Plus1: 6200,
+    rate6Plus1: 7300,
+    description: 'The golden devotional triumvirate: Murdeshwar + Kollur Mookambika Devi + Udupi Sri Krishna Temple.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'murdeshwar-kolluru-sringeri',
+    place: 'Murdeshwar, Kolluru, Sringeri',
+    rate4Plus1: 7300,
+    rate6Plus1: 8700,
+    description: 'Sacred Western Ghats circuit: Murdeshwar, Kollur Mookambika & Adi Shankaracharya Sharada Peetham Sringeri.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  },
+  {
+    id: 'sirsi-banavasi-sahasraling',
+    place: 'Sirsi, Banavasi, Sahasraling',
+    rate4Plus1: 4500,
+    rate6Plus1: 5500,
+    description: 'Sirsi Marikamba Temple, 9th-century Madhukeshwara Temple Banavasi & riverbed rock-carved Sahasralinga.',
+    inclusions: 'AC cab, toll, parking, driver bata'
+  }
+];
+
+// KM-WISE OUTSTATION RATE (300KM / DAY)
+export const KM_WISE_TARIFF: KmWiseTariff = {
+  minKmPerDay: 300,
+  rate4Plus1PerKm: 13,
+  rate6Plus1PerKm: 16,
+  driverBataPerDay: 500,
+  tollParkingNote: 'Toll & Parking Extra (At actuals)',
+  inclusions: 'Sightseeing & outstation touring with AC cab, fuel and professional chauffeur. Minimum 300 km/day.'
+};
+
+// ONLY DROP / ONE-WAY TAXI SERVICE (20 DESTINATIONS)
+// Note: This Drop including toll, ac, driver bata
+export const ONE_WAY_DROPS: OneWayDropItem[] = [
+  { id: 'ankola', destination: 'Ankola', rate4Plus1: 1200, rate6Plus1: 1500, category: 'nearby' },
+  { id: 'kumta', destination: 'Kumta', rate4Plus1: 1500, rate6Plus1: 1800, category: 'nearby' },
+  { id: 'honavara', destination: 'Honavara', rate4Plus1: 2500, rate6Plus1: 2800, category: 'nearby' },
+  { id: 'karwar-murdeshwar', destination: 'Karwar, Murdeshwar', rate4Plus1: 2800, rate6Plus1: 3300, category: 'coastal' },
+  { id: 'talaguppa', destination: 'Talaguppa', rate4Plus1: 4000, rate6Plus1: 4500, category: 'ghat' },
+  { id: 'jog-falls', destination: 'Jog falls', rate4Plus1: 3800, rate6Plus1: 4300, category: 'ghat' },
+  { id: 'hubli-alnavar', destination: 'Hubli, Alnavar', rate4Plus1: 4000, rate6Plus1: 5000, category: 'city' },
+  { id: 'sirsi', destination: 'Sirsi', rate4Plus1: 3000, rate6Plus1: 3500, category: 'ghat' },
+  { id: 'udupi', destination: 'Udupi', rate4Plus1: 5000, rate6Plus1: 6000, category: 'city' },
+  { id: 'dandeli-city', destination: 'Dandeli (city)', rate4Plus1: 4000, rate6Plus1: 5000, category: 'ghat' },
+  { id: 'dandeli-ganeshgudi', destination: 'Dandeli (ganesh gudi)', rate4Plus1: 4500, rate6Plus1: 5500, category: 'ghat' },
+  { id: 'mangalore', destination: 'Mangalore', rate4Plus1: 6500, rate6Plus1: 7500, category: 'city' },
+  { id: 'hampi', destination: 'Hampi', rate4Plus1: 8500, rate6Plus1: 9500, category: 'long-distance' },
+  { id: 'kolluru', destination: 'Kolluru', rate4Plus1: 4500, rate6Plus1: 5500, category: 'pilgrimage' },
+  { id: 'shivamogga', destination: 'Shivamogga', rate4Plus1: 6000, rate6Plus1: 7000, category: 'city' },
+  { id: 'sringeri', destination: 'Sringeri', rate4Plus1: 7000, rate6Plus1: 8000, category: 'pilgrimage' },
+  { id: 'horanadu', destination: 'Horanadu', rate4Plus1: 8000, rate6Plus1: 9500, category: 'pilgrimage' },
+  { id: 'bangalore', destination: 'Bangalore', rate4Plus1: 14500, rate6Plus1: 17500, category: 'long-distance' },
+  { id: 'mysore', destination: 'Mysore', rate4Plus1: 14000, rate6Plus1: 17000, category: 'long-distance' },
+  { id: 'kukke-subramanya', destination: 'Kukke Subramanya', rate4Plus1: 10000, rate6Plus1: 12000, category: 'pilgrimage' }
+];
+
+// GOA DROPS (14 DESTINATIONS)
+// Note: This drop including toll, ac, driver bata and goa permit
+export const GOA_DROPS: GoaDropItem[] = [
+  { id: 'palolem-agonda', destination: 'Pololem-Agond (Palolem & Agonda)', rate4Plus1: 3500, rate6Plus1: 4000, region: 'South Goa' },
+  { id: 'madgaon', destination: 'Madgaon (Margao)', rate4Plus1: 4000, rate6Plus1: 4500, region: 'South Goa' },
+  { id: 'colva-benaulim', destination: 'Colva, Benoliam (Benaulim)', rate4Plus1: 4300, rate6Plus1: 4800, region: 'South Goa' },
+  { id: 'majorda-varca', destination: 'Marjorda, Varca', rate4Plus1: 4300, rate6Plus1: 4800, region: 'South Goa' },
+  { id: 'dabolim-airport', destination: 'Daboliam Airport (GOI)', rate4Plus1: 4500, rate6Plus1: 5500, region: 'Airports & Transit' },
+  { id: 'mopa-airport', destination: 'Mopa Airport (GOX)', rate4Plus1: 6000, rate6Plus1: 7000, region: 'Airports & Transit' },
+  { id: 'calangute-baga', destination: 'Calangut, Baga', rate4Plus1: 6000, rate6Plus1: 7000, region: 'North Goa' },
+  { id: 'vagator-anjuna', destination: 'Vagator, Anjuna', rate4Plus1: 6000, rate6Plus1: 7000, region: 'North Goa' },
+  { id: 'candolim', destination: 'Candolim', rate4Plus1: 6000, rate6Plus1: 7000, region: 'North Goa' },
+  { id: 'panjim', destination: 'Panjim', rate4Plus1: 5000, rate6Plus1: 5500, region: 'Central Goa' },
+  { id: 'arambol-siolim', destination: 'Arambol, Shivolim (Siolim)', rate4Plus1: 6500, rate6Plus1: 7500, region: 'North Goa' },
+  { id: 'mandrem-morjim', destination: 'Mandrem, Morjim', rate4Plus1: 6500, rate6Plus1: 7500, region: 'North Goa' },
+  { id: 'ponda', destination: 'Ponda', rate4Plus1: 4500, rate6Plus1: 5000, region: 'South Goa' },
+  { id: 'old-goa', destination: 'Old Goa', rate4Plus1: 5000, rate6Plus1: 5500, region: 'Central Goa' }
+];
+
+// HOURLY PACKAGE / ROUND TRIP
+// Driver allowance including | Extra Hours: ₹ 180 | Extra KM: ₹ 26 | Parking & Toll: Extra
+export const HOURLY_PACKAGES: HourlyRentalItem[] = [
+  { id: '4hr-40km', duration: '4 Hours', hours: 4, kilometers: 40, rate4Plus1: 1500, rate6Plus1: 2000, extraHourRate: 180, extraKmRate: 26 },
+  { id: '6hr-60km', duration: '6 Hours', hours: 6, kilometers: 60, rate4Plus1: 1800, rate6Plus1: 2300, extraHourRate: 180, extraKmRate: 26 },
+  { id: '8hr-80km', duration: '8 Hours', hours: 8, kilometers: 80, rate4Plus1: 2500, rate6Plus1: 3000, extraHourRate: 180, extraKmRate: 26 },
+  { id: '10hr-100km', duration: '10 Hours', hours: 10, kilometers: 100, rate4Plus1: 2800, rate6Plus1: 3300, extraHourRate: 180, extraKmRate: 26 },
+  { id: '12hr-120km', duration: '12 Hours', hours: 12, kilometers: 120, rate4Plus1: 3500, rate6Plus1: 4000, extraHourRate: 180, extraKmRate: 26 }
 ];
 
 export const HOTEL_STAY_RECOMMENDATIONS: HotelStayOption[] = [

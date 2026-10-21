@@ -10,6 +10,7 @@ import Hero from './components/Hero';
 import AirportTransfersSection from './components/AirportTransfersSection';
 import FareCalculator from './components/FareCalculator';
 import PackagesSection from './components/PackagesSection';
+import OfficialTariffSection from './components/OfficialTariffSection';
 import CompetitorComparisonSection from './components/CompetitorComparisonSection';
 import FleetSection from './components/FleetSection';
 import GokarnaPosterSection from './components/GokarnaPosterSection';
@@ -77,6 +78,7 @@ export default function App() {
               }}
             />
             <FareCalculator />
+            <OfficialTariffSection />
             <AirportTransfersSection />
             <PackagesSection
               onSelectPackage={handleSelectPackage}
@@ -92,6 +94,14 @@ export default function App() {
             <StatsAndParallax onOpenBooking={handleOpenBooking} />
             <AboutSection />
             <ContactSection />
+          </div>
+        )}
+
+        {activeTab === 'tariffs' && (
+          <div className="pt-20">
+            <OfficialTariffSection />
+            <FareCalculator />
+            <StatsAndParallax onOpenBooking={handleOpenBooking} />
           </div>
         )}
 

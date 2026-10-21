@@ -16,7 +16,7 @@ export interface FleetVehicle {
 export interface TravelPackage {
   id: string;
   title: string;
-  category?: 'beach' | 'pilgrimage' | 'nature' | 'outstation' | 'combo';
+  category?: 'beach' | 'pilgrimage' | 'nature' | 'outstation' | 'combo' | 'heritage';
   duration: string;
   highlights: string[];
   route: string;
@@ -88,7 +88,52 @@ export interface BookingFormState {
   passengers: number;
   selectedVehicle: string;
   selectedPackage?: string;
-  tripType: 'one-way' | 'round-trip' | 'sightseeing' | 'package' | 'airport-transfer';
+  tripType: 'one-way' | 'round-trip' | 'sightseeing' | 'package' | 'airport-transfer' | 'goa-drop' | 'hourly';
   specialNotes: string;
+}
+
+export interface Sightseeing1DayItem {
+  id: string;
+  place: string;
+  rate4Plus1: number;
+  rate6Plus1: number;
+  description?: string;
+  inclusions?: string;
+}
+
+export interface OneWayDropItem {
+  id: string;
+  destination: string;
+  rate4Plus1: number;
+  rate6Plus1: number;
+  category?: 'nearby' | 'ghat' | 'pilgrimage' | 'city' | 'long-distance' | 'coastal';
+}
+
+export interface GoaDropItem {
+  id: string;
+  destination: string;
+  rate4Plus1: number;
+  rate6Plus1: number;
+  region?: 'South Goa' | 'North Goa' | 'Airports & Transit' | 'Central Goa';
+}
+
+export interface HourlyRentalItem {
+  id: string;
+  duration: string;
+  hours: number;
+  kilometers: number;
+  rate4Plus1: number;
+  rate6Plus1: number;
+  extraHourRate: number;
+  extraKmRate: number;
+}
+
+export interface KmWiseTariff {
+  minKmPerDay: number;
+  rate4Plus1PerKm: number;
+  rate6Plus1PerKm: number;
+  driverBataPerDay: number;
+  tollParkingNote: string;
+  inclusions: string;
 }
 
