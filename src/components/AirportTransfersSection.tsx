@@ -121,7 +121,11 @@ Please let me know driver details and availability.`;
                 >
                   <img
                     src={r.image}
-                    alt={r.source}
+                    alt={`Atmabala airport route - ${r.source}`}
+                    width={64}
+                    height={64}
+                    loading="lazy"
+                    decoding="async"
                     className="w-16 h-16 rounded-lg object-cover shrink-0 border border-slate-600 group-hover:scale-105 transition-transform"
                   />
                   <div className="flex-1 min-w-0">
@@ -158,7 +162,11 @@ Please let me know driver details and availability.`;
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={route.image}
-                  alt={route.source}
+                  alt={`Atmabala airport cab - ${route.source} to Gokarna`}
+                  width={380}
+                  height={192}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />

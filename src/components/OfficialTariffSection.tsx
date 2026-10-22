@@ -214,7 +214,10 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
             <div className="relative flex-1 sm:w-64">
               <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
+                id="official-tariff-search"
+                name="tariffSearch"
                 type="text"
+                aria-label="Search place or route in official tariff"
                 placeholder="Search place / route..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

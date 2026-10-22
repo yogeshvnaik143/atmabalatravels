@@ -287,7 +287,11 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                       <div className="relative h-40 overflow-hidden">
                         <img
                           src={pkg.image}
-                          alt={pkg.title}
+                          alt={`Atmabala tour - ${pkg.title}`}
+                          width={320}
+                          height={160}
+                          loading="lazy"
+                          decoding="async"
                           referrerPolicy="no-referrer"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
@@ -345,10 +349,11 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                       <a
                         href={`https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20want%20to%20inquire%20about%20the%20${encodeURIComponent(pkg.title)}%20package`}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
                         className="p-2 rounded-xl bg-[#25D366] text-white hover:bg-[#1EBE5D] transition-colors flex items-center justify-center shadow-xs"
                         title="Chat on WhatsApp"
+                        aria-label={`Inquire about ${pkg.title} on WhatsApp`}
                       >
                         <MessageCircle className="w-3.5 h-3.5" />
                       </a>
@@ -372,7 +377,10 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
               <div className="relative flex-1">
                 <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
+                  id="packages-search-input"
+                  name="packagesSearch"
                   type="text"
+                  aria-label="Search destinations by name"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search destinations by name (e.g. Yana, Murdeshwar, Jog Falls, Udupi, Honnavar, Sirsi)..."
@@ -381,6 +389,7 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
+                    aria-label="Clear destination search"
                     className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
                   >
                     <X className="w-4 h-4" />
@@ -392,6 +401,7 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+                  aria-label="Toggle advanced filters"
                   className={`px-4 py-3.5 rounded-2xl border text-xs sm:text-sm font-bold flex items-center gap-2 transition-all cursor-pointer ${
                     showAdvancedFilters || priceRangePreset !== 'all' || selectedDuration !== 'all' || maxPriceSlider < 9000
                       ? 'bg-[#FF6500]/10 border-[#FF6500] text-[#FF6500]'
@@ -407,6 +417,9 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
 
                 <div className="relative">
                   <select
+                    id="packages-sort-select"
+                    name="packagesSort"
+                    aria-label="Sort packages"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
                     className="px-4 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] cursor-pointer"
@@ -510,7 +523,7 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                     {/* Max Budget Slider */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                        <label htmlFor="packages-price-slider" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                           Max Budget Cap
                         </label>
                         <span className="text-xs font-extrabold text-[#FF6500]">
@@ -518,6 +531,8 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                         </span>
                       </div>
                       <input
+                        id="packages-price-slider"
+                        name="packagesPriceSlider"
                         type="range"
                         min="1500"
                         max="9000"
@@ -619,7 +634,7 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                   <a
                     href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20have%20a%20custom%20tour%20itinerary%20in%20mind.%20Can%20you%20help?"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="px-5 py-2.5 rounded-xl bg-[#25D366] text-white font-bold text-xs hover:bg-[#1EBE5D] transition-colors flex items-center gap-1.5"
                   >
                     <MessageCircle className="w-4 h-4" />
@@ -650,7 +665,11 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                           <div className="relative h-48 overflow-hidden">
                             <img
                               src={pkg.image}
-                              alt={pkg.title}
+                              alt={`Atmabala Tour - ${pkg.title}`}
+                              width={380}
+                              height={192}
+                              loading="lazy"
+                              decoding="async"
                               referrerPolicy="no-referrer"
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             />
@@ -763,9 +782,10 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
                         <a
                           href={`https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20want%20to%20book%20the%20${encodeURIComponent(pkg.title)}%20package`}
                           target="_blank"
-                          rel="noreferrer"
+                          rel="noopener noreferrer"
                           className="p-3 rounded-xl bg-[#25D366] text-white hover:bg-[#1EBE5D] transition-colors flex items-center justify-center shadow-xs"
                           title="Chat on WhatsApp"
+                          aria-label={`Inquire about ${pkg.title} package on WhatsApp`}
                         >
                           <MessageCircle className="w-4 h-4" />
                         </a>

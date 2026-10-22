@@ -101,7 +101,11 @@ export default function FleetSection({ onBookVehicle }: FleetSectionProps) {
                 >
                   <img
                     src={veh.image}
-                    alt={veh.name}
+                    alt={`Atmabala ${veh.name}`}
+                    width={64}
+                    height={56}
+                    loading="lazy"
+                    decoding="async"
                     className="w-16 h-14 rounded-lg object-cover shrink-0 border border-slate-100 dark:border-slate-700 group-hover:scale-105 transition-transform"
                   />
                   <div className="flex-1 min-w-0">
@@ -143,12 +147,15 @@ export default function FleetSection({ onBookVehicle }: FleetSectionProps) {
                 <div className="relative h-52 w-full overflow-hidden bg-slate-800">
                   <img
                     src={vehicle.image}
-                    alt={vehicle.name}
+                    alt={`Atmabala ${vehicle.name} rental cab Gokarna`}
+                    width={360}
+                    height={208}
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).src = '/images/innova-crysta.jpg';
                     }}
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
                   />
                   <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold bg-[#0B192C]/85 text-white backdrop-blur-xs shadow-xs">
                     {vehicle.category}
@@ -243,7 +250,7 @@ export default function FleetSection({ onBookVehicle }: FleetSectionProps) {
             whileTap={{ scale: 0.95 }}
             href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20need%20custom%20vehicle%20booking%20or%20luxury%20bus%20for%20Atmabala%20Travels"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="shrink-0 px-6 py-3 rounded-full bg-[#FF6500] text-white font-bold text-sm shadow-md hover:bg-[#E55A00] transition-all"
           >
             Ask for Custom Coach

@@ -89,7 +89,11 @@ export default function AboutSection() {
         >
           <img
             src="/images/logo-badge.jpg"
-            alt="Atmabala Travels Gokarna"
+            alt="Atmabala Travels Gokarna - Proprietor Harish G"
+            width={160}
+            height={160}
+            loading="lazy"
+            decoding="async"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
             }}

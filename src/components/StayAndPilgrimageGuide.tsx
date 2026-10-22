@@ -84,7 +84,11 @@ Please advise best options, contact details, and cab pickup availability.`;
                 <div className="relative h-44 overflow-hidden">
                   <img
                     src={stay.image}
-                    alt={stay.name}
+                    alt={`Atmabala recommended stay - ${stay.name}`}
+                    width={320}
+                    height={176}
+                    loading="lazy"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />

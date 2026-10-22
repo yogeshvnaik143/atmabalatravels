@@ -235,7 +235,7 @@ export default function PackageBookingModal({
             {/* Step 1: Package Selection & Route Preview */}
             <div className="bg-slate-50 dark:bg-[#0B1523] p-4 sm:p-5 rounded-2xl border border-slate-200/90 dark:border-slate-800 space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <label className="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider">
+                <label htmlFor="pkg-modal-package-select" className="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider">
                   1. Select Tour Package
                 </label>
                 <span className="text-xs font-semibold text-[#FF6500]">
@@ -244,6 +244,8 @@ export default function PackageBookingModal({
               </div>
 
               <select
+                id="pkg-modal-package-select"
+                name="packageSelect"
                 value={activePackageId}
                 onChange={(e) => setActivePackageId(e.target.value)}
                 className="w-full px-3.5 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl text-sm font-bold text-[#0B192C] dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500]"
@@ -267,10 +269,12 @@ export default function PackageBookingModal({
             {/* Step 2: Date, Time & Group Size */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="pkg-modal-date" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                   Travel Date <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="pkg-modal-date"
+                  name="travelDate"
                   type="date"
                   required
                   min={todayStr}
@@ -281,10 +285,12 @@ export default function PackageBookingModal({
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="pkg-modal-slot" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                   Pickup Slot <span className="text-rose-500">*</span>
                 </label>
                 <select
+                  id="pkg-modal-slot"
+                  name="pickupTime"
                   value={pickupTime}
                   onChange={(e) => setPickupTime(e.target.value)}
                   className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500]"
@@ -298,10 +304,12 @@ export default function PackageBookingModal({
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="pkg-modal-pax" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                   Passengers (Pax)
                 </label>
                 <input
+                  id="pkg-modal-pax"
+                  name="passengers"
                   type="number"
                   min={1}
                   max={20}
@@ -396,10 +404,12 @@ export default function PackageBookingModal({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="pkg-modal-customer-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Your Full Name <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="pkg-modal-customer-name"
+                    name="customerName"
                     type="text"
                     required
                     placeholder="e.g. Anand Kulkarni"
@@ -410,10 +420,12 @@ export default function PackageBookingModal({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="pkg-modal-phone" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     WhatsApp Number <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="pkg-modal-phone"
+                    name="customerPhone"
                     type="tel"
                     required
                     placeholder="e.g. 9876543210"
@@ -434,10 +446,12 @@ export default function PackageBookingModal({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="pkg-modal-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Email Address (Optional)
                   </label>
                   <input
+                    id="pkg-modal-email"
+                    name="customerEmail"
                     type="email"
                     placeholder="e.g. anand@gmail.com"
                     value={email}
@@ -447,10 +461,12 @@ export default function PackageBookingModal({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="pkg-modal-pickup" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Pickup Hotel / Shacks / Station <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="pkg-modal-pickup"
+                    name="pickupLocation"
                     type="text"
                     required
                     placeholder="e.g. Kudle Beach Shack, Namaste Cafe, Gokarna Road Station"
@@ -462,10 +478,12 @@ export default function PackageBookingModal({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="pkg-modal-special-requests" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Special Requests / Senior Citizen Notes
                 </label>
                 <input
+                  id="pkg-modal-special-requests"
+                  name="specialRequests"
                   type="text"
                   placeholder="e.g. Travelling with elderly parents, need ground floor / easy temple entry"
                   value={specialRequests}

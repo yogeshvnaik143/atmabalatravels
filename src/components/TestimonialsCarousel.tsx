@@ -214,7 +214,11 @@ export default function TestimonialsCarousel({ onOpenBooking }: TestimonialsCaro
                     <div className="mb-6 flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200/80 dark:border-slate-800">
                       <img
                         src={currentItem.photo}
-                        alt={currentItem.destinationTag}
+                        alt={`Atmabala guest journey - ${currentItem.destinationTag}`}
+                        width={64}
+                        height={48}
+                        loading="lazy"
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         className="w-16 h-12 rounded-xl object-cover"
                       />

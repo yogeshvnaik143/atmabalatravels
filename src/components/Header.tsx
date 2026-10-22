@@ -85,6 +85,9 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking, onOpenM
           <img
             src="/images/logo.png"
             alt="Atmabala Travels Logo"
+            width={160}
+            height={40}
+            decoding="async"
             onError={(e) => {
               // Fallback to badge image if logo has transparent issue
               (e.currentTarget as HTMLImageElement).src = '/images/logo-badge.jpg';
@@ -265,7 +268,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking, onOpenM
                 <a
                   href="/html/index.html"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium"
                 >
                   <FileCode className="w-3.5 h-3.5" />

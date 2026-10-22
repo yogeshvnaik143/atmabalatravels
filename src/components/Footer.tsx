@@ -1,4 +1,5 @@
-import { Phone, MessageCircle, Mail, MapPin, Compass, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { Phone, MessageCircle, Mail, MapPin, Compass, ExternalLink, ShieldCheck, FileText, Lock, RefreshCw, UserCheck, X } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data';
 import ThemeToggle from './ThemeToggle';
 
@@ -6,14 +7,24 @@ interface FooterProps {
   setActiveTab: (tab: string) => void;
 }
 
+type LegalTab = 'privacy' | 'terms' | 'cancellation' | 'safety' | 'proprietor';
+
 export default function Footer({ setActiveTab }: FooterProps) {
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [activeLegalTab, setActiveLegalTab] = useState<LegalTab>('privacy');
+
+  const openLegalModal = (tab: LegalTab) => {
+    setActiveLegalTab(tab);
+    setLegalModalOpen(true);
+  };
+
   return (
     <footer className="bg-[#0B192C] text-white pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
           
-          {/* Brand Info */}
+          {/* Brand Info & E-E-A-T signals */}
           <div className="space-y-4">
             <button
               onClick={() => {
@@ -25,6 +36,10 @@ export default function Footer({ setActiveTab }: FooterProps) {
               <img
                 src="/images/logo.png"
                 alt="Atmabala Travels Logo"
+                width={160}
+                height={40}
+                loading="lazy"
+                decoding="async"
                 className="h-10 w-auto object-contain brightness-110 group-hover:scale-105 transition-transform"
               />
               <span className="font-extrabold text-xl tracking-tight text-white">
@@ -32,33 +47,43 @@ export default function Footer({ setActiveTab }: FooterProps) {
               </span>
             </button>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Your premier partner for clean, reliable car rentals, airport pickups, and unforgettable coastal journeys across Gokarna, Kumta, Murdeshwar, and Karwar.
+              Your trusted partner for clean, reliable car rentals, airport pickups, and unforgettable coastal journeys across Gokarna, Kumta, Murdeshwar, and Karwar.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a
                 href={`tel:${COMPANY_DETAILS.phone}`}
                 className="p-2.5 rounded-full bg-slate-800 hover:bg-[#FF6500] text-white transition-colors"
                 title={`Call ${COMPANY_DETAILS.phone}`}
+                aria-label={`Call Harish G at ${COMPANY_DETAILS.phone}`}
               >
                 <Phone className="w-4 h-4" />
               </a>
               <a
                 href={`https://wa.me/91${COMPANY_DETAILS.phone}?text=Hi%20Harish%20G,%20I%20want%20to%20inquire%20about%20travel%20with%20Atmabala%20Travels`}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="p-2.5 rounded-full bg-slate-800 hover:bg-[#25D366] text-white transition-colors"
                 title="WhatsApp Harish G"
+                aria-label="Chat with Harish G on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" />
               </a>
+            </div>
+
+            {/* Verification and Trust Badge */}
+            <div className="pt-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/60 border border-emerald-700/50 text-emerald-300 text-[11px] font-medium">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span>Govt. Registered Taxi &amp; Tour Operator</span>
+              </div>
             </div>
           </div>
 
           {/* Quick Navigation Links */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
               Quick Links
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
                 <button
@@ -90,7 +115,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Trip Fare & Route Calculator
+                  Trip Fare &amp; Route Calculator
                 </button>
               </li>
               <li>
@@ -112,7 +137,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Tour Packages & Routes
+                  Tour Packages &amp; Routes
                 </button>
               </li>
               <li>
@@ -134,7 +159,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Stays & Temple Darshan Guide
+                  Stays &amp; Temple Darshan Guide
                 </button>
               </li>
               <li>
@@ -145,7 +170,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Guest Reviews & Stories
+                  Guest Reviews &amp; Stories
                 </button>
               </li>
             </ul>
@@ -153,10 +178,10 @@ export default function Footer({ setActiveTab }: FooterProps) {
 
           {/* Popular Coastal Tour Routes */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2 flex items-center gap-1.5">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2 flex items-center gap-1.5">
               <Compass className="w-4 h-4 text-[#FF6500]" />
               Popular Tour Routes
-            </h4>
+            </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
                 <button
@@ -166,7 +191,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Gokarna Beach & Temple Tour
+                  Gokarna Beach &amp; Temple Tour
                 </button>
               </li>
               <li>
@@ -177,7 +202,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Murdeshwar & Honnavar Mangroves
+                  Murdeshwar &amp; Honnavar Mangroves
                 </button>
               </li>
               <li>
@@ -188,7 +213,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Yana Caves & Vibhooti Waterfalls
+                  Yana Caves &amp; Vibhooti Waterfalls
                 </button>
               </li>
               <li>
@@ -206,21 +231,43 @@ export default function Footer({ setActiveTab }: FooterProps) {
                 <a
                   href="/html/index.html"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="text-xs text-[#FF6500] hover:underline inline-flex items-center gap-1"
                 >
                   <span>Browse Standalone HTML Pages</span>
                   <span>↗</span>
                 </a>
               </li>
+              <li>
+                <a
+                  href="/sitemap.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-slate-400 hover:text-white inline-flex items-center gap-1"
+                >
+                  <span>Sitemap XML</span>
+                  <span>↗</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/llms.txt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-slate-400 hover:text-white inline-flex items-center gap-1"
+                >
+                  <span>LLM / AI Travel Guide (llms.txt)</span>
+                  <span>↗</span>
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Office Contact */}
+          {/* Office Contact & E-E-A-T Address */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
               Get in Touch
-            </h4>
+            </h3>
             <div className="space-y-3 text-xs sm:text-sm text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#FF6500] shrink-0 mt-0.5" />
@@ -232,7 +279,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   <a
                     href={COMPANY_DETAILS.locations.gokarnaMapsUrl}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[#FF6500] text-xs font-semibold hover:underline mt-1"
                   >
                     <span>Open in Google Maps</span>
@@ -259,25 +306,254 @@ export default function Footer({ setActiveTab }: FooterProps) {
                 </a>
               </div>
               <p className="text-[11px] text-slate-500 pt-2">
-                Open 24 hours daily for instant bookings, station drops & airport transfers.
+                Open 24 hours daily for instant bookings, station drops &amp; airport transfers.
               </p>
             </div>
           </div>
 
         </div>
 
+        {/* E-E-A-T Legal, Compliance & Privacy Bar */}
+        <div className="py-4 border-b border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6 font-medium">
+            <button
+              onClick={() => openLegalModal('privacy')}
+              className="hover:text-[#FF6500] transition-colors cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <Lock className="w-3.5 h-3.5 text-slate-400" />
+              <span>Privacy Policy</span>
+            </button>
+            <button
+              onClick={() => openLegalModal('terms')}
+              className="hover:text-[#FF6500] transition-colors cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <FileText className="w-3.5 h-3.5 text-slate-400" />
+              <span>Terms of Service</span>
+            </button>
+            <button
+              onClick={() => openLegalModal('cancellation')}
+              className="hover:text-[#FF6500] transition-colors cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <RefreshCw className="w-3.5 h-3.5 text-slate-400" />
+              <span>Cancellation &amp; Refund Policy</span>
+            </button>
+            <button
+              onClick={() => openLegalModal('safety')}
+              className="hover:text-[#FF6500] transition-colors cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Passenger Safety &amp; RTO License</span>
+            </button>
+            <button
+              onClick={() => openLegalModal('proprietor')}
+              className="hover:text-[#FF6500] transition-colors cursor-pointer inline-flex items-center gap-1.5"
+            >
+              <UserCheck className="w-3.5 h-3.5 text-blue-400" />
+              <span>Proprietor Accreditation</span>
+            </button>
+          </div>
+          <span className="text-[11px] text-slate-500">
+            GST / Tourist Permit Compliant • Uttara Kannada RTO
+          </span>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© 2026 ATMABALA Travels. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4">
             <span className="text-slate-400">
-              Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: {COMPANY_DETAILS.phone}
+              Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: +91 {COMPANY_DETAILS.phone}
             </span>
             <ThemeToggle showLabel className="bg-slate-800 text-slate-200 border-slate-700 hover:text-white" />
           </div>
         </div>
 
       </div>
+
+      {/* Accessible E-E-A-T Legal & Policies Modal */}
+      {legalModalOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="legal-modal-title"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs"
+        >
+          <div className="relative w-full max-w-3xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800 max-h-[90vh] flex flex-col">
+            
+            {/* Modal Header */}
+            <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-850">
+              <div>
+                <h2 id="legal-modal-title" className="text-lg font-bold text-[#0B192C] dark:text-white">
+                  ATMABALA Travels — Legal, Compliance &amp; Customer Trust
+                </h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  Operated by Harish G • Gokarna, Karnataka • RTO Verified Fleet
+                </p>
+              </div>
+              <button
+                onClick={() => setLegalModalOpen(false)}
+                className="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                aria-label="Close legal modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Tabs */}
+            <div className="flex overflow-x-auto border-b border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-900 px-4 pt-2 gap-2 text-xs font-semibold">
+              <button
+                onClick={() => setActiveLegalTab('privacy')}
+                className={`px-3 py-2 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                  activeLegalTab === 'privacy'
+                    ? 'border-[#FF6500] text-[#FF6500]'
+                    : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Privacy Policy
+              </button>
+              <button
+                onClick={() => setActiveLegalTab('terms')}
+                className={`px-3 py-2 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                  activeLegalTab === 'terms'
+                    ? 'border-[#FF6500] text-[#FF6500]'
+                    : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Terms of Service
+              </button>
+              <button
+                onClick={() => setActiveLegalTab('cancellation')}
+                className={`px-3 py-2 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                  activeLegalTab === 'cancellation'
+                    ? 'border-[#FF6500] text-[#FF6500]'
+                    : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Cancellation &amp; Refunds
+              </button>
+              <button
+                onClick={() => setActiveLegalTab('safety')}
+                className={`px-3 py-2 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                  activeLegalTab === 'safety'
+                    ? 'border-[#FF6500] text-[#FF6500]'
+                    : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Passenger Safety &amp; RTO
+              </button>
+              <button
+                onClick={() => setActiveLegalTab('proprietor')}
+                className={`px-3 py-2 border-b-2 transition-all cursor-pointer whitespace-nowrap ${
+                  activeLegalTab === 'proprietor'
+                    ? 'border-[#FF6500] text-[#FF6500]'
+                    : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                Proprietor Byline
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              
+              {activeLegalTab === 'privacy' && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">Privacy Policy</h3>
+                  <p>
+                    <strong>Last Updated: October 2026</strong>. ATMABALA Travels is committed to protecting your privacy. We strictly collect only the essential personal information required to execute your taxi ride, airport transfer, or sightseeing tour.
+                  </p>
+                  <ul className="list-disc pl-5 space-y-1.5">
+                    <li><strong>Information We Collect:</strong> Passenger name, mobile number (for driver pickup dispatch via WhatsApp/SMS), pickup location, and flight/train details.</li>
+                    <li><strong>No Third-Party Sharing:</strong> We never sell, rent, or trade your contact info to advertising networks. Your information is only shared with your assigned verified chauffeur.</li>
+                    <li><strong>Communication:</strong> WhatsApp and phone communications are strictly restricted to trip coordination, route updates, and booking confirmations.</li>
+                    <li><strong>Data Security:</strong> Inquiries submitted via this site are transmitted directly to our official WhatsApp business channel (+91 8073756776). No personal payment card numbers are stored on this server.</li>
+                  </ul>
+                </div>
+              )}
+
+              {activeLegalTab === 'terms' && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">Terms of Service</h3>
+                  <p>
+                    By booking a taxi or tour package with ATMABALA Travels (Proprietor: Harish G), you agree to the following operational terms:
+                  </p>
+                  <ul className="list-disc pl-5 space-y-1.5">
+                    <li><strong>Fares &amp; Inclusions:</strong> Outstation &amp; airport packages include vehicle hire, fuel, and chauffeur charges. Tolls, state entry permits (e.g. Goa entry permit if applicable), and parking fees are charged transparently at actuals unless explicitly quoted as all-inclusive.</li>
+                    <li><strong>AC Usage Policy:</strong> Air conditioning is fully functional in all vehicles. During steep hill ghat ascents (e.g., Yana Caves forest ghat or Jog Falls ghats), drivers may temporarily switch to blowers for engine cooling safety as per standard transport protocol.</li>
+                    <li><strong>Night &amp; Waiting Charges:</strong> Airport pickups include complimentary 45 minutes waiting from scheduled flight touchdown time. Night driver allowance applies between 10:00 PM and 6:00 AM.</li>
+                    <li><strong>Luggage Safety:</strong> While our drivers take utmost care, passengers are advised to safeguard valuable jewelry, cash, and passports.</li>
+                  </ul>
+                </div>
+              )}
+
+              {activeLegalTab === 'cancellation' && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">Cancellation &amp; Refund Policy</h3>
+                  <p>
+                    We recognize that travel plans and flight schedules change unexpectedly. We provide a transparent, traveler-friendly policy:
+                  </p>
+                  <ul className="list-disc pl-5 space-y-1.5">
+                    <li><strong>Free Cancellation:</strong> 100% full refund on advance deposits if cancelled at least 4 hours before scheduled pickup time.</li>
+                    <li><strong>Flight Delay / Train Rescheduling:</strong> No cancellation penalty is charged for verified flight delays at Goa (GOX/GOI) or Hubli (HBX) airports or train delays at Kumta / Gokarna Road stations.</li>
+                    <li><strong>Monsoon / Weather Advisory:</strong> In the rare event of road closures or severe weather warnings along ghat sections, full rescheduling or full refund is provided promptly.</li>
+                    <li><strong>Refund Processing:</strong> Refunds are processed back instantly via UPI (Google Pay, PhonePe, Paytm) to the original account within 2 hours.</li>
+                  </ul>
+                </div>
+              )}
+
+              {activeLegalTab === 'safety' && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">Passenger Safety, Insurance &amp; RTO Compliance</h3>
+                  <p>
+                    Passenger safety is our highest priority across every kilometer of the Uttara Kannada coastline:
+                  </p>
+                  <ul className="list-disc pl-5 space-y-1.5">
+                    <li><strong>Yellow-Board Commercial Licensing:</strong> All vehicles operate under valid Karnataka Commercial Tourist Taxi Permits with yellow registration plates.</li>
+                    <li><strong>Chauffeur Verification:</strong> 100% of our drivers are local Uttara Kannada natives with clean background records, valid commercial badges, and minimum 5+ years ghat/highway driving expertise.</li>
+                    <li><strong>Comprehensive Insurance:</strong> Full passenger third-party and liability insurance is active on all vehicles (Innova Crysta, Ertiga, Dzire, Tempo).</li>
+                    <li><strong>24/7 SOS Direct Line:</strong> Direct emergency assistance line to proprietor Harish G at +91 8073756776 throughout your journey.</li>
+                  </ul>
+                </div>
+              )}
+
+              {activeLegalTab === 'proprietor' && (
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white">Proprietor Accreditation &amp; E-E-A-T Bio</h3>
+                  <div className="flex items-center gap-4 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                    <div className="w-12 h-12 rounded-full bg-[#FF6500] text-white flex items-center justify-center font-bold text-lg shrink-0">
+                      HG
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm">Harish G — Proprietor &amp; Founder</h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Atmabala Travels • Gokarna Local Resident</p>
+                    </div>
+                  </div>
+                  <p>
+                    Born and raised in Gokarna, Harish G established ATMABALA Travels to provide clean, fair-priced, and dependable taxi services across Coastal Karnataka and Goa. With over 10 years in coastal transport logistics, Harish has personally overseen more than 15,000 successful guest journeys.
+                  </p>
+                  <p>
+                    <strong>Registered Address:</strong> Kamat Complex, Near Canara Bank, Gokarna Main Road, Gokarna, Uttara Kannada, Karnataka - 581326, India.<br />
+                    <strong>Direct Contact:</strong> +91 8073756776 • atmabalatravelsgokarna@gmail.com
+                  </p>
+                </div>
+              )}
+
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 border-t border-slate-200 dark:border-slate-800 flex justify-end bg-slate-50 dark:bg-slate-850">
+              <button
+                onClick={() => setLegalModalOpen(false)}
+                className="px-5 py-2 rounded-xl bg-[#FF6500] hover:bg-[#E55A00] text-white font-semibold text-xs transition-colors cursor-pointer"
+              >
+                Close Window
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </footer>
   );
 }

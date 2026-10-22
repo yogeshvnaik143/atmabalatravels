@@ -150,12 +150,14 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
             </div>
 
             {/* Form Body */}
-            <form onSubmit={handleSendBooking} className="p-5 sm:p-6 space-y-3.5 sm:space-y-4 overflow-y-auto">
+            <form onSubmit={handleSendBooking} className="p-5 sm:p-6 space-y-3.5 sm:space-y-4 overflow-y-auto" aria-label="Vehicle Booking Form">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="modal-book-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Your Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="modal-book-name"
+                  name="bookingName"
                   type="text"
                   required
                   placeholder="e.g. Ramesh Hegde"
@@ -167,10 +169,12 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="modal-book-phone" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     WhatsApp / Mobile <span className="text-rose-500">*</span>
                   </label>
                   <input
+                    id="modal-book-phone"
+                    name="bookingPhone"
                     type="tel"
                     required
                     placeholder="e.g. 9876543210"
@@ -191,11 +195,13 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label htmlFor="modal-book-date" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Travel Date <span className="text-rose-500">*</span>
                   </label>
                   <div className="relative">
                     <input
+                      id="modal-book-date"
+                      name="bookingDate"
                       type="date"
                       required
                       min={todayStr}
@@ -209,8 +215,12 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Choose Vehicle</label>
+                  <label htmlFor="modal-book-vehicle" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Choose Vehicle
+                  </label>
                   <select
+                    id="modal-book-vehicle"
+                    name="bookingVehicle"
                     value={selectedVehicleId}
                     onChange={(e) => setSelectedVehicleId(e.target.value)}
                     className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white dark:focus:bg-[#070D18] transition-all"
@@ -224,8 +234,12 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Passengers</label>
+                  <label htmlFor="modal-book-passengers" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Passengers
+                  </label>
                   <input
+                    id="modal-book-passengers"
+                    name="bookingPassengers"
                     type="number"
                     min={1}
                     max={20}
@@ -237,10 +251,12 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="modal-book-pickup" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Pickup Location <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="modal-book-pickup"
+                  name="bookingPickup"
                   type="text"
                   required
                   placeholder="e.g. Gokarna Road Station, Kudle Beach, Kumta"
@@ -251,10 +267,12 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                <label htmlFor="modal-book-destination" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Drop / Sightseeing Plan <span className="text-rose-500">*</span>
                 </label>
                 <input
+                  id="modal-book-destination"
+                  name="bookingDestination"
                   type="text"
                   required
                   placeholder="e.g. Yana Caves, Vibhuti Falls, Murdeshwar"

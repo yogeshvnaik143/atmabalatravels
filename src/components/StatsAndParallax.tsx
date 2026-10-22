@@ -111,7 +111,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
             <a
               href="/html/index.html"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
             >
               index.html ↗
@@ -119,7 +119,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
             <a
               href="/html/packages.html"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
             >
               packages.html ↗
@@ -127,7 +127,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
             <a
               href="/html/fleet.html"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
             >
               fleet.html ↗
@@ -135,7 +135,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
             <a
               href="/html/about.html"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
             >
               about.html ↗
@@ -143,7 +143,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
             <a
               href="/html/contact.html"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
             >
               contact.html ↗
@@ -151,7 +151,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
             <a
               href="/css/style.css"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
             >
               style.css ↗
@@ -159,7 +159,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
             <a
               href="/js/script.js"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
             >
               script.js ↗

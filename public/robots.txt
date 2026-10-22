@@ -1,0 +1,5 @@
+# Robots.txt for Atmabala Travels
+User-agent: *
+Allow: /
+
+Sitemap: https://atmabalatravels.netlify.app/sitemap.xml

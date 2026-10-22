@@ -105,7 +105,7 @@ export default function GokarnaPosterSection() {
             <a
               href="/html/packages.html"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#FFF7A1] text-xs font-bold hover:bg-[#D4AF37]/30 transition-all text-center"
             >
               <ExternalLink className="w-3.5 h-3.5" />
@@ -199,12 +199,15 @@ export default function GokarnaPosterSection() {
                     <div className="relative w-full h-44 rounded-lg overflow-hidden border-[3px] border-[#D4AF37] shadow-lg group-hover:border-[#FFF7A1] transition-all bg-slate-900">
                       <img
                         src={place.image}
-                        alt={place.title}
+                        alt={`Atmabala tour place - ${place.title}`}
+                        width={288}
+                        height={176}
+                        loading="lazy"
+                        decoding="async"
                         onError={(e) => {
                           (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
                         }}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/25 group-hover:bg-transparent transition-colors" />
                       <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 text-[10px] font-bold text-[#FFF7A1] backdrop-blur-xs border border-[#D4AF37]/30">
@@ -252,7 +255,10 @@ export default function GokarnaPosterSection() {
           <div className="relative w-full sm:w-72">
             <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
+              id="poster-search-input"
+              name="posterSearch"
               type="text"
+              aria-label="Search temple, beach, falls"
               placeholder="Search temple, beach, falls..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -299,12 +305,15 @@ export default function GokarnaPosterSection() {
                     <div className="relative w-full h-56 rounded-lg overflow-hidden border-[5px] border-[#D4AF37] shadow-xl group-hover:border-[#FFF7A1] transition-all bg-slate-900">
                       <img
                         src={place.image}
-                        alt={place.title}
+                        alt={`Atmabala tour place - ${place.title}`}
+                        width={360}
+                        height={224}
+                        loading="lazy"
+                        decoding="async"
                         onError={(e) => {
                           (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
                         }}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                       <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-bold text-[#FFF7A1] backdrop-blur-xs">
@@ -374,7 +383,11 @@ export default function GokarnaPosterSection() {
                 <div className="relative h-60 w-full bg-slate-900">
                   <img
                     src={selectedPlace.image}
-                    alt={selectedPlace.title}
+                    alt={`Atmabala tour place - ${selectedPlace.title}`}
+                    width={512}
+                    height={240}
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
                     }}
@@ -418,7 +431,7 @@ export default function GokarnaPosterSection() {
                       whileTap={{ scale: 0.98 }}
                       href={`https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20want%20to%20book%20a%20cab%20to%20visit%20${encodeURIComponent(selectedPlace.title)}`}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="flex-1 py-3 rounded-xl bg-[#25D366] text-slate-950 font-bold text-sm hover:bg-[#1EBE5D] transition-all flex items-center justify-center gap-2 shadow-md"
                     >
                       <MessageCircle className="w-4 h-4" />

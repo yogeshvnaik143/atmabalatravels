@@ -72,6 +72,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F4F7F6] dark:bg-[#070D18] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-[#FF6500] selection:text-white transition-colors duration-300">
+      {/* Skip to Main Content Link for Accessibility (WCAG 2.1) */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-[#FF6500] focus:text-white focus:rounded-xl focus:shadow-2xl focus:font-bold focus:outline-hidden"
+      >
+        Skip to main content
+      </a>
+
       {/* Fixed Navigation Header */}
       <Header
         activeTab={activeTab}
@@ -81,7 +89,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {activeTab === 'home' && (
           <div>
             <Hero
@@ -207,6 +215,7 @@ export default function App() {
           onClick={() => setIsMyBookingsOpen(true)}
           className="w-14 h-14 rounded-full bg-[#0B192C] text-white flex items-center justify-center shadow-2xl hover:bg-[#152a45] transition-colors cursor-pointer border border-slate-700"
           title="My Bookings & Passes"
+          aria-label="View My Bookings and Passes"
         >
           <Ticket className="w-6 h-6 text-[#FF6500]" />
         </motion.button>
@@ -216,9 +225,10 @@ export default function App() {
           whileTap={{ scale: 0.9 }}
           href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20want%20to%20inquire%20about%20a%20cab%20with%20Atmabala%20Travels"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl hover:bg-[#1EBE5D] transition-colors"
           title="Chat on WhatsApp"
+          aria-label="Chat with Harish G on WhatsApp"
         >
           <MessageCircle className="w-7 h-7" />
         </motion.a>
@@ -229,6 +239,7 @@ export default function App() {
           href="tel:8073756776"
           className="w-14 h-14 rounded-full bg-[#FF6500] text-white flex items-center justify-center shadow-2xl hover:bg-[#E55A00] transition-colors"
           title="Call Harish.G (8073756776)"
+          aria-label="Call Harish G at 8073756776"
         >
           <Phone className="w-6 h-6" />
         </motion.a>

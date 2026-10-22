@@ -98,7 +98,7 @@ export default function ContactSection() {
                 <a
                   href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20want%20to%20inquire%20about%20car%20rental%20and%20travel%20packages"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="text-sm font-bold text-[#25D366] hover:underline block mt-1"
                 >
                   Start WhatsApp Chat (+91 8073756776) →
@@ -138,7 +138,7 @@ export default function ContactSection() {
                   <a
                     href={COMPANY_DETAILS.locations.gokarnaMapsUrl}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#0B192C] dark:bg-slate-800 text-white text-xs font-bold hover:bg-[#FF6500] dark:hover:bg-[#FF6500] transition-colors shadow-sm"
                   >
                     <Navigation className="w-3.5 h-3.5 text-[#FF6500]" />
@@ -149,8 +149,8 @@ export default function ContactSection() {
                   <a
                     href={`https://www.google.com/maps/dir/?api=1&destination=Welcome+Digital+Point,+Kamat+complex,+near+Canara+Bank,+Ganjigadde,+Gokarna,+Karnataka+581326`}
                     target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold transition-colors"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold transition-colors"
                   >
                     <Compass className="w-3.5 h-3.5 text-slate-500" />
                     <span>Get Directions</span>
@@ -173,7 +173,7 @@ export default function ContactSection() {
                   <a
                     href={COMPANY_DETAILS.locations.gokarnaMapsUrl}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="absolute top-2 right-2 bg-white/95 dark:bg-[#0B1523]/95 backdrop-blur-xs text-[#0B192C] dark:text-white text-[10px] font-bold px-2 py-1 rounded shadow-md border border-slate-200 dark:border-slate-700 hover:text-[#FF6500] flex items-center gap-1"
                   >
                     <span>View Larger Map</span>
@@ -240,11 +240,15 @@ export default function ContactSection() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" aria-label="Direct Taxi and Tour Booking Form">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Full Name</label>
+                    <label htmlFor="contact-full-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      Your Full Name
+                    </label>
                     <input
+                      id="contact-full-name"
+                      name="contactFullName"
                       type="text"
                       required
                       placeholder="e.g. Ramesh Hegde"
@@ -255,8 +259,12 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Mobile / WhatsApp Number</label>
+                    <label htmlFor="contact-phone-number" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      Mobile / WhatsApp Number
+                    </label>
                     <input
+                      id="contact-phone-number"
+                      name="contactPhone"
                       type="tel"
                       required
                       placeholder="e.g. 9876543210"
@@ -274,8 +282,12 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Pickup Location</label>
+                    <label htmlFor="contact-pickup-loc" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      Pickup Location
+                    </label>
                     <input
+                      id="contact-pickup-loc"
+                      name="contactPickup"
                       type="text"
                       required
                       placeholder="e.g. Gokarna Main Town or Railway Station"
@@ -286,8 +298,12 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Drop / Tour Plan</label>
+                    <label htmlFor="contact-drop-plan" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      Drop / Tour Plan
+                    </label>
                     <input
+                      id="contact-drop-plan"
+                      name="contactDrop"
                       type="text"
                       required
                       placeholder="e.g. Om Beach + Yana Caves + Vibhuti"
@@ -300,8 +316,12 @@ export default function ContactSection() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Preferred Vehicle</label>
+                    <label htmlFor="contact-vehicle-select" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      Preferred Vehicle
+                    </label>
                     <select
+                      id="contact-vehicle-select"
+                      name="contactVehicle"
                       value={formData.vehicle}
                       onChange={(e) => setFormData({ ...formData, vehicle: e.target.value })}
                       className="w-full px-4 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500]"
@@ -315,8 +335,12 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Travel Date</label>
+                    <label htmlFor="contact-travel-date" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      Travel Date
+                    </label>
                     <input
+                      id="contact-travel-date"
+                      name="contactDate"
                       type="date"
                       required
                       min={todayStr}
@@ -328,8 +352,12 @@ export default function ContactSection() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Special Requests or Timings (Optional)</label>
+                  <label htmlFor="contact-special-notes" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Special Requests or Timings (Optional)
+                  </label>
                   <textarea
+                    id="contact-special-notes"
+                    name="contactNotes"
                     rows={3}
                     placeholder="e.g. Flight arrival at 11 AM, need carrier for 4 large suitcases, etc."
                     value={formData.notes}

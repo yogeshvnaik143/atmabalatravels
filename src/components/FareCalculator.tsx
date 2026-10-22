@@ -225,12 +225,14 @@ Please confirm availability and lock my booking.`;
             {/* Location Selector with Swap */}
             <div className="space-y-4 mb-6">
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                <label htmlFor="fare-pickup-select" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                   Pickup Location
                 </label>
                 <div className="relative">
                   <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#25D366]" />
                   <select
+                    id="fare-pickup-select"
+                    name="farePickup"
                     value={pickupId}
                     onChange={(e) => setPickupId(e.target.value)}
                     className="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:border-transparent transition-all"
@@ -250,6 +252,7 @@ Please confirm availability and lock my booking.`;
                   type="button"
                   onClick={handleSwap}
                   title="Swap Pickup and Drop"
+                  aria-label="Swap pickup and drop-off locations"
                   className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-[#FF6500] hover:text-white hover:border-[#FF6500] text-slate-600 dark:text-slate-300 flex items-center justify-center transition-all shadow-xs cursor-pointer"
                 >
                   ⇅
@@ -257,12 +260,14 @@ Please confirm availability and lock my booking.`;
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                <label htmlFor="fare-drop-select" className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                   Drop-off / Sightseeing Destination
                 </label>
                 <div className="relative">
                   <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FF6500]" />
                   <select
+                    id="fare-drop-select"
+                    name="fareDrop"
                     value={dropId}
                     onChange={(e) => setDropId(e.target.value)}
                     className="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:border-transparent transition-all"
@@ -298,7 +303,11 @@ Please confirm availability and lock my booking.`;
                     >
                       <img
                         src={v.image}
-                        alt={v.name}
+                        alt={`Atmabala ${v.name} taxi`}
+                        width={120}
+                        height={64}
+                        loading="lazy"
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         className="w-full h-16 object-cover rounded-lg mb-2"
                       />
@@ -342,7 +351,11 @@ Please confirm availability and lock my booking.`;
               <div className="bg-slate-800/60 rounded-2xl p-4 border border-slate-700/60 mb-6 flex items-center gap-4">
                 <img
                   src={selectedVehicle.image}
-                  alt={selectedVehicle.name}
+                  alt={`Atmabala ${selectedVehicle.name} taxi`}
+                  width={80}
+                  height={56}
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                   className="w-20 h-14 object-cover rounded-xl"
                 />

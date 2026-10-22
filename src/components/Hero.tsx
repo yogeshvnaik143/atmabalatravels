@@ -58,7 +58,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             <motion.a
               href="https://maps.app.goo.gl/gGgVsEcqELeYQrYG7"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.4 }}
@@ -214,7 +214,11 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             >
               <img
                 src="/images/innova-crysta.jpg"
-                alt="Atmabala Travels Luxury Fleet"
+                alt="Atmabala Travels Luxury Fleet - Toyota Innova Crysta Gokarna"
+                width={640}
+                height={320}
+                fetchPriority="high"
+                decoding="async"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).src = '/images/swift-dzire.jpg';
                 }}
@@ -225,7 +229,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                   <Sparkles className="w-3.5 h-3.5 text-[#FF6500]" />
                   Premium Showroom Fleet
                 </span>
-                <h3 className="text-white text-2xl font-bold">Innova Crysta, Ertiga & Tempo Travellers</h3>
+                <h2 className="text-white text-2xl font-bold">Innova Crysta, Ertiga &amp; Tempo Travellers</h2>
                 <p className="text-slate-300 text-xs mt-1">Immaculate condition • Chilled AC • Ample luggage room</p>
               </div>
             </motion.div>
@@ -233,19 +237,23 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             {/* Quick Fare Inquiry Form */}
             <div className="w-full mt-6 bg-white dark:bg-[#0B1523] rounded-3xl shadow-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 transition-colors duration-300">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-base font-bold text-[#0B192C] dark:text-white flex items-center gap-2">
+                <h2 className="text-base font-bold text-[#0B192C] dark:text-white flex items-center gap-2">
                   <Car className="w-4 h-4 text-[#FF6500]" />
                   Instant Trip Inquiry
-                </h3>
+                </h2>
                 <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                   Fast WhatsApp Reply
                 </span>
               </div>
 
-              <form onSubmit={handleQuickInquiry} className="space-y-3.5">
+              <form onSubmit={handleQuickInquiry} className="space-y-3.5" aria-label="Quick Fare Inquiry Form">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Pickup City / Station</label>
+                  <label htmlFor="hero-pickup-select" className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">
+                    Pickup City / Station
+                  </label>
                   <select
+                    id="hero-pickup-select"
+                    name="heroPickup"
                     value={pickup}
                     onChange={(e) => setPickup(e.target.value)}
                     className="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
@@ -262,8 +270,12 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Select Vehicle</label>
+                    <label htmlFor="hero-vehicle-select" className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">
+                      Select Vehicle
+                    </label>
                     <select
+                      id="hero-vehicle-select"
+                      name="heroVehicle"
                       value={vehicle}
                       onChange={(e) => {
                         setVehicle(e.target.value);
@@ -280,8 +292,12 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Tour Package</label>
+                    <label htmlFor="hero-trip-select" className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">
+                      Tour Package
+                    </label>
                     <select
+                      id="hero-trip-select"
+                      name="heroTripType"
                       value={tripType}
                       onChange={(e) => setTripType(e.target.value)}
                       className="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
@@ -296,8 +312,12 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Date</label>
+                    <label htmlFor="hero-date-input" className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">
+                      Travel Date
+                    </label>
                     <input
+                      id="hero-date-input"
+                      name="heroDate"
                       type="date"
                       min={todayStr}
                       value={date}
