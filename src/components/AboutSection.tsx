@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-white dark:bg-[#070D18] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -17,10 +17,10 @@ export default function AboutSection() {
           <span className="text-[#FF6500] font-bold text-sm tracking-wider uppercase">
             About Atmabala Travels
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B192C] mt-2 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B192C] dark:text-white mt-2 tracking-tight">
             Your Trusted Coastal Travel Partner
           </h2>
-          <p className="text-slate-600 mt-4 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-300 mt-4 text-base sm:text-lg">
             Serving pilgrims, tourists, couples, and group adventurers throughout Gokarna, Kumta, Karwar, and coastal Karnataka for over a decade.
           </p>
         </motion.div>
@@ -33,13 +33,13 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
             whileHover={{ y: -6 }}
-            className="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200 transition-shadow hover:shadow-lg"
+            className="p-8 rounded-2xl bg-[#F4F7F6] dark:bg-[#0F1B2B] border border-slate-200 dark:border-slate-800 transition-all hover:shadow-lg"
           >
-            <div className="w-12 h-12 rounded-xl bg-[#0B192C] flex items-center justify-center text-[#FF6500] mb-6">
+            <div className="w-12 h-12 rounded-xl bg-[#0B192C] dark:bg-slate-800 flex items-center justify-center text-[#FF6500] mb-6">
               <Shield className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-[#0B192C] mb-3">Immaculate Cleanliness & Safety</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <h3 className="text-xl font-bold text-[#0B192C] dark:text-white mb-3">Immaculate Cleanliness & Safety</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Every vehicle undergoes regular mechanical maintenance and interior sanitization before departure. We prioritize your family's safety with seat belts and speed controls.
             </p>
           </motion.div>
@@ -50,13 +50,13 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
             whileHover={{ y: -6 }}
-            className="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200 transition-shadow hover:shadow-lg"
+            className="p-8 rounded-2xl bg-[#F4F7F6] dark:bg-[#0F1B2B] border border-slate-200 dark:border-slate-800 transition-all hover:shadow-lg"
           >
             <div className="w-12 h-12 rounded-xl bg-[#FF6500] flex items-center justify-center text-white mb-6">
               <MapPin className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-[#0B192C] mb-3">Local Coastal Expertise</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <h3 className="text-xl font-bold text-[#0B192C] dark:text-white mb-3">Local Coastal Expertise</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Our chauffeurs are native coastal residents who know the best sunset spots, temple darshan timings, hidden beach trails, and scenic ghat drives across Uttara Kannada.
             </p>
           </motion.div>
@@ -67,13 +67,13 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.3 }}
             whileHover={{ y: -6 }}
-            className="p-8 rounded-2xl bg-[#F4F7F6] border border-slate-200 transition-shadow hover:shadow-lg"
+            className="p-8 rounded-2xl bg-[#F4F7F6] dark:bg-[#0F1B2B] border border-slate-200 dark:border-slate-800 transition-all hover:shadow-lg"
           >
-            <div className="w-12 h-12 rounded-xl bg-[#0B192C] flex items-center justify-center text-[#FF6500] mb-6">
+            <div className="w-12 h-12 rounded-xl bg-[#0B192C] dark:bg-slate-800 flex items-center justify-center text-[#FF6500] mb-6">
               <Clock className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-[#0B192C] mb-3">Punctual 24/7 Pickups</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <h3 className="text-xl font-bold text-[#0B192C] dark:text-white mb-3">Punctual 24/7 Pickups</h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Whether you arrive on a late-night train at Gokarna Road or need an early morning 4 AM airport drop to Goa Dabolim/MOPA, our driver is guaranteed on time.
             </p>
           </motion.div>

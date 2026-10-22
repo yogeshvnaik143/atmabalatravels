@@ -17,15 +17,53 @@ export interface TravelPackage {
   id: string;
   title: string;
   category?: 'beach' | 'pilgrimage' | 'nature' | 'outstation' | 'combo' | 'heritage';
+  travelType?: 'adventure' | 'relaxation' | 'family' | 'pilgrimage' | 'heritage';
   duration: string;
+  durationHours?: number;
+  durationCategory?: 'half-day' | 'full-day' | 'extended-day' | 'multi-day';
+  destinations?: string[];
   highlights: string[];
   route: string;
   popularFor: string;
   recommendedVehicle: string;
   startingPrice: string;
+  numericPrice?: number;
+  pricingByVehicle?: {
+    sedan4: number;
+    ertiga6: number;
+    innova7: number;
+    urbania9: number;
+    tempo12: number;
+  };
   badge?: string;
   image?: string;
+  rating?: number;
+  reviewsCount?: number;
+  inclusionsList?: string[];
   itineraryDays?: { day: string; title: string; activities: string[] }[];
+}
+
+export interface ConfirmedBooking {
+  bookingId: string;
+  createdAt: string;
+  status: 'confirmed' | 'completed' | 'cancelled';
+  customerName: string;
+  phone: string;
+  email?: string;
+  travelDate: string;
+  pickupTime: string;
+  pickupLocation: string;
+  passengers: number;
+  packageId?: string;
+  packageTitle: string;
+  packageRoute: string;
+  packageDuration: string;
+  selectedVehicleId: string;
+  selectedVehicleName: string;
+  totalFare: number;
+  inclusions: string[];
+  specialRequests?: string;
+  paymentMethod: 'cash_to_driver' | 'upi_on_arrival' | 'advance_booked';
 }
 
 export interface AirportTransferRoute {

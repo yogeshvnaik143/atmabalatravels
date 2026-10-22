@@ -110,7 +110,7 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
             exit={{ opacity: 0, scale: 0.94, y: 24 }}
             transition={{ type: 'spring', damping: 26, stiffness: 320 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 my-auto"
+            className="bg-white dark:bg-[#0F1B2B] rounded-2xl sm:rounded-3xl max-w-lg w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 my-auto"
           >
             {/* Modal Header */}
             <div className="bg-[#0B192C] text-white p-5 sm:p-6 flex items-center justify-between relative overflow-hidden shrink-0">
@@ -139,12 +139,12 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
             </div>
 
             {/* Selected Vehicle Mini-Bar */}
-            <div className="bg-slate-100/90 px-5 sm:px-6 py-2.5 border-b border-slate-200 flex items-center justify-between text-xs text-slate-700 shrink-0">
-              <span className="font-semibold text-slate-900 flex items-center gap-1.5">
+            <div className="bg-slate-100/90 dark:bg-slate-800/80 px-5 sm:px-6 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between text-xs text-slate-700 dark:text-slate-300 shrink-0">
+              <span className="font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                 <Car className="w-3.5 h-3.5 text-[#FF6500]" />
                 {currentCar.name} ({currentCar.capacity})
               </span>
-              <span className="font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full">
+              <span className="font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100/80 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-transparent dark:border-emerald-800">
                 Starting ₹{currentCar.pricePerKm}/km
               </span>
             </div>
@@ -152,7 +152,7 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
             {/* Form Body */}
             <form onSubmit={handleSendBooking} className="p-5 sm:p-6 space-y-3.5 sm:space-y-4 overflow-y-auto">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Your Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -161,13 +161,13 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                   placeholder="e.g. Ramesh Hegde"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white transition-all"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white dark:focus:bg-[#070D18] transition-all"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     WhatsApp / Mobile <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -176,10 +176,10 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                     placeholder="e.g. 9876543210"
                     value={phone}
                     onChange={(e) => handlePhoneChange(e.target.value)}
-                    className={`w-full px-3.5 py-2.5 bg-slate-50 border rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:bg-white transition-all ${
+                    className={`w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:bg-white dark:focus:bg-[#070D18] transition-all ${
                       phoneError
                         ? 'border-rose-400 focus:ring-rose-400'
-                        : 'border-slate-200 focus:ring-[#FF6500]'
+                        : 'border-slate-200 dark:border-slate-700 focus:ring-[#FF6500]'
                     }`}
                   />
                   {phoneError && (
@@ -191,7 +191,7 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Travel Date <span className="text-rose-500">*</span>
                   </label>
                   <div className="relative">
@@ -201,7 +201,7 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                       min={todayStr}
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white transition-all"
+                      className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white dark:focus:bg-[#070D18] transition-all"
                     />
                   </div>
                 </div>
@@ -209,14 +209,14 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Choose Vehicle</label>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Choose Vehicle</label>
                   <select
                     value={selectedVehicleId}
                     onChange={(e) => setSelectedVehicleId(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white dark:focus:bg-[#070D18] transition-all"
                   >
                     {FLEET_VEHICLES.map((v) => (
-                      <option key={v.id} value={v.id}>
+                      <option key={v.id} value={v.id} className="dark:bg-[#0F1B2B]">
                         {v.name} ({v.capacity})
                       </option>
                     ))}
@@ -224,20 +224,20 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Passengers</label>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Passengers</label>
                   <input
                     type="number"
                     min={1}
                     max={20}
                     value={passengers}
                     onChange={(e) => setPassengers(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white transition-all"
+                    className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white dark:focus:bg-[#070D18] transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Pickup Location <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -246,12 +246,12 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                   placeholder="e.g. Gokarna Road Station, Kudle Beach, Kumta"
                   value={pickup}
                   onChange={(e) => setPickup(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white transition-all"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white dark:focus:bg-[#070D18] transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Drop / Sightseeing Plan <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -260,7 +260,7 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                   placeholder="e.g. Yana Caves, Vibhuti Falls, Murdeshwar"
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white transition-all"
+                  className="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-[#070D18] border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:bg-white dark:focus:bg-[#070D18] transition-all"
                 />
               </div>
 
@@ -276,10 +276,10 @@ export default function BookingModal({ isOpen, onClose, initialVehicle, initialP
                 </motion.button>
               </div>
 
-              <div className="text-center pt-1 border-t border-slate-100">
+              <div className="text-center pt-1 border-t border-slate-100 dark:border-slate-800">
                 <a
                   href="tel:8073756776"
-                  className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#FF6500] font-semibold transition-colors mt-2"
+                  className="inline-flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 hover:text-[#FF6500] dark:hover:text-[#FF6500] font-semibold transition-colors mt-2"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#FF6500]" />
                   Or Call Harish.G directly: +91 8073756776

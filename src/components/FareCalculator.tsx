@@ -163,7 +163,7 @@ Please confirm availability and lock my booking.`;
   };
 
   return (
-    <section id="calculator" className="py-20 bg-gradient-to-b from-[#F4F7F6] via-white to-[#F4F7F6]">
+    <section id="calculator" className="py-20 bg-gradient-to-b from-[#F4F7F6] via-white to-[#F4F7F6] dark:from-[#070D18] dark:via-[#091120] dark:to-[#070D18] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -177,10 +177,10 @@ Please confirm availability and lock my booking.`;
             <Calculator className="w-4 h-4" />
             <span>Instant Fare Transparency</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B192C] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B192C] dark:text-white tracking-tight">
             Trip Fare Estimator & Route Calculator
           </h2>
-          <p className="text-slate-600 mt-3 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-300 mt-3 text-base sm:text-lg">
             No guessing or awkward bargaining. Calculate transparent, all-inclusive cab rates across coastal Karnataka, airports & railway stations.
           </p>
         </motion.div>
@@ -193,19 +193,19 @@ Please confirm availability and lock my booking.`;
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/60 border border-slate-100"
+            className="lg:col-span-7 bg-white dark:bg-[#0B1523] rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/60 dark:shadow-black/40 border border-slate-100 dark:border-slate-800 transition-colors duration-300"
           >
-            <div className="flex items-center justify-between pb-6 border-b border-slate-100 mb-6">
-              <span className="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+            <div className="flex items-center justify-between pb-6 border-b border-slate-100 dark:border-slate-800 mb-6">
+              <span className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-2">
                 <Navigation className="w-4 h-4 text-[#FF6500]" />
                 Trip Configuration
               </span>
-              <div className="inline-flex p-1 bg-slate-100 rounded-xl text-xs font-semibold">
+              <div className="inline-flex p-1 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs font-semibold">
                 <button
                   type="button"
                   onClick={() => setTripType('oneway')}
                   className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                    tripType === 'oneway' ? 'bg-[#0B192C] text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                    tripType === 'oneway' ? 'bg-[#0B192C] dark:bg-[#FF6500] text-white shadow-xs' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   One-Way
@@ -214,7 +214,7 @@ Please confirm availability and lock my booking.`;
                   type="button"
                   onClick={() => setTripType('roundtrip')}
                   className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                    tripType === 'roundtrip' ? 'bg-[#0B192C] text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                    tripType === 'roundtrip' ? 'bg-[#0B192C] dark:bg-[#FF6500] text-white shadow-xs' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   Round Trip
@@ -225,7 +225,7 @@ Please confirm availability and lock my booking.`;
             {/* Location Selector with Swap */}
             <div className="space-y-4 mb-6">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                   Pickup Location
                 </label>
                 <div className="relative">
@@ -233,7 +233,7 @@ Please confirm availability and lock my booking.`;
                   <select
                     value={pickupId}
                     onChange={(e) => setPickupId(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:border-transparent transition-all"
+                    className="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:border-transparent transition-all"
                   >
                     {POPULAR_LOCATIONS.map((loc) => (
                       <option key={loc.id} value={loc.id}>
@@ -250,14 +250,14 @@ Please confirm availability and lock my booking.`;
                   type="button"
                   onClick={handleSwap}
                   title="Swap Pickup and Drop"
-                  className="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 hover:bg-[#FF6500] hover:text-white hover:border-[#FF6500] text-slate-600 flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                  className="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-[#FF6500] hover:text-white hover:border-[#FF6500] text-slate-600 dark:text-slate-300 flex items-center justify-center transition-all shadow-xs cursor-pointer"
                 >
                   ⇅
                 </button>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                   Drop-off / Sightseeing Destination
                 </label>
                 <div className="relative">
@@ -265,7 +265,7 @@ Please confirm availability and lock my booking.`;
                   <select
                     value={dropId}
                     onChange={(e) => setDropId(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:border-transparent transition-all"
+                    className="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-100 focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] focus:border-transparent transition-all"
                   >
                     {POPULAR_LOCATIONS.map((loc) => (
                       <option key={loc.id} value={loc.id}>
@@ -279,7 +279,7 @@ Please confirm availability and lock my booking.`;
 
             {/* Vehicle Selection Cards */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2.5">
                 Select Vehicle Type
               </label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -292,8 +292,8 @@ Please confirm availability and lock my booking.`;
                       onClick={() => setSelectedVehicleId(v.id)}
                       className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
                         isSelected
-                          ? 'border-[#FF6500] bg-[#FF6500]/5 ring-2 ring-[#FF6500]/30 shadow-xs'
-                          : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
+                          ? 'border-[#FF6500] bg-[#FF6500]/5 dark:bg-[#FF6500]/15 ring-2 ring-[#FF6500]/30 shadow-xs'
+                          : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-850 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800'
                       }`}
                     >
                       <img
@@ -303,8 +303,8 @@ Please confirm availability and lock my booking.`;
                         className="w-full h-16 object-cover rounded-lg mb-2"
                       />
                       <div>
-                        <div className="text-xs font-bold text-slate-900 leading-tight">{v.name}</div>
-                        <div className="text-[11px] text-slate-500 mt-0.5">{v.capacity.split(' ')[0]} Seats</div>
+                        <div className="text-xs font-bold text-slate-900 dark:text-slate-100 leading-tight">{v.name}</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{v.capacity.split(' ')[0]} Seats</div>
                         <div className="text-xs font-bold text-[#FF6500] mt-1">₹{v.pricePerKm}/km</div>
                       </div>
                     </button>

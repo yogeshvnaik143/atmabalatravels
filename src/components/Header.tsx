@@ -1,17 +1,34 @@
 import { useState, useEffect } from 'react';
-import { Phone, MessageCircle, Menu, X, FileCode } from 'lucide-react';
+import { Phone, MessageCircle, Menu, X, FileCode, Ticket } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { COMPANY_DETAILS } from '../data';
+import { getStoredBookings } from '../utils/bookingStore';
+import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   onOpenBooking: () => void;
+  onOpenMyBookings?: () => void;
 }
 
-export default function Header({ activeTab, setActiveTab, onOpenBooking }: HeaderProps) {
+export default function Header({ activeTab, setActiveTab, onOpenBooking, onOpenMyBookings }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bookingsCount, setBookingsCount] = useState<number>(0);
+
+  useEffect(() => {
+    const updateCount = () => {
+      setBookingsCount(getStoredBookings().length);
+    };
+    updateCount();
+    window.addEventListener('atmabala_booking_updated', updateCount);
+    window.addEventListener('storage', updateCount);
+    return () => {
+      window.removeEventListener('atmabala_booking_updated', updateCount);
+      window.removeEventListener('storage', updateCount);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,8 +66,8 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
   return (
     <header
       id="main-header"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-slate-200/80 ${
-        isScrolled ? 'py-2.5 shadow-md' : 'py-4'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 dark:bg-[#070E1A]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 ${
+        isScrolled ? 'py-2.5 shadow-md dark:shadow-black/40' : 'py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -75,17 +92,17 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
             className="h-10 w-auto object-contain transition-transform duration-300 group-hover:rotate-2"
           />
           <div className="flex flex-col">
-            <span className="font-extrabold text-xl tracking-tight text-[#0B192C]">
+            <span className="font-extrabold text-xl tracking-tight text-[#0B192C] dark:text-white">
               ATMABALA <span className="text-[#FF6500] font-bold">travels</span>
             </span>
-            <span className="text-[10px] uppercase font-semibold text-slate-500 tracking-wider">
+            <span className="text-[10px] uppercase font-semibold text-slate-500 dark:text-slate-400 tracking-wider">
               Gokarna • Kumta • Karwar
             </span>
           </div>
         </motion.button>
 
         {/* Desktop Navigation Links with animated sliding pill indicator */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 bg-slate-100/70 p-1.5 rounded-full border border-slate-200/60">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 bg-slate-100/70 dark:bg-slate-800/80 p-1.5 rounded-full border border-slate-200/60 dark:border-slate-700/60">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -97,13 +114,13 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
                 }}
                 id={`nav-${item.id}`}
                 className={`relative px-4 py-1.5 rounded-full text-sm font-semibold transition-colors cursor-pointer ${
-                  isActive ? 'text-white' : 'text-slate-700 hover:text-[#0B192C]'
+                  isActive ? 'text-white' : 'text-slate-700 dark:text-slate-300 hover:text-[#0B192C] dark:hover:text-white'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeNavPill"
-                    className="absolute inset-0 bg-[#0B192C] rounded-full shadow-sm"
+                    className="absolute inset-0 bg-[#0B192C] dark:bg-[#FF6500] rounded-full shadow-sm"
                     transition={{ type: 'spring', stiffness: 450, damping: 35 }}
                   />
                 )}
@@ -114,13 +131,34 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
         </nav>
 
         {/* Action Buttons */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-2.5">
+          {/* Light / Dark Mode Toggle Button */}
+          <ThemeToggle />
+
+          {onOpenMyBookings && (
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={onOpenMyBookings}
+              id="header-my-bookings-btn"
+              className="relative flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm font-semibold hover:border-[#0B192C] dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors bg-white dark:bg-slate-800/80 shadow-xs cursor-pointer"
+            >
+              <Ticket className="w-4 h-4 text-[#FF6500]" />
+              <span>My Bookings</span>
+              {bookingsCount > 0 && (
+                <span className="ml-0.5 px-1.5 py-0.5 text-[11px] font-extrabold rounded-full bg-[#0B192C] dark:bg-[#FF6500] text-white">
+                  {bookingsCount}
+                </span>
+              )}
+            </motion.button>
+          )}
+
           <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             href="tel:8073756776"
             id="call-harish-btn"
-            className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-300 text-slate-800 text-sm font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors bg-white shadow-xs"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm font-semibold hover:border-[#FF6500] hover:text-[#FF6500] dark:hover:border-[#FF6500] dark:hover:text-[#FF6500] transition-colors bg-white dark:bg-slate-800/80 shadow-xs"
           >
             <Phone className="w-4 h-4 text-[#FF6500]" />
             <span>8073756776</span>
@@ -138,15 +176,18 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
           </motion.button>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          id="mobile-menu-btn"
-          aria-label="Toggle navigation menu"
-          className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-hidden transition-colors"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile Controls: Theme Toggle & Hamburger Button */}
+        <div className="flex lg:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            id="mobile-menu-btn"
+            aria-label="Toggle navigation menu"
+            className="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-hidden transition-colors"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Menu with AnimatePresence */}
@@ -157,7 +198,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 shadow-xl overflow-hidden"
+            className="lg:hidden bg-white dark:bg-[#070E1A] border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 shadow-xl overflow-hidden"
           >
             <div className="flex flex-col gap-1.5 mb-4">
               {navItems.map((item) => (
@@ -170,8 +211,8 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
                   }}
                   className={`text-left px-4 py-3 rounded-xl text-base font-semibold transition-all ${
                     activeTab === item.id
-                      ? 'bg-[#0B192C] text-white shadow-sm'
-                      : 'text-slate-800 hover:bg-slate-100'
+                      ? 'bg-[#0B192C] dark:bg-[#FF6500] text-white shadow-sm'
+                      : 'text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60'
                   }`}
                 >
                   {item.label}
@@ -179,10 +220,31 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
               ))}
             </div>
 
-            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2.5">
+            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2.5">
+              {/* Appearance Mode Switch in Mobile Menu */}
+              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                <span className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                  Theme Appearance
+                </span>
+                <ThemeToggle variant="switch" />
+              </div>
+
+              {onOpenMyBookings && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenMyBookings();
+                  }}
+                  className="flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-900 dark:bg-slate-800 text-white font-bold text-sm shadow-md hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                >
+                  <Ticket className="w-4 h-4 text-[#FF6500]" />
+                  <span>My Bookings {bookingsCount > 0 ? `(${bookingsCount})` : ''}</span>
+                </button>
+              )}
+
               <a
                 href="tel:8073756776"
-                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 text-slate-900 font-bold text-sm hover:bg-slate-200 transition-colors"
+                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 dark:bg-slate-800/90 text-slate-900 dark:text-slate-100 font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
               >
                 <Phone className="w-4 h-4 text-[#FF6500]" />
                 Call Harish.G (+91 8073756776)
@@ -204,7 +266,7 @@ export default function Header({ activeTab, setActiveTab, onOpenBooking }: Heade
                   href="/html/index.html"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 font-medium"
+                  className="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium"
                 >
                   <FileCode className="w-3.5 h-3.5" />
                   View Original Static Pages

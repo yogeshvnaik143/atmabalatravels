@@ -95,19 +95,19 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
   };
 
   return (
-    <section id="tariffs" className="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200">
+    <section id="tariffs" className="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-[#070D18] dark:via-[#0B1523] dark:to-[#070D18] border-b border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold mb-3">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs sm:text-sm font-semibold mb-3">
+            <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span>Official 2026 Tariff Card • 100% Fixed Rates</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B192C] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B192C] dark:text-white tracking-tight">
             Complete Travel Catalog & Transparent Tariffs
           </h2>
-          <p className="mt-3 text-slate-600 text-base sm:text-lg">
+          <p className="mt-3 text-slate-600 dark:text-slate-300 text-base sm:text-lg">
             Straightforward pricing with all inclusions clearly stated. No hidden fuel surcharges, zero surprise driver bhatta demands.
           </p>
         </div>
@@ -115,13 +115,13 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
         {/* Continuous Left-to-Right Tariff Marquee Ribbon */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-2 px-1">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B192C]/10 text-[#0B192C] text-xs font-bold">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B192C]/10 dark:bg-white/10 text-[#0B192C] dark:text-slate-200 text-xs font-bold">
               <span className="w-2 h-2 rounded-full bg-[#FF6500] animate-pulse" />
               <span>Live Rates Ticker: Continuous Left-to-Right Flow</span>
             </span>
             <button
               onClick={() => setIsMarqueePaused(!isMarqueePaused)}
-              className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 flex items-center gap-1.5 cursor-pointer shadow-xs"
+              className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1.5 cursor-pointer shadow-xs"
               title="Pause or Resume continuous scrolling"
             >
               {isMarqueePaused ? <Play className="w-3 h-3 text-emerald-600" /> : <Pause className="w-3 h-3 text-amber-600" />}
@@ -165,7 +165,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               className={`px-4 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
                 activeTab === 'sightseeing'
                   ? 'bg-[#0B192C] text-white shadow-md'
-                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                  : 'bg-white dark:bg-[#0F1B2B] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               <Compass className={`w-4 h-4 ${activeTab === 'sightseeing' ? 'text-[#FF6500]' : 'text-slate-500'}`} />
@@ -177,7 +177,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               className={`px-4 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
                 activeTab === 'oneway'
                   ? 'bg-[#0B192C] text-white shadow-md'
-                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                  : 'bg-white dark:bg-[#0F1B2B] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               <Car className={`w-4 h-4 ${activeTab === 'oneway' ? 'text-[#FF6500]' : 'text-slate-500'}`} />
@@ -189,7 +189,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               className={`px-4 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
                 activeTab === 'goa'
                   ? 'bg-[#0B192C] text-white shadow-md'
-                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                  : 'bg-white dark:bg-[#0F1B2B] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               <Sparkles className={`w-4 h-4 ${activeTab === 'goa' ? 'text-[#FF6500]' : 'text-slate-500'}`} />
@@ -201,7 +201,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               className={`px-4 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xs ${
                 activeTab === 'hourly'
                   ? 'bg-[#0B192C] text-white shadow-md'
-                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                  : 'bg-white dark:bg-[#0F1B2B] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800'
               }`}
             >
               <Clock className={`w-4 h-4 ${activeTab === 'hourly' ? 'text-[#FF6500]' : 'text-slate-500'}`} />
@@ -218,15 +218,15 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
                 placeholder="Search place / route..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-white rounded-xl border border-slate-200 focus:outline-hidden focus:border-[#FF6500] focus:ring-1 focus:ring-[#FF6500]"
+                className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-white dark:bg-[#0F1B2B] dark:text-white rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-hidden focus:border-[#FF6500] focus:ring-1 focus:ring-[#FF6500]"
               />
             </div>
             
-            <div className="inline-flex rounded-xl border border-slate-200 bg-white p-1 text-xs">
+            <div className="inline-flex rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#0F1B2B] p-1 text-xs">
               <button
                 onClick={() => setVehicleFilter('both')}
                 className={`px-2.5 py-1 rounded-lg font-semibold cursor-pointer ${
-                  vehicleFilter === 'both' ? 'bg-slate-900 text-white' : 'text-slate-600 hover:text-slate-900'
+                  vehicleFilter === 'both' ? 'bg-slate-900 dark:bg-slate-700 text-white' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Both
@@ -234,7 +234,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               <button
                 onClick={() => setVehicleFilter('4plus1')}
                 className={`px-2.5 py-1 rounded-lg font-semibold cursor-pointer ${
-                  vehicleFilter === '4plus1' ? 'bg-[#FF6500] text-white' : 'text-slate-600 hover:text-slate-900'
+                  vehicleFilter === '4plus1' ? 'bg-[#FF6500] text-white' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 4+1
@@ -242,7 +242,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               <button
                 onClick={() => setVehicleFilter('6plus1')}
                 className={`px-2.5 py-1 rounded-lg font-semibold cursor-pointer ${
-                  vehicleFilter === '6plus1' ? 'bg-emerald-600 text-white' : 'text-slate-600 hover:text-slate-900'
+                  vehicleFilter === '6plus1' ? 'bg-emerald-600 text-white' : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 6+1
@@ -255,22 +255,22 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
         {activeTab === 'sightseeing' && (
           <div className="space-y-8">
             {/* Guarantee Callout Banner */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/80 border border-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#0B192C] text-sm sm:text-base">
+                  <h4 className="font-bold text-[#0B192C] dark:text-white text-sm sm:text-base">
                     All Sightseeing 1-Day Tours Include Everything
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600">
-                    <strong className="text-amber-800">Included:</strong> Chilled AC Cab + Highway Tolls + Parking Charges + Driver Bata. Zero surprise extra fees.
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    <strong className="text-amber-800 dark:text-amber-400">Included:</strong> Chilled AC Cab + Highway Tolls + Parking Charges + Driver Bata. Zero surprise extra fees.
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-white border border-amber-300 text-amber-900">
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-white dark:bg-[#0B1523] border border-amber-300 dark:border-amber-700/60 text-amber-900 dark:text-amber-300">
                   4+1 Sedan / 6+1 Ertiga
                 </span>
               </div>
@@ -285,39 +285,39 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.03 }}
-                  className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-[#FF6500] hover:shadow-md transition-all flex flex-col justify-between group"
+                  className="bg-white dark:bg-[#0F1B2B] rounded-2xl p-5 border border-slate-200 dark:border-slate-800 shadow-xs hover:border-[#FF6500] dark:hover:border-[#FF6500] hover:shadow-md transition-all flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className="text-xs font-bold text-slate-400">#{idx + 1} SIGHTSEEING</span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      <span className="text-xs font-bold text-slate-400 dark:text-slate-500">#{idx + 1} SIGHTSEEING</span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
                         1 Day Tour
                       </span>
                     </div>
 
-                    <h3 className="font-extrabold text-lg text-[#0B192C] group-hover:text-[#FF6500] transition-colors">
+                    <h3 className="font-extrabold text-lg text-[#0B192C] dark:text-white group-hover:text-[#FF6500] dark:group-hover:text-[#FF6500] transition-colors">
                       {item.place}
                     </h3>
-                    <p className="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 line-clamp-2 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-4 border-t border-slate-100">
+                  <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800">
                     {/* Pricing Display */}
-                    <div className="grid grid-cols-2 gap-2 mb-4 bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+                    <div className="grid grid-cols-2 gap-2 mb-4 bg-slate-50 dark:bg-slate-900/60 p-3 rounded-xl border border-slate-200/80 dark:border-slate-800">
                       {(vehicleFilter === 'both' || vehicleFilter === '4plus1') && (
                         <div className={vehicleFilter === '4plus1' ? 'col-span-2 text-center' : ''}>
-                          <div className="text-[11px] font-semibold text-slate-500 uppercase">4+1 Sedan</div>
-                          <div className="text-lg font-black text-[#0B192C]">
+                          <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase">4+1 Sedan</div>
+                          <div className="text-lg font-black text-[#0B192C] dark:text-white">
                             ₹{item.rate4Plus1.toLocaleString('en-IN')}
                           </div>
                         </div>
                       )}
                       {(vehicleFilter === 'both' || vehicleFilter === '6plus1') && (
                         <div className={vehicleFilter === '6plus1' ? 'col-span-2 text-center' : ''}>
-                          <div className="text-[11px] font-semibold text-slate-500 uppercase">6+1 Ertiga / SUV</div>
-                          <div className="text-lg font-black text-emerald-700">
+                          <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase">6+1 Ertiga / SUV</div>
+                          <div className="text-lg font-black text-emerald-700 dark:text-emerald-400">
                             ₹{item.rate6Plus1.toLocaleString('en-IN')}
                           </div>
                         </div>
@@ -335,7 +335,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
                       </button>
                       <button
                         onClick={() => handleBookViaWhatsApp(item.place, '6+1', item.rate6Plus1, 'AC Cab, Toll, Parking, Driver Bata')}
-                        className="flex-1 py-2 px-3 rounded-xl bg-[#0B192C] hover:bg-[#FF6500] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                        className="flex-1 py-2 px-3 rounded-xl bg-[#0B192C] dark:bg-slate-800 hover:bg-[#FF6500] dark:hover:bg-[#FF6500] text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
                       >
                         <Car className="w-3.5 h-3.5" />
                         <span>Book 6+1</span>
@@ -402,30 +402,30 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
         {/* Tab 2: ONE-WAY DROPS (20 CITIES) */}
         {activeTab === 'oneway' && (
           <div className="space-y-6">
-            <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/80 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/80 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
                   <Car className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#0B192C] text-sm sm:text-base">
+                  <h4 className="font-bold text-[#0B192C] dark:text-white text-sm sm:text-base">
                     Safe & Trusted Taxi Service — Only Drop / One-Way
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600">
-                    <strong className="text-blue-900">This Drop Including:</strong> Highway Tolls + Chilled AC + Driver Bata. Doorstep pickup from Gokarna / Kumta.
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    <strong className="text-blue-900 dark:text-blue-400">This Drop Including:</strong> Highway Tolls + Chilled AC + Driver Bata. Doorstep pickup from Gokarna / Kumta.
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white text-blue-900 border border-blue-300 shrink-0">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white dark:bg-[#0B1523] text-blue-900 dark:text-blue-300 border border-blue-300 dark:border-blue-800 shrink-0">
                 20 Official Destinations
               </span>
             </div>
 
             {/* Table of One-Way Drops */}
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+            <div className="bg-white dark:bg-[#0F1B2B] rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xs">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
-                  <thead className="bg-[#0B192C] text-white text-xs uppercase font-bold tracking-wider">
+                  <thead className="bg-[#0B192C] dark:bg-slate-900 text-white text-xs uppercase font-bold tracking-wider">
                     <tr>
                       <th className="py-4 px-6">#</th>
                       <th className="py-4 px-6">Destination / City</th>
@@ -439,28 +439,28 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
                       <th className="py-4 px-6 text-right">Quick Book</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                     {filteredOneWay.map((route, i) => (
-                      <tr key={route.id} className="hover:bg-slate-50/80 transition-colors">
-                        <td className="py-3.5 px-6 text-slate-400 font-semibold text-xs">{i + 1}</td>
-                        <td className="py-3.5 px-6 font-bold text-[#0B192C]">
+                      <tr key={route.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors">
+                        <td className="py-3.5 px-6 text-slate-400 dark:text-slate-500 font-semibold text-xs">{i + 1}</td>
+                        <td className="py-3.5 px-6 font-bold text-[#0B192C] dark:text-slate-100">
                           <div className="flex items-center gap-2">
                             <MapPin className="w-3.5 h-3.5 text-[#FF6500] shrink-0" />
                             <span>{route.destination}</span>
                           </div>
                         </td>
                         {(vehicleFilter === 'both' || vehicleFilter === '4plus1') && (
-                          <td className="py-3.5 px-6 text-center font-extrabold text-[#0B192C]">
+                          <td className="py-3.5 px-6 text-center font-extrabold text-[#0B192C] dark:text-white">
                             ₹{route.rate4Plus1.toLocaleString('en-IN')}
                           </td>
                         )}
                         {(vehicleFilter === 'both' || vehicleFilter === '6plus1') && (
-                          <td className="py-3.5 px-6 text-center font-extrabold text-emerald-700">
+                          <td className="py-3.5 px-6 text-center font-extrabold text-emerald-700 dark:text-emerald-400">
                             ₹{route.rate6Plus1.toLocaleString('en-IN')}
                           </td>
                         )}
                         <td className="py-3.5 px-6 text-center text-xs text-slate-500">
-                          <span className="inline-block px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-semibold">
+                          <span className="inline-block px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 text-[11px] font-semibold">
                             Toll + AC + Driver Bata
                           </span>
                         </td>
@@ -490,21 +490,21 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
         {/* Tab 3: GOA DROPS (14 DESTINATIONS) */}
         {activeTab === 'goa' && (
           <div className="space-y-6">
-            <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/90 border border-amber-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-900/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-[#FF6500] text-white flex items-center justify-center shrink-0">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#0B192C] text-sm sm:text-base">
+                  <h4 className="font-bold text-[#0B192C] dark:text-white text-sm sm:text-base">
                     Official Goa Drop Service — Doorstep Transfer
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-700">
-                    <strong className="text-amber-900">Catalog Guarantee:</strong> This drop including Highway Tolls + Chilled AC + Driver Bata + <strong className="text-emerald-800 underline">Goa State Border Entry Permit</strong>.
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                    <strong className="text-amber-900 dark:text-amber-400">Catalog Guarantee:</strong> This drop including Highway Tolls + Chilled AC + Driver Bata + <strong className="text-emerald-800 dark:text-emerald-400 underline">Goa State Border Entry Permit</strong>.
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white text-slate-800 border border-amber-300 shrink-0">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white dark:bg-[#0B1523] text-slate-800 dark:text-slate-200 border border-amber-300 dark:border-amber-700 shrink-0">
                 14 Goa Hubs & Airports
               </span>
             </div>
@@ -514,34 +514,34 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               {filteredGoa.map((g, idx) => (
                 <div
                   key={g.id}
-                  className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-[#FF6500] hover:shadow-md transition-all flex flex-col justify-between group"
+                  className="bg-white dark:bg-[#0F1B2B] rounded-2xl p-5 border border-slate-200 dark:border-slate-800 hover:border-[#FF6500] dark:hover:border-[#FF6500] hover:shadow-md transition-all flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between text-xs mb-2">
-                      <span className="font-semibold text-slate-400">GOA DROP #{idx + 1}</span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800">
+                      <span className="font-semibold text-slate-400 dark:text-slate-500">GOA DROP #{idx + 1}</span>
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">
                         {g.region || 'Goa Transfer'}
                       </span>
                     </div>
-                    <h3 className="font-bold text-base sm:text-lg text-[#0B192C] group-hover:text-[#FF6500] transition-colors">
+                    <h3 className="font-bold text-base sm:text-lg text-[#0B192C] dark:text-white group-hover:text-[#FF6500] dark:group-hover:text-[#FF6500] transition-colors">
                       {g.destination}
                     </h3>
-                    <div className="mt-2 text-xs text-slate-500 flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <div className="mt-2 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                       <span>Goa Permit + Toll + AC + Bata Included</span>
                     </div>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t border-slate-100">
-                    <div className="flex items-center justify-between mb-3 bg-slate-50 p-2.5 rounded-xl">
+                  <div className="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center justify-between mb-3 bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-transparent dark:border-slate-800">
                       <div>
                         <div className="text-[10px] uppercase font-bold text-slate-400">4+1 Sedan</div>
-                        <div className="text-base font-black text-[#0B192C]">₹{g.rate4Plus1.toLocaleString('en-IN')}</div>
+                        <div className="text-base font-black text-[#0B192C] dark:text-white">₹{g.rate4Plus1.toLocaleString('en-IN')}</div>
                       </div>
-                      <div className="h-6 w-px bg-slate-200" />
+                      <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
                       <div className="text-right">
                         <div className="text-[10px] uppercase font-bold text-slate-400">6+1 Ertiga / SUV</div>
-                        <div className="text-base font-black text-emerald-700">₹{g.rate6Plus1.toLocaleString('en-IN')}</div>
+                        <div className="text-base font-black text-emerald-700 dark:text-emerald-400">₹{g.rate6Plus1.toLocaleString('en-IN')}</div>
                       </div>
                     </div>
 
@@ -567,21 +567,21 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
         {/* Tab 4: HOURLY PACKAGE / ROUND TRIP */}
         {activeTab === 'hourly' && (
           <div className="space-y-8">
-            <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/80 border border-emerald-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#0B192C] text-sm sm:text-base">
+                  <h4 className="font-bold text-[#0B192C] dark:text-white text-sm sm:text-base">
                     Hourly Package / Round Trip Taxi Service
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-600">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                     Driver Allowance Included • Extra Hours: <strong>₹180/hr</strong> • Extra KM: <strong>₹26/km</strong> • Parking & Toll: Extra at actuals.
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white text-emerald-900 border border-emerald-300 shrink-0">
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-white dark:bg-[#0B1523] text-emerald-900 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 shrink-0">
                 Local Sightseeing & Flexible Trips
               </span>
             </div>
@@ -591,26 +591,26 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
               {HOURLY_PACKAGES.map((pkg) => (
                 <div
                   key={pkg.id}
-                  className="bg-white rounded-2xl p-5 border border-slate-200 hover:border-[#FF6500] hover:shadow-lg transition-all text-center flex flex-col justify-between"
+                  className="bg-white dark:bg-[#0F1B2B] rounded-2xl p-5 border border-slate-200 dark:border-slate-800 hover:border-[#FF6500] dark:hover:border-[#FF6500] hover:shadow-lg transition-all text-center flex flex-col justify-between"
                 >
                   <div>
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#0B192C] text-white">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#0B192C] dark:bg-slate-800 text-white">
                       {pkg.duration}
                     </span>
-                    <div className="text-2xl font-black text-[#0B192C] mt-3">
+                    <div className="text-2xl font-black text-[#0B192C] dark:text-white mt-3">
                       {pkg.kilometers} KM
                     </div>
-                    <div className="text-xs text-slate-500">Base Kilometers Included</div>
+                    <div className="text-xs text-slate-500 dark:text-slate-400">Base Kilometers Included</div>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-slate-100 space-y-2">
-                    <div className="bg-slate-50 p-2.5 rounded-xl">
+                  <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                    <div className="bg-slate-50 dark:bg-slate-900/60 p-2.5 rounded-xl border border-transparent dark:border-slate-800">
                       <div className="text-[10px] font-bold uppercase text-slate-400">4+1 Sedan</div>
-                      <div className="text-xl font-black text-[#0B192C]">₹{pkg.rate4Plus1.toLocaleString('en-IN')}</div>
+                      <div className="text-xl font-black text-[#0B192C] dark:text-white">₹{pkg.rate4Plus1.toLocaleString('en-IN')}</div>
                     </div>
-                    <div className="bg-emerald-50/60 p-2.5 rounded-xl border border-emerald-100">
-                      <div className="text-[10px] font-bold uppercase text-emerald-700">6+1 Ertiga</div>
-                      <div className="text-xl font-black text-emerald-800">₹{pkg.rate6Plus1.toLocaleString('en-IN')}</div>
+                    <div className="bg-emerald-50/60 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-100 dark:border-emerald-800/60">
+                      <div className="text-[10px] font-bold uppercase text-emerald-700 dark:text-emerald-400">6+1 Ertiga</div>
+                      <div className="text-xl font-black text-emerald-800 dark:text-emerald-300">₹{pkg.rate6Plus1.toLocaleString('en-IN')}</div>
                     </div>
 
                     <button
@@ -631,16 +631,16 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
             </div>
 
             {/* Available Vehicles Lineup from Sheet 3 */}
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs">
-              <h4 className="font-extrabold text-base text-[#0B192C] mb-4 flex items-center gap-2">
+            <div className="bg-white dark:bg-[#0F1B2B] rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-xs">
+              <h4 className="font-extrabold text-base text-[#0B192C] dark:text-white mb-4 flex items-center gap-2">
                 <Car className="w-4 h-4 text-[#FF6500]" />
                 <span>Available Vehicles in Our Catalog</span>
               </h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
                 {FLEET_VEHICLES.map((v) => (
-                  <div key={v.id} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center hover:border-slate-300 transition-all">
-                    <div className="font-bold text-xs text-[#0B192C]">{v.name}</div>
-                    <div className="text-[11px] text-slate-500 mt-0.5">{v.capacity}</div>
+                  <div key={v.id} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-center hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+                    <div className="font-bold text-xs text-[#0B192C] dark:text-slate-100">{v.name}</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{v.capacity}</div>
                     <div className="text-[10px] text-[#FF6500] font-semibold mt-1">Chilled AC</div>
                   </div>
                 ))}
@@ -650,16 +650,16 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
         )}
 
         {/* Footer Contact Direct strip */}
-        <div className="mt-12 bg-white rounded-2xl p-6 border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xs">
+        <div className="mt-12 bg-white dark:bg-[#0F1B2B] rounded-2xl p-6 border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="flex items-center gap-3 text-center md:text-left">
-            <div className="w-12 h-12 rounded-xl bg-[#0B192C] text-[#FF6500] flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-[#0B192C] dark:bg-slate-800 text-[#FF6500] flex items-center justify-center shrink-0">
               <Phone className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-[#0B192C] text-base">
+              <h4 className="font-bold text-[#0B192C] dark:text-white text-base">
                 Have custom itinerary or multiple-day requirements?
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                 Speak directly with founder <strong>{COMPANY_DETAILS.founder}</strong> for instant custom quotes.
               </p>
             </div>
@@ -668,7 +668,7 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
           <div className="flex items-center gap-3 w-full md:w-auto">
             <a
               href={`tel:${COMPANY_DETAILS.rawPhone}`}
-              className="flex-1 md:flex-initial px-5 py-2.5 rounded-xl bg-[#0B192C] hover:bg-slate-800 text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-sm"
+              className="flex-1 md:flex-initial px-5 py-2.5 rounded-xl bg-[#0B192C] dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-sm"
             >
               <Phone className="w-4 h-4 text-[#FF6500]" />
               <span>Call +91 {COMPANY_DETAILS.rawPhone}</span>

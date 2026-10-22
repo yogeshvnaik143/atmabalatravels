@@ -21,15 +21,25 @@ import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
-import { FleetVehicle, TravelPackage } from './types';
+import PackageBookingModal from './components/PackageBookingModal';
+import BookingConfirmationModal from './components/BookingConfirmationModal';
+import MyBookingsDrawer from './components/MyBookingsDrawer';
+import { FleetVehicle, TravelPackage, ConfirmedBooking } from './types';
 import { FLEET_VEHICLES } from './data';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircle, Ticket } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('home');
   const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
   const [selectedVehicle, setSelectedVehicle] = useState<FleetVehicle | null>(null);
   const [selectedPackage, setSelectedPackage] = useState<TravelPackage | null>(null);
+
+  // Dedicated Package Booking System States
+  const [isPackageBookingOpen, setIsPackageBookingOpen] = useState<boolean>(false);
+  const [packageForBooking, setPackageForBooking] = useState<TravelPackage | null>(null);
+  const [confirmedBookingVoucher, setConfirmedBookingVoucher] = useState<ConfirmedBooking | null>(null);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState<boolean>(false);
+  const [isMyBookingsOpen, setIsMyBookingsOpen] = useState<boolean>(false);
 
   const handleOpenBooking = () => {
     setSelectedVehicle(null);
@@ -44,18 +54,30 @@ export default function App() {
   };
 
   const handleSelectPackage = (pkg: TravelPackage) => {
-    setSelectedPackage(pkg);
-    setSelectedVehicle(null);
-    setIsBookingOpen(true);
+    setPackageForBooking(pkg);
+    setIsPackageBookingOpen(true);
+  };
+
+  const handlePackageBookingConfirmed = (booking: ConfirmedBooking) => {
+    setIsPackageBookingOpen(false);
+    setConfirmedBookingVoucher(booking);
+    setIsConfirmationOpen(true);
+  };
+
+  const handleViewVoucherFromDrawer = (booking: ConfirmedBooking) => {
+    setIsMyBookingsOpen(false);
+    setConfirmedBookingVoucher(booking);
+    setIsConfirmationOpen(true);
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F7F6] text-slate-900 flex flex-col selection:bg-[#FF6500] selection:text-white">
+    <div className="min-h-screen bg-[#F4F7F6] dark:bg-[#070D18] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-[#FF6500] selection:text-white transition-colors duration-300">
       {/* Fixed Navigation Header */}
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenBooking={handleOpenBooking}
+        onOpenMyBookings={() => setIsMyBookingsOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -179,6 +201,16 @@ export default function App() {
 
       {/* Floating Quick Action Contacts for Instant Access */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <motion.button
+          whileHover={{ scale: 1.15, rotate: 5 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setIsMyBookingsOpen(true)}
+          className="w-14 h-14 rounded-full bg-[#0B192C] text-white flex items-center justify-center shadow-2xl hover:bg-[#152a45] transition-colors cursor-pointer border border-slate-700"
+          title="My Bookings & Passes"
+        >
+          <Ticket className="w-6 h-6 text-[#FF6500]" />
+        </motion.button>
+
         <motion.a
           whileHover={{ scale: 1.15, rotate: 5 }}
           whileTap={{ scale: 0.9 }}
@@ -202,12 +234,42 @@ export default function App() {
         </motion.a>
       </div>
 
-      {/* Interactive Booking Modal */}
+      {/* Interactive Quick Cab Booking Modal */}
       <BookingModal
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
         initialVehicle={selectedVehicle}
         initialPackage={selectedPackage}
+      />
+
+      {/* Complete Tour Package Booking System Modal */}
+      <PackageBookingModal
+        isOpen={isPackageBookingOpen}
+        onClose={() => setIsPackageBookingOpen(false)}
+        selectedPackage={packageForBooking}
+        onBookingConfirmed={handlePackageBookingConfirmed}
+      />
+
+      {/* Official Booking Confirmation Pass & Voucher */}
+      <BookingConfirmationModal
+        isOpen={isConfirmationOpen}
+        booking={confirmedBookingVoucher}
+        onClose={() => setIsConfirmationOpen(false)}
+        onViewMyBookings={() => {
+          setIsConfirmationOpen(false);
+          setIsMyBookingsOpen(true);
+        }}
+      />
+
+      {/* Stored Bookings Slide-over Drawer */}
+      <MyBookingsDrawer
+        isOpen={isMyBookingsOpen}
+        onClose={() => setIsMyBookingsOpen(false)}
+        onOpenNewBooking={() => {
+          setIsMyBookingsOpen(false);
+          setIsPackageBookingOpen(true);
+        }}
+        onViewBookingVoucher={handleViewVoucherFromDrawer}
       />
 
       {/* Site Footer */}

@@ -25,7 +25,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
   };
 
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F7F6] via-white to-[#F4F7F6]">
+    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F7F6] via-white to-[#F4F7F6] dark:from-[#070D18] dark:via-[#091120] dark:to-[#070D18] transition-colors duration-300">
       {/* Background Decorative Accents */}
       <motion.div
         animate={{
@@ -33,7 +33,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
           opacity: [0.3, 0.5, 0.3],
         }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-10 right-0 -mr-20 w-96 h-96 rounded-full bg-[#FF6500]/10 blur-3xl pointer-events-none"
+        className="absolute top-10 right-0 -mr-20 w-96 h-96 rounded-full bg-[#FF6500]/10 dark:bg-[#FF6500]/20 blur-3xl pointer-events-none"
       />
       <motion.div
         animate={{
@@ -41,7 +41,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
           opacity: [0.2, 0.4, 0.2],
         }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="absolute bottom-10 left-0 -ml-20 w-80 h-80 rounded-full bg-[#0B192C]/10 blur-3xl pointer-events-none"
+        className="absolute bottom-10 left-0 -ml-20 w-80 h-80 rounded-full bg-[#0B192C]/10 dark:bg-blue-600/10 blur-3xl pointer-events-none"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +62,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B192C]/10 text-[#0B192C] text-xs sm:text-sm font-bold tracking-wider mb-6 border border-[#0B192C]/10 shadow-2xs hover:bg-[#FF6500]/10 hover:border-[#FF6500]/30 transition-all group"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B192C]/10 dark:bg-slate-800/80 text-[#0B192C] dark:text-slate-200 text-xs sm:text-sm font-bold tracking-wider mb-6 border border-[#0B192C]/10 dark:border-slate-700 shadow-2xs hover:bg-[#FF6500]/10 hover:border-[#FF6500]/30 transition-all group"
               title="View exact office location on Google Maps"
             >
               <MapPin className="w-4 h-4 text-[#FF6500] group-hover:scale-110 transition-transform" />
@@ -73,7 +73,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             </motion.a>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B192C] tracking-tight leading-[1.15] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B192C] dark:text-white tracking-tight leading-[1.15] mb-6">
               Your{' '}
               <span className="relative inline-block text-[#FF6500]">
                 Journey
@@ -89,7 +89,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg sm:text-xl text-slate-600 max-w-2xl font-normal leading-relaxed mb-6">
+            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed mb-6">
               {COMPANY_DETAILS.subtitle} Goa Mopa & Dabolim airport transfers, station drops, temple pilgrimage circuits, and scenic beach trails.
             </p>
 
@@ -98,7 +98,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
               <button
                 type="button"
                 onClick={() => onNavigateTab ? onNavigateTab('transfers') : undefined}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-[#FF6500]/10 hover:text-[#FF6500] text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/90 hover:bg-[#FF6500]/10 hover:text-[#FF6500] text-slate-700 dark:text-slate-300 text-xs font-bold transition-all border border-slate-200 dark:border-slate-700 cursor-pointer"
               >
                 <Plane className="w-3.5 h-3.5 text-[#FF6500]" />
                 <span>Goa / Hubli Airport Cabs</span>
@@ -107,16 +107,16 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
               <button
                 type="button"
                 onClick={() => onNavigateTab ? onNavigateTab('tariffs') : undefined}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition-all border border-emerald-300 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-bold transition-all border border-emerald-300 dark:border-emerald-800/60 cursor-pointer"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>Official Tariff & Rates</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => onNavigateTab ? onNavigateTab('calculator') : undefined}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-[#0B192C]/10 hover:text-[#0B192C] text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/90 hover:bg-[#0B192C]/10 dark:hover:bg-slate-700 hover:text-[#0B192C] text-slate-700 dark:text-slate-300 text-xs font-bold transition-all border border-slate-200 dark:border-slate-700 cursor-pointer"
               >
                 <Calculator className="w-3.5 h-3.5 text-[#25D366]" />
                 <span>Trip Fare Estimator</span>
@@ -125,7 +125,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
               <button
                 type="button"
                 onClick={onViewPackages}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all border border-slate-200 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/90 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold transition-all border border-slate-200 dark:border-slate-700 cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 <span>12+ Sightseeing Packages</span>
@@ -148,7 +148,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onOpenBooking}
-                className="flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#0B192C] text-white font-bold text-base shadow-lg shadow-[#0B192C]/20 hover:bg-[#162740] transition-colors cursor-pointer"
+                className="flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#0B192C] dark:bg-slate-800 text-white font-bold text-base shadow-lg shadow-[#0B192C]/20 hover:bg-[#162740] dark:hover:bg-slate-700 border border-transparent dark:border-slate-700 transition-colors cursor-pointer"
               >
                 <MessageCircle className="w-5 h-5 text-[#25D366]" />
                 <span>WhatsApp Booking</span>
@@ -158,7 +158,7 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                 whileHover={{ scale: 1.03, x: 2 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={onViewPackages}
-                className="flex items-center gap-2 px-5 py-3.5 rounded-full border-2 border-slate-300 text-slate-800 font-semibold text-base hover:border-[#FF6500] hover:text-[#FF6500] transition-colors bg-white/70 cursor-pointer"
+                className="flex items-center gap-2 px-5 py-3.5 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-base hover:border-[#FF6500] hover:text-[#FF6500] transition-colors bg-white/70 dark:bg-slate-800/80 cursor-pointer"
               >
                 <span>Explore Packages</span>
                 <ArrowRight className="w-4 h-4" />
@@ -166,34 +166,34 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             </div>
 
             {/* Trust Highlights */}
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 w-full max-w-lg">
+            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800 w-full max-w-lg">
               <div className="flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-[#FF6500]/10">
+                <div className="p-1.5 rounded-lg bg-[#FF6500]/10 dark:bg-[#FF6500]/20">
                   <Clock className="w-5 h-5 text-[#FF6500] shrink-0" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-900">24/7 Service</div>
-                  <div className="text-[11px] text-slate-500">Day & Night Cabs</div>
+                  <div className="text-xs font-bold text-slate-900 dark:text-slate-100">24/7 Service</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">Day & Night Cabs</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-[#FF6500]/10">
+                <div className="p-1.5 rounded-lg bg-[#FF6500]/10 dark:bg-[#FF6500]/20">
                   <ShieldCheck className="w-5 h-5 text-[#FF6500] shrink-0" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-900">Verified Drivers</div>
-                  <div className="text-[11px] text-slate-500">Local Gokarna Natives</div>
+                  <div className="text-xs font-bold text-slate-900 dark:text-slate-100">Verified Drivers</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">Local Gokarna Natives</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-[#FF6500]/10">
+                <div className="p-1.5 rounded-lg bg-[#FF6500]/10 dark:bg-[#FF6500]/20">
                   <Award className="w-5 h-5 text-[#FF6500] shrink-0" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-900">4.9 ★ Rating</div>
-                  <div className="text-[11px] text-slate-500">15,000+ Happy Guests</div>
+                  <div className="text-xs font-bold text-slate-900 dark:text-slate-100">4.9 ★ Rating</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">15,000+ Happy Guests</div>
                 </div>
               </div>
             </div>
@@ -231,24 +231,24 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
             </motion.div>
 
             {/* Quick Fare Inquiry Form */}
-            <div className="w-full mt-6 bg-white rounded-3xl shadow-xl border border-slate-200/90 p-5 sm:p-6">
+            <div className="w-full mt-6 bg-white dark:bg-[#0B1523] rounded-3xl shadow-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 transition-colors duration-300">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-base font-bold text-[#0B192C] flex items-center gap-2">
+                <h3 className="text-base font-bold text-[#0B192C] dark:text-white flex items-center gap-2">
                   <Car className="w-4 h-4 text-[#FF6500]" />
                   Instant Trip Inquiry
                 </h3>
-                <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60">
+                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                   Fast WhatsApp Reply
                 </span>
               </div>
 
               <form onSubmit={handleQuickInquiry} className="space-y-3.5">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-600 mb-1">Pickup City / Station</label>
+                  <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Pickup City / Station</label>
                   <select
                     value={pickup}
                     onChange={(e) => setPickup(e.target.value)}
-                    className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
+                    className="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
                   >
                     <option value="Gokarna Town / Beach">Gokarna Town / Beach</option>
                     <option value="Kumta Railway Station (KT)">Kumta Railway Station (KT)</option>
@@ -262,14 +262,14 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">Select Vehicle</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Select Vehicle</label>
                     <select
                       value={vehicle}
                       onChange={(e) => {
                         setVehicle(e.target.value);
                         onSelectVehicleForBooking(e.target.value);
                       }}
-                      className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
+                      className="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
                     >
                       {FLEET_VEHICLES.map((v) => (
                         <option key={v.id} value={v.id}>
@@ -280,11 +280,11 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">Tour Package</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Tour Package</label>
                     <select
                       value={tripType}
                       onChange={(e) => setTripType(e.target.value)}
-                      className="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
+                      className="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
                     >
                       <option value="Gokarna Local Sightseeing">Gokarna Local Sightseeing</option>
                       <option value="Sacred Coastal Pilgrimage">Sacred Coastal Pilgrimage</option>
@@ -296,13 +296,13 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 mb-1">Date</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Date</label>
                     <input
                       type="date"
                       min={todayStr}
                       value={date}
                       onChange={(e) => setDate(e.target.value)}
-                      className="w-full px-2.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
+                      className="w-full px-2.5 py-2 text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
                     />
                   </div>
                 </div>

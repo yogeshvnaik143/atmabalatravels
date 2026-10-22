@@ -1,5 +1,6 @@
 import { Phone, MessageCircle, Mail, MapPin, Compass, ExternalLink } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data';
+import ThemeToggle from './ThemeToggle';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
@@ -268,9 +269,12 @@ export default function Footer({ setActiveTab }: FooterProps) {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© 2026 ATMABALA Travels. All rights reserved.</p>
-          <p className="text-slate-400">
-            Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: {COMPANY_DETAILS.phone}
-          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <span className="text-slate-400">
+              Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: {COMPANY_DETAILS.phone}
+            </span>
+            <ThemeToggle showLabel className="bg-slate-800 text-slate-200 border-slate-700 hover:text-white" />
+          </div>
         </div>
 
       </div>
