@@ -4,14 +4,8 @@ import {
   MapPin,
   CheckCircle,
   ArrowRight,
-  Car,
   Sparkles,
   MessageCircle,
-  Play,
-  Pause,
-  Zap,
-  Eye,
-  LayoutGrid,
   Search,
   Filter,
   SlidersHorizontal,
@@ -39,11 +33,6 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
   const [selectedDuration, setSelectedDuration] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'popular' | 'price-low' | 'price-high' | 'duration-short'>('popular');
   const [showAdvancedFilters, setShowAdvancedFilters] = useState<boolean>(false);
-
-  // Marquee and Layout Controls
-  const [isMarqueePaused, setIsMarqueePaused] = useState<boolean>(false);
-  const [marqueeSpeed, setMarqueeSpeed] = useState<'normal' | 'slow' | 'fast'>('normal');
-  const [viewMode, setViewMode] = useState<'both' | 'marquee' | 'grid'>('both');
 
   const travelTypes = [
     { id: 'all', label: 'All Experiences', icon: '⭐' },
@@ -150,12 +139,6 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
   // Double list for seamless gapless loop
   const marqueeItems = useMemo(() => [...POPULAR_PACKAGES, ...POPULAR_PACKAGES], []);
 
-  const speedClass = marqueeSpeed === 'slow'
-    ? 'animate-marquee-ltr-slow'
-    : marqueeSpeed === 'fast'
-    ? 'animate-marquee-ltr-fast'
-    : 'animate-marquee-ltr';
-
   return (
     <section id="packages" className="py-20 bg-[#F4F7F6] dark:bg-[#070D18] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -178,105 +161,26 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
           <p className="text-slate-600 dark:text-slate-300 mt-4 text-base sm:text-lg">
             Discover Sahyadri waterfalls, ancient temple shrines, backwater boat cruises, and tranquil crescent beaches with guaranteed fixed rates, chilled AC, and verified local drivers.
           </p>
-
-          {/* View Mode Switcher */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            <div className="bg-slate-200/80 dark:bg-slate-800 p-1 rounded-full inline-flex items-center gap-1 border border-slate-300/50 dark:border-slate-700">
-              <button
-                onClick={() => setViewMode('both')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === 'both' ? 'bg-[#0B192C] dark:bg-[#FF6500] text-white shadow-xs' : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                <Zap className="w-3 h-3 text-[#FF6500] dark:text-white" />
-                <span>Marquee + Grid</span>
-              </button>
-              <button
-                onClick={() => setViewMode('marquee')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === 'marquee' ? 'bg-[#0B192C] dark:bg-[#FF6500] text-white shadow-xs' : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                <Eye className="w-3 h-3 text-[#FF6500] dark:text-white" />
-                <span>Marquee Flow</span>
-              </button>
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  viewMode === 'grid' ? 'bg-[#0B192C] dark:bg-[#FF6500] text-white shadow-xs' : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                <LayoutGrid className="w-3 h-3 text-[#FF6500] dark:text-white" />
-                <span>Catalog Grid</span>
-              </button>
-            </div>
-          </div>
         </motion.div>
 
-        {/* ============================================================== */}
-        {/* LEFT-TO-RIGHT MARQUEE SHOWCASE BLOCK                            */}
-        {/* ============================================================== */}
-        {(viewMode === 'both' || viewMode === 'marquee') && (
-          <div className="mb-14">
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-4 px-2">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B192C] text-white text-xs font-bold shadow-xs">
-                  <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-                  <span>Left-to-Right Marquee Flow</span>
-                </span>
-                <span className="text-xs text-slate-500 hidden sm:inline">
-                  (Gliding left to right • Hover any card to pause)
-                </span>
-              </div>
+        {/* Featured Tours Showcase */}
+        <div className="mb-14">
+          <div className="flex items-center justify-between mb-3 px-1">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <span className="w-2 h-2 rounded-full bg-[#FF6500] animate-pulse" />
+              <span>Trending Sightseeing Circuits • Doorstep AC Cab</span>
+            </span>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:inline">
+              Swipe or hover to explore itineraries
+            </span>
+          </div>
 
-              {/* Speed & Pause Controls */}
-              <div className="flex items-center gap-2">
-                <div className="bg-white border border-slate-200 rounded-lg p-0.5 flex items-center text-[11px] font-semibold text-slate-600">
-                  <span className="px-2 text-slate-400">Speed:</span>
-                  {(['slow', 'normal', 'fast'] as const).map((s) => (
-                    <button
-                      key={s}
-                      onClick={() => setMarqueeSpeed(s)}
-                      className={`px-2 py-0.5 rounded capitalize cursor-pointer transition-colors ${
-                        marqueeSpeed === s ? 'bg-[#FF6500] text-white font-bold' : 'hover:bg-slate-100'
-                      }`}
-                    >
-                      {s}
-                    </button>
-                  ))}
-                </div>
+          {/* Seamless Left-To-Right Marquee Container */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-[#0B192C] to-slate-950 p-4 sm:p-6 shadow-xl border border-slate-800 pause-on-hover">
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-slate-950 to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-slate-950 to-transparent z-10" />
 
-                <button
-                  onClick={() => setIsMarqueePaused(!isMarqueePaused)}
-                  className="px-3 py-1 bg-white border border-slate-200 hover:border-slate-300 rounded-lg text-xs font-bold text-slate-700 flex items-center gap-1.5 shadow-xs cursor-pointer"
-                  title={isMarqueePaused ? 'Resume scrolling' : 'Pause scrolling'}
-                >
-                  {isMarqueePaused ? (
-                    <>
-                      <Play className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600" />
-                      <span>Play</span>
-                    </>
-                  ) : (
-                    <>
-                      <Pause className="w-3.5 h-3.5 text-amber-600 fill-amber-600" />
-                      <span>Pause</span>
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Seamless Left-To-Right Marquee Container */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-[#0B192C] to-slate-950 p-4 sm:p-6 shadow-xl border border-slate-800 pause-on-hover">
-              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-slate-950 to-transparent z-10" />
-              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-slate-950 to-transparent z-10" />
-
-              <div
-                className={`${speedClass} flex gap-5 py-2`}
-                style={{
-                  animationPlayState: isMarqueePaused ? 'paused' : undefined,
-                }}
-              >
+            <div className="animate-marquee-ltr flex gap-5 py-2">
                 {marqueeItems.map((pkg, idx) => (
                   <div
                     key={`${pkg.id}-marquee-${idx}`}
@@ -363,13 +267,11 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
               </div>
             </div>
           </div>
-        )}
 
         {/* ============================================================== */}
         {/* COMPREHENSIVE SEARCH & FILTER SYSTEM                           */}
         {/* ============================================================== */}
-        {(viewMode === 'both' || viewMode === 'grid') && (
-          <div className="bg-white dark:bg-[#0B1523] rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 dark:border-slate-800 mb-10 space-y-6 transition-colors duration-300">
+        <div className="bg-white dark:bg-[#0B1523] rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 dark:border-slate-800 mb-10 space-y-6 transition-colors duration-300">
             
             {/* Main Search Row */}
             <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4">
@@ -607,13 +509,11 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
             </div>
 
           </div>
-        )}
 
         {/* ============================================================== */}
         {/* PACKAGES CATALOG GRID                                          */}
         {/* ============================================================== */}
-        {(viewMode === 'both' || viewMode === 'grid') && (
-          <div>
+        <div>
             {filteredPackages.length === 0 ? (
               /* Empty Search Results State */
               <div className="bg-white dark:bg-[#0B1523] rounded-3xl p-10 text-center border border-slate-200 dark:border-slate-800 max-w-xl mx-auto shadow-sm my-6 transition-colors duration-300">
@@ -796,7 +696,6 @@ export default function PackagesSection({ onSelectPackage, onViewPosterPlaces }:
               </motion.div>
             )}
           </div>
-        )}
 
         {/* Explore Poster Banner */}
         <motion.div

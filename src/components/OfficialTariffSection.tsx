@@ -11,8 +11,6 @@ import {
   Car,
   Compass,
   ArrowRight,
-  Play,
-  Pause,
   Info,
   MapPin,
   ExternalLink,
@@ -37,7 +35,6 @@ export default function OfficialTariffSection({ onOpenBookingModal }: OfficialTa
   const [activeTab, setActiveTab] = useState<'sightseeing' | 'oneway' | 'goa' | 'hourly'>('sightseeing');
   const [searchQuery, setSearchQuery] = useState('');
   const [vehicleFilter, setVehicleFilter] = useState<'both' | '4plus1' | '6plus1'>('both');
-  const [isMarqueePaused, setIsMarqueePaused] = useState(false);
 
   // Filter 1-Day Sightseeing
   const filteredSightseeing = useMemo(() => {
@@ -112,31 +109,23 @@ Please confirm driver & vehicle availability for my dates. Thank you!`;
           </p>
         </div>
 
-        {/* Continuous Left-to-Right Tariff Marquee Ribbon */}
+        {/* Continuous Regional Fares Ticker */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-2 px-1">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0B192C]/10 dark:bg-white/10 text-[#0B192C] dark:text-slate-200 text-xs font-bold">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
               <span className="w-2 h-2 rounded-full bg-[#FF6500] animate-pulse" />
-              <span>Live Rates Ticker: Continuous Left-to-Right Flow</span>
+              <span>Transparent Regional Fares (All Tolls & AC Included)</span>
             </span>
-            <button
-              onClick={() => setIsMarqueePaused(!isMarqueePaused)}
-              className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center gap-1.5 cursor-pointer shadow-xs"
-              title="Pause or Resume continuous scrolling"
-            >
-              {isMarqueePaused ? <Play className="w-3 h-3 text-emerald-600" /> : <Pause className="w-3 h-3 text-amber-600" />}
-              <span>{isMarqueePaused ? 'Resume Ticker' : 'Pause'}</span>
-            </button>
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:inline">
+              Hover to pause ticker
+            </span>
           </div>
 
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-[#0B192C] to-slate-900 text-white p-3 sm:p-4 shadow-md pause-on-hover border border-slate-800">
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0B192C] to-transparent z-10" />
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0B192C] to-transparent z-10" />
 
-            <div
-              className="animate-marquee-ltr flex gap-4"
-              style={{ animationPlayState: isMarqueePaused ? 'paused' : undefined }}
-            >
+            <div className="animate-marquee-ltr flex gap-4">
               {[...marqueeItems, ...marqueeItems].map((item, i) => (
                 <div
                   key={`tariff-ticker-${i}`}

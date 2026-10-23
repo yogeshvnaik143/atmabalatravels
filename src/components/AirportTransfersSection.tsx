@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plane, Clock, ShieldCheck, ArrowRight, MessageCircle, Phone, CheckCircle2, Sparkles, Navigation, Luggage, Play, Pause } from 'lucide-react';
+import { Plane, Clock, ShieldCheck, MessageCircle, Phone, CheckCircle2, Navigation } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AIRPORT_TRANSFER_ROUTES } from '../data';
 import { AirportTransferRoute } from '../types';
@@ -8,9 +8,8 @@ interface AirportTransfersSectionProps {
   onBookTransfer?: (route: AirportTransferRoute, vehicleType: string) => void;
 }
 
-export default function AirportTransfersSection({ onBookTransfer }: AirportTransfersSectionProps) {
+export default function AirportTransfersSection({ onBookTransfer: _onBookTransfer }: AirportTransfersSectionProps) {
   const [activeFilter, setActiveFilter] = useState<'all' | 'airports' | 'railway'>('all');
-  const [isMarqueePaused, setIsMarqueePaused] = useState<boolean>(false);
 
   const filteredRoutes = AIRPORT_TRANSFER_ROUTES.filter((r) => {
     if (activeFilter === 'airports') return r.source.toLowerCase().includes('airport');
@@ -89,30 +88,23 @@ Please let me know driver details and availability.`;
           </div>
         </motion.div>
 
-        {/* Left-to-Right Route Marquee Ticker */}
+        {/* Express Route Quick-Ticker */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-3 px-1">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF6500]/20 text-[#FF6500] text-xs font-bold border border-[#FF6500]/30">
-              <span className="w-2 h-2 rounded-full bg-[#FF6500] animate-pulse" />
-              <span>Route Marquee: Moving Left to Right</span>
+            <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300">
+              <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+              <span>Direct Express Pickup & Station Routes</span>
             </span>
-            <button
-              onClick={() => setIsMarqueePaused(!isMarqueePaused)}
-              className="px-2.5 py-1 rounded-lg bg-slate-800 text-slate-300 text-xs font-semibold hover:text-white flex items-center gap-1.5 cursor-pointer"
-            >
-              {isMarqueePaused ? <Play className="w-3 h-3 text-emerald-400" /> : <Pause className="w-3 h-3 text-amber-400" />}
-              <span>{isMarqueePaused ? 'Resume' : 'Pause'}</span>
-            </button>
+            <span className="text-[11px] text-slate-400 hidden sm:inline">
+              Click any route card to book instantly
+            </span>
           </div>
 
           <div className="relative overflow-hidden rounded-2xl bg-slate-900/90 border border-slate-700/80 p-3 sm:p-4 shadow-xl pause-on-hover">
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-slate-900 to-transparent z-10" />
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-slate-900 to-transparent z-10" />
 
-            <div
-              className="animate-marquee-ltr flex gap-4"
-              style={{ animationPlayState: isMarqueePaused ? 'paused' : undefined }}
-            >
+            <div className="animate-marquee-ltr flex gap-4">
               {[...AIRPORT_TRANSFER_ROUTES, ...AIRPORT_TRANSFER_ROUTES].map((r, i) => (
                 <div
                   key={`${r.id}-marquee-${i}`}

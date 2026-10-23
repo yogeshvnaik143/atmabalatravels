@@ -266,7 +266,7 @@ export const POPULAR_PACKAGES: TravelPackage[] = [
     rating: 4.9,
     reviewsCount: 98,
     badge: 'Heritage & Nature',
-    image: 'https://images.unsplash.com/photo-1623946059868-8091807d0d0f?auto=format&fit=crop&w=600&q=80'
+    image: '/images/kudle-beach.jpg'
   },
   {
     id: 'sightseeing-murdeshwar',
@@ -378,7 +378,7 @@ export const POPULAR_PACKAGES: TravelPackage[] = [
     rating: 5.0,
     reviewsCount: 184,
     badge: 'Ultimate Trio',
-    image: 'https://images.unsplash.com/photo-1623946059868-8091807d0d0f?auto=format&fit=crop&w=600&q=80'
+    image: '/images/gokarna-main-beach.jpg'
   },
   {
     id: 'jog-honavara',

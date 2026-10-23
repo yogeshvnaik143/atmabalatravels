@@ -8,39 +8,51 @@ html.dark {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* 60fps GPU Hardware-Accelerated Marquee Animations */
 @keyframes marquee-ltr {
   0% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
   100% {
-    transform: translateX(0%);
+    transform: translate3d(0%, 0, 0);
   }
 }
 
 .animate-marquee-ltr {
   display: flex;
   width: max-content;
-  animation: marquee-ltr 38s linear infinite;
+  animation: marquee-ltr 42s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 .animate-marquee-ltr-fast {
   display: flex;
   width: max-content;
-  animation: marquee-ltr 26s linear infinite;
+  animation: marquee-ltr 28s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 .animate-marquee-ltr-slow {
   display: flex;
   width: max-content;
-  animation: marquee-ltr 55s linear infinite;
+  animation: marquee-ltr 60s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
+/* Seamless pause on hover & touch-friendly interactions */
 .pause-on-hover:hover .animate-marquee-ltr,
 .pause-on-hover:hover .animate-marquee-ltr-fast,
 .pause-on-hover:hover .animate-marquee-ltr-slow,
@@ -50,11 +62,25 @@ html {
   animation-play-state: paused !important;
 }
 
-/* Custom scrollbar hiding helper */
+/* Ultra-smooth momentum scrolling and scrollbar hiding helper */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee-ltr,
+  .animate-marquee-ltr-fast,
+  .animate-marquee-ltr-slow {
+    animation: none;
+    transform: none;
+    overflow-x: auto;
+  }
 }

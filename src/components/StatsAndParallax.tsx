@@ -1,4 +1,4 @@
-import { Phone, FileCode } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import { motion } from 'motion/react';
 import { COMPANY_DETAILS } from '../data';
 
@@ -96,77 +96,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
           </div>
         </motion.div>
       </section>
-
-      {/* HTML / Raw Files Quick Access Bar */}
-      <section className="bg-slate-100 py-8 px-4 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-700">
-          <div className="flex items-center gap-2">
-            <FileCode className="w-5 h-5 text-[#FF6500] shrink-0" />
-            <span>
-              <strong>Clean Static Assets:</strong> Preserved original HTML templates, CSS stylesheets, and scripts under <code className="bg-slate-200 px-1 py-0.5 rounded text-xs">/html/</code>, <code className="bg-slate-200 px-1 py-0.5 rounded text-xs">/css/</code>, and <code className="bg-slate-200 px-1 py-0.5 rounded text-xs">/js/</code>.
-            </span>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <a
-              href="/html/index.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
-            >
-              index.html ↗
-            </a>
-            <a
-              href="/html/packages.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
-            >
-              packages.html ↗
-            </a>
-            <a
-              href="/html/fleet.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
-            >
-              fleet.html ↗
-            </a>
-            <a
-              href="/html/about.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
-            >
-              about.html ↗
-            </a>
-            <a
-              href="/html/contact.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
-            >
-              contact.html ↗
-            </a>
-            <a
-              href="/css/style.css"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
-            >
-              style.css ↗
-            </a>
-            <a
-              href="/js/script.js"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-md bg-white border border-slate-300 font-semibold hover:border-[#FF6500] hover:text-[#FF6500] transition-colors text-xs"
-            >
-              script.js ↗
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
+
