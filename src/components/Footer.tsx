@@ -227,17 +227,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   Jog Falls Nature Trail
                 </button>
               </li>
-              <li className="pt-2 border-t border-slate-800/80">
-                <a
-                  href="/html/index.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-[#FF6500] hover:underline inline-flex items-center gap-1"
-                >
-                  <span>Browse Standalone HTML Pages</span>
-                  <span>↗</span>
-                </a>
-              </li>
+
               <li>
                 <a
                   href="/sitemap.xml"

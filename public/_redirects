@@ -1,0 +1,2 @@
+# SPA fallback: static files are served if they exist, otherwise fallback to index.html
+/*    /index.html   200

@@ -1,0 +1,31 @@
+{
+  "name": "Atmabala Travels — Gokarna Car Rentals & Tours",
+  "short_name": "Atmabala Travels",
+  "description": "Book verified taxi services, airport transfers & coastal tour packages in Gokarna & Kumta with Atmabala Travels. Transparent fixed rates & 24/7 pickups.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B192C",
+  "theme_color": "#0B192C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo-badge.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["travel", "transportation", "lifestyle"],
+  "lang": "en-IN"
+}

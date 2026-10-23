@@ -74,6 +74,9 @@ export default function Hero({ onOpenBooking, onSelectVehicleForBooking, onViewP
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B192C] dark:text-white tracking-tight leading-[1.15] mb-6">
+              <span className="block text-xs sm:text-sm uppercase tracking-widest font-extrabold text-[#FF6500] mb-2 font-mono">
+                Atmabala Travels Gokarna
+              </span>
               Your{' '}
               <span className="relative inline-block text-[#FF6500]">
                 Journey

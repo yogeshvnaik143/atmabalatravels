@@ -102,16 +102,6 @@ export default function GokarnaPosterSection() {
               </button>
             </div>
 
-            <a
-              href="/html/packages.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#FFF7A1] text-xs font-bold hover:bg-[#D4AF37]/30 transition-all text-center"
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              <span>Original HTML</span>
-            </a>
-
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
