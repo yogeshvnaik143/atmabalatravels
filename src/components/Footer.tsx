@@ -1,5 +1,23 @@
 import { useState } from 'react';
-import { Phone, MessageCircle, Mail, MapPin, Compass, ExternalLink, ShieldCheck, FileText, Lock, RefreshCw, UserCheck, X } from 'lucide-react';
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Compass,
+  ExternalLink,
+  ShieldCheck,
+  FileText,
+  Lock,
+  RefreshCw,
+  UserCheck,
+  X,
+  Instagram,
+  Facebook,
+  Code2,
+  Heart
+} from 'lucide-react';
+import { motion } from 'motion/react';
 import { COMPANY_DETAILS } from '../data';
 import ThemeToggle from './ThemeToggle';
 
@@ -49,25 +67,69 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Your trusted partner for clean, reliable car rentals, airport pickups, and unforgettable coastal journeys across Gokarna, Kumta, Murdeshwar, and Karwar.
             </p>
-            <div className="flex items-center gap-3 pt-2">
-              <a
-                href={`tel:${COMPANY_DETAILS.phone}`}
-                className="p-2.5 rounded-full bg-slate-800 hover:bg-[#FF6500] text-white transition-colors"
-                title={`Call ${COMPANY_DETAILS.phone}`}
-                aria-label={`Call Harish G at ${COMPANY_DETAILS.phone}`}
-              >
-                <Phone className="w-4 h-4" />
-              </a>
-              <a
-                href={`https://wa.me/91${COMPANY_DETAILS.phone}?text=Hi%20Harish%20G,%20I%20want%20to%20inquire%20about%20travel%20with%20Atmabala%20Travels`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-full bg-slate-800 hover:bg-[#25D366] text-white transition-colors"
-                title="WhatsApp Harish G"
-                aria-label="Chat with Harish G on WhatsApp"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
+
+            {/* Small Animated Social & Contact Logos */}
+            <div>
+              <span className="text-[11px] uppercase font-bold tracking-wider text-slate-400 block mb-2">
+                Connect With Us:
+              </span>
+              <div className="flex items-center gap-2.5">
+                {/* Instagram Animated Logo */}
+                <motion.a
+                  whileHover={{ scale: 1.22, rotate: 6 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                  className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white flex items-center justify-center shadow-md hover:shadow-pink-500/30 transition-all cursor-pointer"
+                  title="Instagram (Link to be updated)"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-4 h-4" />
+                </motion.a>
+
+                {/* Facebook Animated Logo */}
+                <motion.a
+                  whileHover={{ scale: 1.22, rotate: -6 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                  className="w-9 h-9 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-md hover:shadow-blue-500/30 transition-all cursor-pointer"
+                  title="Facebook (Link to be updated)"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-4 h-4 fill-white" />
+                </motion.a>
+
+                {/* WhatsApp Animated Logo */}
+                <motion.a
+                  whileHover={{ scale: 1.22, rotate: 6 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20want%20to%20inquire%20about%20a%20cab%20with%20Atmabala%20Travels."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-[#25D366] text-slate-950 flex items-center justify-center shadow-md hover:shadow-emerald-500/30 transition-all cursor-pointer"
+                  title="WhatsApp (+91 8073756776)"
+                  aria-label="Chat on WhatsApp"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                </motion.a>
+
+                {/* Direct Call Animated Logo */}
+                <motion.a
+                  whileHover={{ scale: 1.22, rotate: -6 }}
+                  whileTap={{ scale: 0.9 }}
+                  href={`tel:${COMPANY_DETAILS.phone}`}
+                  className="w-9 h-9 rounded-full bg-[#FF6500] text-white flex items-center justify-center shadow-md hover:shadow-orange-500/30 transition-all cursor-pointer"
+                  title={`Call: +91 ${COMPANY_DETAILS.phone}`}
+                  aria-label="Call Harish G"
+                >
+                  <Phone className="w-4 h-4" />
+                </motion.a>
+              </div>
             </div>
 
             {/* Verification and Trust Badge */}
@@ -308,9 +370,53 @@ export default function Footer({ setActiveTab }: FooterProps) {
           </span>
         </div>
 
+        {/* Website Developer & Creator Section: YOGESH NAIK */}
+        <div className="my-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0B1523] to-slate-900 border border-slate-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#FF6500] to-amber-500 text-white font-black text-sm flex items-center justify-center shadow-lg shadow-[#FF6500]/20 shrink-0 border border-amber-400/40">
+              YN
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-slate-400">Website Designed &amp; Developed by</span>
+                <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FF6500]/15 text-[#FF6500] font-extrabold border border-[#FF6500]/30">
+                  Creator
+                </span>
+              </div>
+              <h4 className="text-base font-extrabold text-white tracking-wide mt-0.5 flex items-center gap-2">
+                <span>YOGESH NAIK</span>
+                <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" />
+              </h4>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2.5">
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 text-slate-200 text-xs font-bold border border-slate-700 transition-all shadow-xs cursor-pointer group"
+              title="Portfolio & social links will be updated soon"
+            >
+              <Code2 className="w-4 h-4 text-[#FF6500] group-hover:rotate-12 transition-transform" />
+              <span>Yogesh Naik (Portfolio Links Coming Soon)</span>
+            </motion.a>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© 2026 ATMABALA Travels. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2">
+            <p>© 2026 ATMABALA Travels. All rights reserved.</p>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <p className="inline-flex items-center gap-1.5 text-slate-400 font-medium">
+              <span>Developed with care by</span>
+              <strong className="text-slate-200 font-bold hover:text-[#FF6500] transition-colors">YOGESH NAIK</strong>
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-4">
             <span className="text-slate-400">
               Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: +91 {COMPANY_DETAILS.phone}

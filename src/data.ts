@@ -17,7 +17,7 @@ export const COMPANY_DETAILS = {
   locations: {
     gokarna: 'Welcome Digital Point, Kamat complex, near Canara Bank, Ganjigadde, Gokarna, Karnataka 581326',
     kumta: 'Opposite Old KSRTC Bus Stand, Main Road, Kumta, Karnataka 581343',
-    gokarnaMapsUrl: 'https://maps.app.goo.gl/gGgVsEcqELeYQrYG7'
+    gokarnaMapsUrl: 'https://maps.app.goo.gl/D8Nh5CjvQevnhewNA'
   },
   stats: {
     happyCustomers: '15,000+',

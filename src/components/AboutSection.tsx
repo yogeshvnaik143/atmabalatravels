@@ -244,7 +244,7 @@ export default function AboutSection() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="https://maps.app.goo.gl/gGgVsEcqELeYQrYG7"
+                  href="https://maps.app.goo.gl/D8Nh5CjvQevnhewNA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-5 py-2.5 rounded-xl bg-[#0B192C] dark:bg-[#FF6500] text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity flex items-center gap-2"

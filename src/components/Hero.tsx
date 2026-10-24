@@ -75,7 +75,7 @@ Please share your best quotation and availability.`;
           >
             {/* Location & Trust Pill */}
             <motion.a
-              href="https://maps.app.goo.gl/gGgVsEcqELeYQrYG7"
+              href="https://maps.app.goo.gl/D8Nh5CjvQevnhewNA"
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}

@@ -13,6 +13,7 @@ import GokarnaPosterSection from './components/GokarnaPosterSection';
 import TestimonialsCarousel from './components/TestimonialsCarousel';
 import StatsAndParallax from './components/StatsAndParallax';
 import AboutSection from './components/AboutSection';
+import LocationSection from './components/LocationSection';
 import Footer from './components/Footer';
 import { Phone, MessageCircle } from 'lucide-react';
 
@@ -70,6 +71,9 @@ export default function App() {
             <AboutSection />
           </div>
         )}
+
+        {/* Animated Office Location Section in Bottom (Google Maps https://maps.app.goo.gl/D8Nh5CjvQevnhewNA) */}
+        <LocationSection />
 
       </main>
 
