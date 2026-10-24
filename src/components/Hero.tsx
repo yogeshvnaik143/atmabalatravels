@@ -137,6 +137,15 @@ Please share your best quotation and availability.`;
 
               <button
                 type="button"
+                onClick={() => scrollToSection('trip-planner')}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 text-xs font-bold transition-all border border-emerald-300 dark:border-emerald-800/60 cursor-pointer"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
+                <span>Interactive Trip Planner</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={() => onNavigateTab ? onNavigateTab('places') : undefined}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/50 text-amber-800 dark:text-amber-300 text-xs font-bold transition-all border border-amber-300 dark:border-amber-800/60 cursor-pointer"
               >

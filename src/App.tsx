@@ -14,6 +14,7 @@ import TestimonialsCarousel from './components/TestimonialsCarousel';
 import StatsAndParallax from './components/StatsAndParallax';
 import AboutSection from './components/AboutSection';
 import LocationSection from './components/LocationSection';
+import TripPlanner from './components/TripPlanner';
 import Footer from './components/Footer';
 import { Phone, MessageCircle } from 'lucide-react';
 
@@ -51,6 +52,8 @@ export default function App() {
             <Hero
               onNavigateTab={handleTabChange}
             />
+            {/* Interactive Trip Planner Component */}
+            <TripPlanner />
             <AirportTransfersSection />
             <FleetSection />
             <TestimonialsCarousel />
