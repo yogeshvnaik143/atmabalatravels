@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plane, Clock, ShieldCheck, MessageCircle, Phone, CheckCircle2, Navigation } from 'lucide-react';
+import { Plane, Clock, ShieldCheck, MessageCircle, Phone, CheckCircle2, Navigation, Car } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AIRPORT_TRANSFER_ROUTES } from '../data';
 import { AirportTransferRoute } from '../types';
@@ -17,18 +17,17 @@ export default function AirportTransfersSection({ onBookTransfer: _onBookTransfe
     return true;
   });
 
-  const handleBookRoute = (route: AirportTransferRoute, vehicleType: string, fare: number) => {
-    const text = `Hi Harish G, I need an express transfer booking with Atmabala Travels:
+  const handleBookRoute = (route: AirportTransferRoute) => {
+    const text = `Hi Harish G, I need a price quote for express transfer with Atmabala Travels:
 ✈️ Route: ${route.source} ➔ ${route.destination}
-🚗 Selected Vehicle: ${vehicleType} (Fixed Fare: ₹${fare.toLocaleString('en-IN')})
 📏 Distance: ${route.distanceKm} km (~${route.driveTime})
 
-Please let me know driver details and availability.`;
+Please share availability and best quotation.`;
     window.open(`https://wa.me/918073756776?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
-    <section id="transfers" className="py-20 bg-[#0B192C] text-white relative overflow-hidden">
+    <section id="transfers" className="py-16 sm:py-20 bg-[#0B192C] text-white relative overflow-hidden">
       {/* Decorative Background Accents */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FF6500]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -47,7 +46,7 @@ Please let me know driver details and availability.`;
             <span>Dedicated Express Connectivity</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Airport & Railway Transfers
+            Airport &amp; Railway Transfers
           </h2>
           <p className="text-slate-300 mt-4 text-base sm:text-lg">
             Guaranteed on-time pickups from Goa Mopa (GOX), Dabolim (GOI), Hubli Airport, and Kumta Railway Station with flight tracking and 24/7 night arrivals.
@@ -88,18 +87,8 @@ Please let me know driver details and availability.`;
           </div>
         </motion.div>
 
-        {/* Express Route Quick-Ticker */}
+        {/* Express Route Quick-Ticker (Zero Prices) */}
         <div className="mb-12">
-          <div className="flex items-center justify-between mb-3 px-1">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-              <span>Direct Express Pickup & Station Routes</span>
-            </span>
-            <span className="text-[11px] text-slate-400 hidden sm:inline">
-              Click any route card to book instantly
-            </span>
-          </div>
-
           <div className="relative overflow-hidden rounded-2xl bg-slate-900/90 border border-slate-700/80 p-3 sm:p-4 shadow-xl pause-on-hover">
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-slate-900 to-transparent z-10" />
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-slate-900 to-transparent z-10" />
@@ -108,7 +97,7 @@ Please let me know driver details and availability.`;
               {[...AIRPORT_TRANSFER_ROUTES, ...AIRPORT_TRANSFER_ROUTES].map((r, i) => (
                 <div
                   key={`${r.id}-marquee-${i}`}
-                  onClick={() => handleBookRoute(r, 'Sedan (Dzire)', r.sedanFare)}
+                  onClick={() => handleBookRoute(r)}
                   className="w-72 sm:w-80 shrink-0 bg-slate-800/95 p-3.5 rounded-xl border border-slate-700 hover:border-[#FF6500] transition-colors cursor-pointer flex items-center gap-3.5 group shadow-md"
                 >
                   <img
@@ -129,8 +118,8 @@ Please let me know driver details and availability.`;
                       {r.source}
                     </h4>
                     <div className="flex items-center justify-between mt-1 text-[11px]">
-                      <span className="text-slate-400">Sedan: <strong className="text-white">₹{r.sedanFare.toLocaleString('en-IN')}</strong></span>
-                      <span className="text-[#25D366] font-bold text-[10px] flex items-center gap-0.5">Book →</span>
+                      <span className="text-slate-300 font-semibold text-[11px]">24/7 Available</span>
+                      <span className="text-[#25D366] font-bold text-[10px] flex items-center gap-0.5">Ask Price →</span>
                     </div>
                   </div>
                 </div>
@@ -139,7 +128,7 @@ Please let me know driver details and availability.`;
           </div>
         </div>
 
-        {/* Airport Route Cards Grid */}
+        {/* Airport Route Cards Grid (Zero Prices) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredRoutes.map((route, idx) => (
             <motion.div
@@ -166,7 +155,7 @@ Please let me know driver details and availability.`;
                 
                 {route.popular && (
                   <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#FF6500] text-white text-[11px] font-extrabold uppercase tracking-wider shadow-md">
-                    High Demand
+                    Popular Route
                   </span>
                 )}
 
@@ -198,41 +187,42 @@ Please let me know driver details and availability.`;
                     ))}
                   </div>
 
-                  {/* Multi-Vehicle Rate Matrix */}
+                  {/* Multi-Vehicle Available Options (Zero Prices) */}
                   <div className="bg-slate-900/80 rounded-2xl p-3.5 border border-slate-700/60 mb-5">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                      Transparent Fixed Fares (All-Inclusive)
+                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2 flex items-center gap-1.5">
+                      <Car className="w-3.5 h-3.5 text-[#FF6500]" />
+                      Fleet Available for this Route
                     </span>
                     <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div className="bg-slate-800/80 p-2 rounded-xl flex items-center justify-between">
-                        <span className="text-slate-300 font-medium">Sedan (Dzire)</span>
-                        <span className="font-bold text-[#FF6500]">₹{route.sedanFare.toLocaleString('en-IN')}</span>
+                      <div className="bg-slate-800/80 p-2 rounded-xl text-center">
+                        <span className="text-white font-medium block">Sedan (Dzire)</span>
+                        <span className="text-[10px] text-slate-400">4+1 Passengers</span>
                       </div>
-                      <div className="bg-slate-800/80 p-2 rounded-xl flex items-center justify-between">
-                        <span className="text-slate-300 font-medium">Ertiga 6-Seater</span>
-                        <span className="font-bold text-[#FF6500]">₹{route.suvFare.toLocaleString('en-IN')}</span>
+                      <div className="bg-slate-800/80 p-2 rounded-xl text-center">
+                        <span className="text-white font-medium block">Ertiga MPV</span>
+                        <span className="text-[10px] text-slate-400">6+1 Passengers</span>
                       </div>
-                      <div className="bg-slate-800/80 p-2 rounded-xl flex items-center justify-between">
-                        <span className="text-slate-300 font-medium">Innova Crysta</span>
-                        <span className="font-bold text-[#D4AF37]">₹{route.crystaFare.toLocaleString('en-IN')}</span>
+                      <div className="bg-slate-800/80 p-2 rounded-xl text-center">
+                        <span className="text-white font-medium block">Innova Crysta</span>
+                        <span className="text-[10px] text-[#D4AF37]">Captain Comfort</span>
                       </div>
-                      <div className="bg-slate-800/80 p-2 rounded-xl flex items-center justify-between">
-                        <span className="text-slate-300 font-medium">Tempo Traveller</span>
-                        <span className="font-bold text-[#25D366]">₹{route.tempoFare.toLocaleString('en-IN')}</span>
+                      <div className="bg-slate-800/80 p-2 rounded-xl text-center">
+                        <span className="text-white font-medium block">Tempo Traveller</span>
+                        <span className="text-[10px] text-[#25D366]">12-16 Group Coach</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Instant Book Action */}
+                {/* Instant Quote Action */}
                 <div className="flex items-center gap-2 pt-2 border-t border-slate-700/60">
                   <button
                     type="button"
-                    onClick={() => handleBookRoute(route, 'Swift Dzire Sedan', route.sedanFare)}
-                    className="flex-1 py-2.5 px-3 rounded-xl bg-[#25D366] text-white font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-[#1EBE5D] transition-all cursor-pointer shadow-md"
+                    onClick={() => handleBookRoute(route)}
+                    className="flex-1 py-2.5 px-3 rounded-xl bg-[#25D366] text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 hover:bg-[#1EBE5D] transition-all cursor-pointer shadow-md"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Book on WhatsApp</span>
+                    <span>Get Fare Quote on WhatsApp</span>
                   </button>
 
                   <a

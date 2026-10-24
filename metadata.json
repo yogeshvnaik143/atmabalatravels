@@ -1,6 +1,6 @@
 {
   "name": "Atmabala Travels",
-  "description": "Book verified taxi services, airport transfers & sightseeing tour packages in Gokarna & Kumta with Atmabala Travels. Transparent fixed rates & 24/7 pickups.",
+  "description": "Book verified taxi services, airport transfers & sightseeing tour packages in Gokarna & Kumta with Atmabala Travels. Instant quotations via WhatsApp & 24/7 pickups.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

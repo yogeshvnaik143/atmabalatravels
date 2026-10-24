@@ -1,4 +1,4 @@
-import { Sun, Moon, Sparkles } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -6,14 +6,16 @@ interface ThemeToggleProps {
   variant?: 'icon' | 'compact' | 'pill' | 'switch';
   className?: string;
   showLabel?: boolean;
+  id?: string;
 }
 
 export default function ThemeToggle({
   variant = 'icon',
   className = '',
-  showLabel = false
+  showLabel = false,
+  id = 'theme-toggle-btn'
 }: ThemeToggleProps) {
-  const { theme, isDark, toggleTheme } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
 
   if (variant === 'switch') {
     return (
@@ -52,38 +54,42 @@ export default function ThemeToggle({
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.92 }}
       onClick={toggleTheme}
-      id="theme-toggle-btn"
+      id={id}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      className={`relative inline-flex items-center justify-center gap-2 p-2 sm:px-3 sm:py-2 rounded-full border transition-all duration-300 cursor-pointer select-none focus:outline-hidden focus:ring-2 focus:ring-[#FF6500]/50 ${
+      className={`relative inline-flex items-center justify-center rounded-full border transition-all duration-200 cursor-pointer select-none focus:outline-hidden focus:ring-2 focus:ring-[#FF6500]/50 shrink-0 ${
+        showLabel
+          ? 'px-3 py-2 gap-2 text-xs font-semibold'
+          : 'w-9 h-9 sm:w-10 sm:h-10 min-w-[36px] sm:min-w-[40px] aspect-square p-0'
+      } ${
         isDark
-          ? 'bg-slate-800/90 hover:bg-slate-700/90 text-amber-400 border-slate-700 shadow-sm shadow-black/20'
-          : 'bg-white hover:bg-slate-100 text-slate-700 border-slate-200/90 shadow-2xs hover:text-[#0B192C]'
+          ? 'bg-slate-800/90 hover:bg-slate-700 text-amber-400 border-slate-700 shadow-xs hover:border-amber-400/60'
+          : 'bg-white hover:bg-slate-50 text-slate-700 hover:text-[#FF6500] border-slate-300 dark:border-slate-700 shadow-xs hover:border-[#FF6500]/50'
       } ${className}`}
     >
-      <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">
-        <AnimatePresence mode="wait" initial={false}>
+      <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden pointer-events-none">
+        <AnimatePresence mode="popLayout" initial={false}>
           {isDark ? (
             <motion.div
               key="dark-sun"
-              initial={{ rotate: -90, scale: 0, opacity: 0 }}
+              initial={{ rotate: -60, scale: 0.6, opacity: 0 }}
               animate={{ rotate: 0, scale: 1, opacity: 1 }}
-              exit={{ rotate: 90, scale: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="absolute inset-0 flex items-center justify-center"
+              exit={{ rotate: 60, scale: 0.6, opacity: 0 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
+              className="flex items-center justify-center"
             >
               <Sun className="w-4 h-4 text-amber-400 fill-amber-400/20" />
             </motion.div>
           ) : (
             <motion.div
               key="light-moon"
-              initial={{ rotate: 90, scale: 0, opacity: 0 }}
+              initial={{ rotate: 60, scale: 0.6, opacity: 0 }}
               animate={{ rotate: 0, scale: 1, opacity: 1 }}
-              exit={{ rotate: -90, scale: 0, opacity: 0 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="absolute inset-0 flex items-center justify-center"
+              exit={{ rotate: -60, scale: 0.6, opacity: 0 }}
+              transition={{ duration: 0.18, ease: 'easeOut' }}
+              className="flex items-center justify-center"
             >
-              <Moon className="w-4 h-4 text-slate-700 fill-slate-700/10" />
+              <Moon className="w-4 h-4 text-slate-700 hover:text-[#FF6500] transition-colors" />
             </motion.div>
           )}
         </AnimatePresence>

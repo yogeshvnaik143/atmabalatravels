@@ -75,14 +75,16 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.95 }}
-              onClick={onOpenBooking}
+              href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20want%20to%20get%20a%20cab%20fare%20quote%20with%20Atmabala%20Travels"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 rounded-full bg-[#FF6500] text-white font-bold text-base shadow-xl hover:bg-[#E55A00] transition-colors cursor-pointer"
             >
-              Book Now
-            </motion.button>
+              Get Free Quote on WhatsApp
+            </motion.a>
 
             <motion.a
               whileHover={{ scale: 1.06 }}

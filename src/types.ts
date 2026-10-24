@@ -13,59 +13,6 @@ export interface FleetVehicle {
   features: string[];
 }
 
-export interface TravelPackage {
-  id: string;
-  title: string;
-  category?: 'beach' | 'pilgrimage' | 'nature' | 'outstation' | 'combo' | 'heritage';
-  travelType?: 'adventure' | 'relaxation' | 'family' | 'pilgrimage' | 'heritage';
-  duration: string;
-  durationHours?: number;
-  durationCategory?: 'half-day' | 'full-day' | 'extended-day' | 'multi-day';
-  destinations?: string[];
-  highlights: string[];
-  route: string;
-  popularFor: string;
-  recommendedVehicle: string;
-  startingPrice: string;
-  numericPrice?: number;
-  pricingByVehicle?: {
-    sedan4: number;
-    ertiga6: number;
-    innova7: number;
-    urbania9: number;
-    tempo12: number;
-  };
-  badge?: string;
-  image?: string;
-  rating?: number;
-  reviewsCount?: number;
-  inclusionsList?: string[];
-  itineraryDays?: { day: string; title: string; activities: string[] }[];
-}
-
-export interface ConfirmedBooking {
-  bookingId: string;
-  createdAt: string;
-  status: 'confirmed' | 'completed' | 'cancelled';
-  customerName: string;
-  phone: string;
-  email?: string;
-  travelDate: string;
-  pickupTime: string;
-  pickupLocation: string;
-  passengers: number;
-  packageId?: string;
-  packageTitle: string;
-  packageRoute: string;
-  packageDuration: string;
-  selectedVehicleId: string;
-  selectedVehicleName: string;
-  totalFare: number;
-  inclusions: string[];
-  specialRequests?: string;
-  paymentMethod: 'cash_to_driver' | 'upi_on_arrival' | 'advance_booked';
-}
-
 export interface AirportTransferRoute {
   id: string;
   source: string;
@@ -78,17 +25,6 @@ export interface AirportTransferRoute {
   tempoFare: number;
   popular: boolean;
   highlights: string[];
-  image: string;
-}
-
-export interface HotelStayOption {
-  id: string;
-  name: string;
-  location: string;
-  type: 'Beachfront Resort' | 'Heritage Homestay' | 'Budget Hotel' | 'Eco Cottage';
-  priceRange: string;
-  features: string[];
-  nearTo: string;
   image: string;
 }
 
@@ -117,61 +53,17 @@ export interface TouristDestination {
   description: string;
 }
 
-export interface BookingFormState {
-  fullName: string;
-  phoneNumber: string;
-  pickupLocation: string;
-  dropLocation: string;
-  travelDate: string;
-  passengers: number;
-  selectedVehicle: string;
-  selectedPackage?: string;
-  tripType: 'one-way' | 'round-trip' | 'sightseeing' | 'package' | 'airport-transfer' | 'goa-drop' | 'hourly';
-  specialNotes: string;
-}
-
-export interface Sightseeing1DayItem {
+export interface TravelPackage {
   id: string;
-  place: string;
-  rate4Plus1: number;
-  rate6Plus1: number;
-  description?: string;
-  inclusions?: string;
-}
-
-export interface OneWayDropItem {
-  id: string;
-  destination: string;
-  rate4Plus1: number;
-  rate6Plus1: number;
-  category?: 'nearby' | 'ghat' | 'pilgrimage' | 'city' | 'long-distance' | 'coastal';
-}
-
-export interface GoaDropItem {
-  id: string;
-  destination: string;
-  rate4Plus1: number;
-  rate6Plus1: number;
-  region?: 'South Goa' | 'North Goa' | 'Airports & Transit' | 'Central Goa';
-}
-
-export interface HourlyRentalItem {
-  id: string;
+  title: string;
+  category?: 'beach' | 'pilgrimage' | 'nature' | 'outstation' | 'combo' | 'heritage';
+  travelType?: 'adventure' | 'relaxation' | 'family' | 'pilgrimage' | 'heritage';
   duration: string;
-  hours: number;
-  kilometers: number;
-  rate4Plus1: number;
-  rate6Plus1: number;
-  extraHourRate: number;
-  extraKmRate: number;
+  durationHours?: number;
+  destinations?: string[];
+  highlights: string[];
+  route: string;
+  popularFor: string;
+  recommendedVehicle: string;
+  startingPrice: string;
 }
-
-export interface KmWiseTariff {
-  minKmPerDay: number;
-  rate4Plus1PerKm: number;
-  rate6Plus1PerKm: number;
-  driverBataPerDay: number;
-  tollParkingNote: string;
-  inclusions: string;
-}
-

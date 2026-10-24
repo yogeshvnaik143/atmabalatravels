@@ -296,14 +296,16 @@ export default function TestimonialsCarousel({ onOpenBooking }: TestimonialsCaro
 
         {/* Bottom CTA for prospective travelers */}
         <div className="mt-12 text-center flex flex-wrap items-center justify-center gap-4">
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={onOpenBooking}
+            href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20would%20like%20to%20plan%20a%20Gokarna%20trip%20and%20get%20a%20price%20quote."
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 rounded-full bg-[#0B192C] dark:bg-[#FF6500] text-white font-bold text-sm shadow-md hover:bg-[#162740] dark:hover:bg-[#E55A00] transition-colors cursor-pointer"
           >
-            Plan Your Gokarna Trip Today
-          </motion.button>
+            Plan Your Gokarna Trip on WhatsApp
+          </motion.a>
 
           <button
             type="button"

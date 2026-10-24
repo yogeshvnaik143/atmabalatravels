@@ -99,116 +99,89 @@ export default function Footer({ setActiveTab }: FooterProps) {
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('transfers');
+                    setActiveTab('places');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Airport Transfers (Goa / Hubli)
+                  15 Tourist Places &amp; Attractions
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('calculator');
+                    setActiveTab('about');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Trip Fare &amp; Route Calculator
+                  About Us (Harish G &amp; Office)
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('fleet');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    setActiveTab('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('transfers');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
+                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
+                >
+                  Airport &amp; Station Transfers
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    setActiveTab('home');
+                    setTimeout(() => {
+                      const el = document.getElementById('fleet');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
                   Our Fleet (Dzire, Crysta, Tempo)
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setActiveTab('packages');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
-                >
-                  Tour Packages &amp; Routes
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setActiveTab('poster');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
-                >
-                  15 Gokarna Tourist Places
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setActiveTab('guide');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
-                >
-                  Stays &amp; Temple Darshan Guide
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    setActiveTab('testimonials');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
-                >
-                  Guest Reviews &amp; Stories
-                </button>
-              </li>
             </ul>
           </div>
 
-          {/* Popular Coastal Tour Routes */}
+          {/* Popular Tourist Destinations */}
           <div>
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4 border-b border-slate-800 pb-2 flex items-center gap-1.5">
               <Compass className="w-4 h-4 text-[#FF6500]" />
-              Popular Tour Routes
+              Popular Sightseeing
             </h3>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('packages');
+                    setActiveTab('places');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Gokarna Beach &amp; Temple Tour
+                  Om Beach &amp; Kudle Beach
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('packages');
+                    setActiveTab('places');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Murdeshwar &amp; Honnavar Mangroves
+                  Mahabaleshwar Temple &amp; Kotitirtha
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('packages');
+                    setActiveTab('places');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
@@ -219,36 +192,24 @@ export default function Footer({ setActiveTab }: FooterProps) {
               <li>
                 <button
                   onClick={() => {
-                    setActiveTab('packages');
+                    setActiveTab('places');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Jog Falls Nature Trail
+                  Murudeshwar Shiva Temple &amp; Mirjan Fort
                 </button>
               </li>
-
               <li>
-                <a
-                  href="/sitemap.xml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-slate-400 hover:text-white inline-flex items-center gap-1"
+                <button
+                  onClick={() => {
+                    setActiveTab('places');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  <span>Sitemap XML</span>
-                  <span>↗</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/llms.txt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-slate-400 hover:text-white inline-flex items-center gap-1"
-                >
-                  <span>LLM / AI Travel Guide (llms.txt)</span>
-                  <span>↗</span>
-                </a>
+                  Honnavar Backwater Boating
+                </button>
               </li>
             </ul>
           </div>
@@ -354,7 +315,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <span className="text-slate-400">
               Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: +91 {COMPANY_DETAILS.phone}
             </span>
-            <ThemeToggle showLabel className="bg-slate-800 text-slate-200 border-slate-700 hover:text-white" />
+            <ThemeToggle id="theme-toggle-footer-btn" showLabel className="bg-slate-800 text-slate-200 border-slate-700 hover:text-white" />
           </div>
         </div>
 
