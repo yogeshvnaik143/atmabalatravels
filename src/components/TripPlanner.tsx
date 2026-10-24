@@ -44,13 +44,14 @@ const DESTINATIONS = [
   'Mahabaleshwar Temple & Kotiteertha (Sacred Atmalinga)',
   'Yana Rocks & Vibhuti Waterfalls (Sahyadri Forest Circuit)',
   'Murudeshwar 123ft Shiva Statue & Mirjan Fort',
+  'Mirjan Fort (Historic Queen Chennabhairadevi Citadel)',
+  'Jog Falls Western Ghats Full-Day Tour',
   'Honnavar Mangrove Boardwalk & Sharavati Boating',
   'Apsara Konda Waterfalls & Kasarkod Eco Beach',
   'Goa South Beaches (Palolem, Agonda & Colva)',
   'Goa Mopa Airport (GOX) / Dabolim (GOI) Drop',
   'Kumta Railway Station (KT) Drop',
   'Hubli Junction / Airport Transfer',
-  'Jog Falls Western Ghats Full-Day Tour',
   'Dandeli River Rafting & Wildlife Jungle Safari',
   'Karwar Coastal & INS Chapal Warship Museum',
   'Custom Destination'
@@ -82,6 +83,18 @@ const ROUTE_INSIGHTS: Record<string, RouteInfo> = {
     duration: '1 hr 25 mins',
     highlights: '4-lane coastal highway NH-66, 16th-century laterite stone Mirjan fort & oceanfront temple',
     bestVehicle: 'Innova Crysta or Swift Dzire'
+  },
+  'Gokarna Town / Main Bus Stand -> Mirjan Fort (Historic Queen Chennabhairadevi Citadel)': {
+    distance: '22 km',
+    duration: '30 mins',
+    highlights: 'Scenic NH-66 drive near Kumta, lush moss-covered 16th-century laterite bastions, double moats & watchtowers',
+    bestVehicle: 'Swift Dzire, Ertiga or Innova Crysta'
+  },
+  'Gokarna Town / Main Bus Stand -> Jog Falls Western Ghats Full-Day Tour': {
+    distance: '112 km',
+    duration: '2 hrs 45 mins',
+    highlights: 'Scenic Western Ghats ascent, Sharavathi river gorge, Raja, Roarer, Rocket & Rani waterfalls',
+    bestVehicle: 'Innova Crysta or Ertiga'
   },
   'Gokarna Town / Main Bus Stand -> Honnavar Mangrove Boardwalk & Sharavati Boating': {
     distance: '48 km',

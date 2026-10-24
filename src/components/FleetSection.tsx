@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Users, Briefcase, Snowflake, Phone, MessageCircle, Check, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Users, Briefcase, Snowflake, Phone, MessageCircle, Check, Sparkles, ArrowRight, ShieldCheck, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FLEET_VEHICLES } from '../data';
 import { FleetVehicle } from '../types';
@@ -52,7 +52,7 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
             Choose from well-maintained sedans, luxury MPVs, and group Tempo Travellers with courteous, experienced local chauffeurs. Instant quotations available on WhatsApp.
           </p>
 
-          {/* Category Filter Pills */}
+          {/* Category Filter Pills and Car Interior Gallery Link */}
           <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
             {categories.map((cat) => {
               const isSelected = selectedCategory === cat.id;
@@ -70,6 +70,19 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
                 </button>
               );
             })}
+
+            {/* Asset Guide Interior Gallery Link */}
+            <a
+              href="https://unsplash.com/s/photos/car-interior"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all cursor-pointer shadow-xs"
+              title="View clean vehicle interiors (Seats, AC & Boot)"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Car Interior Gallery</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
         </motion.div>
 

@@ -337,8 +337,46 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     distanceFromGokarna: 'Walking distance in Gokarna town',
     bestTimeToVisit: 'Early morning & Deepotsava evening',
     description: 'A vast man-made sacred lake surrounded by ancient stone shrines, temples, and banyan trees where pilgrims take holy cleansing baths.'
+  },
+  {
+    id: '16',
+    title: 'Mirjan Fort',
+    category: 'heritage',
+    image: '/images/mirjan-fort.jpg',
+    distanceFromGokarna: '22 km South (near Kumta NH-66)',
+    bestTimeToVisit: '9:00 AM - 5:30 PM (Emerald green in Monsoon & Winter)',
+    description: 'Historic 16th-century laterite fort ruled by Queen Chennabhairadevi (The Pepper Queen). Features massive double moats, defensive bastions, high watchtowers, and secret royal passageways.'
+  },
+  {
+    id: '17',
+    title: 'Jog Falls',
+    category: 'nature',
+    image: '/images/jog-falls.jpg',
+    distanceFromGokarna: '112 km via scenic Western Ghats',
+    bestTimeToVisit: 'Monsoon & Post-Monsoon (July to January)',
+    description: 'India\'s second-highest plunge waterfall dropping 830 feet in four magnificent distinct cascades: Raja, Roarer, Rocket, and Rani through the lush Sahyadri ranges.'
   }
 ];
+
+export const ASSET_GUIDE_LINKS = {
+  carInteriorGallery: 'https://unsplash.com/s/photos/car-interior',
+  logoAsset: '/assets/logo.png',
+  pdfGuide: '/assets/aistudio/Atmabala_Travels_Website_Assets_478f7edd.pdf',
+  wikimediaSources: {
+    swiftDzire: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/2024_Maruti_Suzuki_Dzire_ZXi_Plus_%28India%29_front_view_01.jpg/1280px-2024_Maruti_Suzuki_Dzire_ZXi_Plus_%28India%29_front_view_01.jpg',
+    ertiga: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2022_Suzuki_Ertiga_GL_%28Philippines%29_front_view.jpg/1280px-2022_Suzuki_Ertiga_GL_%28Philippines%29_front_view.jpg',
+    innovaCrysta: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Toyota_Innova_Crysta_2.4_ZX_front_view.jpg/1280px-Toyota_Innova_Crysta_2.4_ZX_front_view.jpg',
+    forceTraveller: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Force_Traveller_Ambulance.jpg/1280px-Force_Traveller_Ambulance.jpg',
+    yanaRocks: 'https://upload.wikimedia.org/wikipedia/commons/8/88/Yana_Rocks.jpg',
+    vibhutiFalls: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/VIBHUTI_FALLS.jpg',
+    murudeshwarTemple: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Murudeshwara_Temple%2CUttar_Karnataka.jpg',
+    mirjanFort: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Mirjan_Fort%2C_Uttara_Kannada%2C_Karnataka.JPG',
+    honnavarBackwaters: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Honavar_gokarna.jpg',
+    jogFalls: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Jog_falls%2C_Karnataka.jpg',
+    gokarnaBeach: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Gokarna_city_beach.jpg',
+    mahabaleshwarTemple: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Mahabaleshwara_Temple.JPG'
+  }
+};
 
 export const CUSTOMER_TESTIMONIALS: CustomerTestimonial[] = [
   {

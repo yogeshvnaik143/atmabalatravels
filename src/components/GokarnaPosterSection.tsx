@@ -28,7 +28,7 @@ export default function GokarnaPosterSection() {
   }, [selectedPlace]);
 
   const categories = [
-    { id: 'all', label: 'All 15 Places' },
+    { id: 'all', label: `All Places (${TOURIST_DESTINATIONS.length})` },
     { id: 'temple', label: 'Sacred Temples' },
     { id: 'beach', label: 'Scenic Beaches' },
     { id: 'nature', label: 'Waterfalls & Caves' },
@@ -62,7 +62,7 @@ export default function GokarnaPosterSection() {
               Tourist Places &amp; Sightseeing Gallery
             </span>
             <h1 className="text-2xl sm:text-4xl font-extrabold font-['Cinzel'] text-white mt-1">
-              15 Nearest Places To Visit Around Gokarna
+              {TOURIST_DESTINATIONS.length} Must-Visit Places Around Gokarna &amp; Uttara Kannada
             </h1>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">
               Door-to-door cab service, custom day tour packages, and temple darshan drops.

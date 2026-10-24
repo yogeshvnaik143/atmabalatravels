@@ -1,6 +1,6 @@
 # 🚗 ATMABALA Travels — Official Web Application
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.1.0-blue.svg?style=for-the-badge)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-Apache--2.0-green.svg?style=for-the-badge)](LICENSE)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB.svg?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -28,8 +28,8 @@
 
 | Feature | Description |
 | :--- | :--- |
-| **🧭 Interactive Trip Planner** | Select origin and destination from 14 curated transit hubs with 1-click swap, vehicle matcher, travel time estimate, and formatted WhatsApp message generator. |
-| **🏖️ 15 Tourist Destinations Guide** | Comprehensive guide covering Om Beach, Kudle Beach, Mahabaleshwar Atmalinga Temple, Yana Caves, Vibhuti Falls, Murudeshwar, Honnavar Mangroves, and more. |
+| **🧭 Interactive Trip Planner** | Select origin and destination from 14+ curated transit hubs with 1-click swap, vehicle matcher, travel time estimate, and formatted WhatsApp message generator. |
+| **🏖️ 17 Tourist Destinations Guide** | Comprehensive guide covering Om Beach, Kudle Beach, Mahabaleshwar Atmalinga Temple, Yana Caves, Vibhuti Falls, Murudeshwar, Mirjan Fort, Jog Falls, Honnavar Mangroves, and more. |
 | **✈️ Airport & Transit Transfers** | Flight-synchronized pickups for Goa Mopa (GOX), Goa Dabolim (GOI), Hubli (HBX), Kumta Railway Station (KT), and Gokarna Road (GOK). |
 | **🚗 Dedicated Fleet Showcase** | Interactive specifications for Swift Dzire (Sedan), Maruti Ertiga (Hybrid MUV), Toyota Innova Crysta (Luxury SUV), Force Urbania (9+1 Van), and Tempo Traveller (12-20 seater). |
 | **🌓 Rock-Solid Dual Theme** | Seamless Light/Dark mode with system preference auto-detection, local storage persistence, and zero layout shift. |

@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.0] - 2026-10-24
+
+### 📸 Asset & Link Guide Integration
+- **Curated Asset Integration**: Incorporated public domain assets and destinations from the user's *Atmabala Travels — Website Asset & Link Guide*.
+- **New Tourist Destinations**: Added **Mirjan Fort** (16th-century Queen Chennabhairadevi Citadel) and **Jog Falls** (India's second-highest plunge waterfall) to the tourist attraction catalog (`src/data.ts`) and sightseeing gallery, expanding to 17 top destinations.
+- **Trip Planner Route Expansion**: Added standalone route intel for **Mirjan Fort** (22 km) and **Jog Falls** (112 km) in the interactive Trip Planner component (`src/components/TripPlanner.tsx`).
+- **Clean Car Interior Gallery**: Integrated curated Unsplash Car Interior Gallery (`https://unsplash.com/s/photos/car-interior`) link in `FleetSection.tsx` for seats, dual AC, and boot space transparency.
+- **Local Asset Mirroring**: Mirrored `logo.png` to `/public/assets/logo.png` and downloaded high-resolution watermark-free images for Mirjan Fort and Jog Falls into `/public/images/`.
+
+---
+
 ## [2.0.0] - 2026-10-24
 
 ### 🚀 Major Highlights

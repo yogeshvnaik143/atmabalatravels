@@ -1,7 +1,7 @@
 {
   "name": "atmabala-travels",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Official web application for Atmabala Travels — 24/7 taxi booking, airport transfers, and coastal sightseeing circuits in Gokarna & Uttara Kannada, Karnataka.",
   "author": "Yogesh Naik <yogeshvnaik93@gmail.com>",
   "license": "Apache-2.0",

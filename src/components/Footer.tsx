@@ -166,7 +166,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  15 Tourist Places &amp; Attractions
+                  Tourist Places &amp; Attractions (17 Spots)
                 </button>
               </li>
               <li>

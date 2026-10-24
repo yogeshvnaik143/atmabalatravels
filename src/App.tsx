@@ -61,7 +61,7 @@ export default function App() {
           </div>
         )}
 
-        {/* PAGE 2: TOURIST PLACES (15 Nearest Places, Photos, Details & WhatsApp Fare Inquiry) */}
+        {/* PAGE 2: TOURIST PLACES (17 Must-Visit Places, Photos, Details & WhatsApp Fare Inquiry) */}
         {activeTab === 'places' && (
           <div className="pt-20">
             <GokarnaPosterSection />
