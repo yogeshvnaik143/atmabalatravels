@@ -92,7 +92,7 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
     capacity: '9 + 1 Passengers',
     luggage: '6-8 Large Bags',
     ac: true,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80',
+    image: '/images/urbania-van.jpg',
     tagline: 'Next-gen luxury van with individual reclining seats, panoramic windows & high ceiling.',
     description: 'Ultra-modern Force Urbania 9+1. Walk-in cabin height, individual AC vents, reading lights, and international-standard ergonomics.',
     pricePerKm: 24,
@@ -207,7 +207,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '1',
     title: 'Mahabaleshwar Temple',
     category: 'temple',
-    image: 'https://images.unsplash.com/photo-1620766182966-c6eb5ed2b788?auto=format&fit=crop&w=600&q=80',
+    image: '/images/mahabaleshwar-temple.jpg',
     distanceFromGokarna: 'Heart of Town (0 km)',
     bestTimeToVisit: 'Morning 6:00 AM - 12:30 PM & 5:00 PM - 8:00 PM',
     description: 'The sacred 4th-century Dravidian temple housing the legendary Atmalinga consecrated by Lord Shiva and worshipped by thousands of pilgrims.'
@@ -216,7 +216,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '2',
     title: 'Mahaganapati Temple',
     category: 'temple',
-    image: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80',
+    image: '/images/mahaganapati-temple.jpg',
     distanceFromGokarna: 'Beside Mahabaleshwar Temple',
     bestTimeToVisit: 'Early morning before visiting the Atmalinga',
     description: 'Ancient standing Ganesha deity temple honoring the boy Ganesha who tricked the demon king Ravana to place the Atmalinga down.'
@@ -225,7 +225,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '3',
     title: 'Ramateertha Temple & Beach',
     category: 'temple',
-    image: 'https://images.unsplash.com/photo-1600387802805-4d4ebdc3eb4c?auto=format&fit=crop&w=600&q=80',
+    image: '/images/ramateertha.jpg',
     distanceFromGokarna: '1.5 km from Main Town',
     bestTimeToVisit: 'Sunrise & Evening Sunset',
     description: 'Serene sacred water spring surrounded by coconut groves with an expansive panorama over the Arabian Sea.'
@@ -252,7 +252,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '6',
     title: 'Belekhan Beach & Anjaneya Temple',
     category: 'beach',
-    image: 'https://images.unsplash.com/photo-1520935515357-196561fbe61d?auto=format&fit=crop&w=600&q=80',
+    image: '/images/belekhan-beach.jpg',
     distanceFromGokarna: '8 km South of Gokarna',
     bestTimeToVisit: 'Morning for peaceful nature strolls',
     description: 'Quiet rocky shore with the historic hillside Anjaneya (Lord Hanuman) temple offering crystal blue coastal waters.'
@@ -261,7 +261,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '7',
     title: 'Shiva Cave (Gogarbha)',
     category: 'heritage',
-    image: 'https://images.unsplash.com/photo-1624514064560-fca3aa9a4eb0?auto=format&fit=crop&w=600&q=80',
+    image: '/images/shiva-cave.jpg',
     distanceFromGokarna: '1.5 km near Kudle road',
     bestTimeToVisit: 'Daylight hours with flashlights',
     description: 'Mystical rock cave associated with the mythological emergence of Lord Shiva from the ear of a cow (Gokarna meaning cow\'s ear).'
@@ -270,7 +270,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '8',
     title: 'Vibhuti Falls',
     category: 'nature',
-    image: 'https://images.unsplash.com/photo-1623946059868-8091807d0d0f?auto=format&fit=crop&w=600&q=80',
+    image: '/images/vibhuti-falls.jpg',
     distanceFromGokarna: '45 km through Sahyadri hills',
     bestTimeToVisit: 'Post-Monsoon & Winter (Sept - Feb)',
     description: 'Multi-tiered natural forest waterfall dropping into crystal-clear turquoise limestone plunge pools perfect for a refreshing dip.'
@@ -279,7 +279,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '9',
     title: 'Murdeshwar Temple & Beach',
     category: 'temple',
-    image: 'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=600&q=80',
+    image: '/images/murudeshwar-temple.jpg',
     distanceFromGokarna: '78 km South via NH-66',
     bestTimeToVisit: 'Full day trip (Morning to Sunset)',
     description: 'Home to the magnificent 123-foot tall statue of Lord Shiva perched on Kanduka Hill surrounded on three sides by the roaring Arabian Sea.'
@@ -288,7 +288,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '10',
     title: 'Apsara Konda',
     category: 'nature',
-    image: 'https://images.unsplash.com/photo-1524220300957-612ce6ba1a30?auto=format&fit=crop&w=600&q=80',
+    image: '/images/apsara-konda.jpg',
     distanceFromGokarna: '52 km near Honnavar',
     bestTimeToVisit: 'Morning or late afternoon',
     description: 'Known as the "Pond of Angels", featuring a freshwater plunge pool, gentle cascade, and hill-top sunset viewpoint over the sea.'
@@ -297,7 +297,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '11',
     title: 'Mangrove Boardwalk',
     category: 'nature',
-    image: 'https://images.unsplash.com/photo-1622619472658-29be97e974e4?auto=format&fit=crop&w=600&q=80',
+    image: '/images/mangrove-boardwalk.jpg',
     distanceFromGokarna: '35 km near Kumta / Honnavar',
     bestTimeToVisit: 'High tide times for boat cruising',
     description: 'Elevated wooden trail weaving through lush tidal mangrove forests with rare migratory birds and estuarine boat rides.'
@@ -306,7 +306,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '12',
     title: 'Sharavati Water Sports & Backwater',
     category: 'nature',
-    image: 'https://images.unsplash.com/photo-1544413660-299165566b1d?auto=format&fit=crop&w=600&q=80',
+    image: '/images/sharavati-water-sports.jpg',
     distanceFromGokarna: '48 km near Honnavar',
     bestTimeToVisit: '10:00 AM - 5:00 PM',
     description: 'Thrilling water rides including jet-skis, speedboats, banana rides, and kayaking in the calm Sharavati river backwaters.'
@@ -315,7 +315,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '13',
     title: 'Yana Caves & Monoliths',
     category: 'nature',
-    image: 'https://images.unsplash.com/photo-1506509689886-c5679957d3bf?auto=format&fit=crop&w=600&q=80',
+    image: '/images/yana-caves.jpg',
     distanceFromGokarna: '50 km via forest ghat road',
     bestTimeToVisit: 'Morning 9:00 AM - 1:00 PM',
     description: 'Two gigantic black crystalline limestone rock monoliths (Bhairaveshwara and Mohini peaks) towering inside dense rainforests.'
@@ -324,7 +324,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '14',
     title: 'Sharavati Backwater & Boating',
     category: 'nature',
-    image: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=600&q=80',
+    image: '/images/sharavati-backwater.jpg',
     distanceFromGokarna: '45 km near Honnavar Eco-beach',
     bestTimeToVisit: 'Sunset golden hour boat cruise',
     description: 'Tranquil emerald waters where the Sharavati river meets the Arabian sea, lined with scenic suspension bridges and islands.'
@@ -333,7 +333,7 @@ export const TOURIST_DESTINATIONS: TouristDestination[] = [
     id: '15',
     title: 'Kotiteertha Lake & Temple',
     category: 'temple',
-    image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=600&q=80',
+    image: '/images/kotiteertha-lake.jpg',
     distanceFromGokarna: 'Walking distance in Gokarna town',
     bestTimeToVisit: 'Early morning & Deepotsava evening',
     description: 'A vast man-made sacred lake surrounded by ancient stone shrines, temples, and banyan trees where pilgrims take holy cleansing baths.'
@@ -381,7 +381,7 @@ export const CUSTOMER_TESTIMONIALS: CustomerTestimonial[] = [
     avatarText: 'AM',
     verifiedBadge: 'Verified Couple Trek',
     destinationTag: 'Kumta ➔ Yana & Vibhooti',
-    photo: 'https://images.unsplash.com/photo-1506509689886-c5679957d3bf?auto=format&fit=crop&w=600&q=80'
+    photo: '/images/yana-caves.jpg'
   },
   {
     id: 'test-4',
@@ -395,7 +395,7 @@ export const CUSTOMER_TESTIMONIALS: CustomerTestimonial[] = [
     avatarText: 'VH',
     verifiedBadge: 'Verified Local Resident',
     destinationTag: 'Kumta & Honnavar',
-    photo: 'https://images.unsplash.com/photo-1622619472658-29be97e974e4?auto=format&fit=crop&w=600&q=80'
+    photo: '/images/mangrove-boardwalk.jpg'
   },
   {
     id: 'test-5',

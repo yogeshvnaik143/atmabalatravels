@@ -54,7 +54,7 @@ export default function StatsAndParallax({ onOpenBooking }: StatsAndParallaxProp
       <section
         className="relative py-28 px-4 sm:px-6 text-center text-white bg-fixed bg-center bg-cover flex items-center justify-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(11, 25, 44, 0.78), rgba(11, 25, 44, 0.85)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80')`
+          backgroundImage: `linear-gradient(rgba(11, 25, 44, 0.78), rgba(11, 25, 44, 0.85)), url('/images/coastal-road-parallax.jpg')`
         }}
       >
         <motion.div
