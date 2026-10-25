@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Phone,
   MessageCircle,
@@ -15,7 +15,8 @@ import {
   Instagram,
   Facebook,
   Code2,
-  Heart
+  Heart,
+  Clock
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { COMPANY_DETAILS } from '../data';
@@ -30,6 +31,14 @@ type LegalTab = 'privacy' | 'terms' | 'cancellation' | 'safety' | 'proprietor';
 export default function Footer({ setActiveTab }: FooterProps) {
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [activeLegalTab, setActiveLegalTab] = useState<LegalTab>('privacy');
+  const [currentTime, setCurrentTime] = useState<Date>(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const openLegalModal = (tab: LegalTab) => {
     setActiveLegalTab(tab);
@@ -408,16 +417,36 @@ export default function Footer({ setActiveTab }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div className="flex flex-col sm:flex-row items-center gap-2">
-            <p>© 2026 ATMABALA Travels. All rights reserved.</p>
+        <div className="pt-6 flex flex-col lg:flex-row items-center justify-between gap-4 text-xs text-slate-500 border-t border-slate-800/80">
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
+            <p>© {currentTime.getFullYear()} ATMABALA Travels. All rights reserved.</p>
             <span className="hidden sm:inline text-slate-600">•</span>
             <p className="inline-flex items-center gap-1.5 text-slate-400 font-medium">
               <span>Developed with care by</span>
               <strong className="text-slate-200 font-bold hover:text-[#FF6500] transition-colors">YOGESH NAIK</strong>
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
+
+          {/* Current Date & Time Live Display */}
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 text-[11px] sm:text-xs text-slate-300 transition-colors shadow-xs"
+            title="Live System Date & Time"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <Clock className="w-3.5 h-3.5 text-[#FF6500]" />
+            <span className="text-slate-300 font-medium">
+              {currentTime.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
+            </span>
+            <span className="text-slate-600">•</span>
+            <span className="text-white font-mono font-bold tracking-tight">
+              {currentTime.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true })}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <span className="text-slate-400">
               Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: +91 {COMPANY_DETAILS.phone}
             </span>
