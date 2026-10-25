@@ -192,7 +192,17 @@ Please provide your best all-inclusive quotation and availability. Thank you!`;
   const handleSendWhatsApp = () => {
     const text = generateWhatsAppMessage();
     const url = `https://wa.me/918073756776?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.location.href = url;
+    }
   };
 
   const handleCopy = async () => {

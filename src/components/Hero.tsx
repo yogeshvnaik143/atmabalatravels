@@ -27,7 +27,18 @@ export default function Hero({ onNavigateTab }: HeroProps) {
 🧭 Trip Route / Itinerary: ${tripType}
 
 Please share your best quotation and availability.`;
-    window.open(`https://wa.me/918073756776?text=${encodeURIComponent(text)}`, '_blank');
+    const url = `https://wa.me/918073756776?text=${encodeURIComponent(text)}`;
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.location.href = url;
+    }
   };
 
   const scrollToSection = (id: string) => {
