@@ -31,7 +31,7 @@ export default function AboutSection() {
     },
     {
       icon: Award,
-      title: '12+ Years & 15,000+ Happy Guests',
+      title: `4+ Years & ${COMPANY_DETAILS.stats.happyCustomers} Happy Guests`,
       description: 'Proudly trusted by families, spiritual pilgrims, solo trekkers, and corporate groups from across India and worldwide with an average 4.9-star rating.'
     }
   ];
@@ -56,7 +56,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-16 sm:py-20 bg-white dark:bg-[#070D18] transition-colors">
+    <section id="about" className="py-8 sm:py-14 md:py-20 bg-white dark:bg-[#070D18] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Hero Header */}
@@ -64,16 +64,16 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-8 sm:mb-16"
         >
-          <span className="text-[#FF6500] font-bold text-xs sm:text-sm tracking-widest uppercase inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF6500]/10 border border-[#FF6500]/20 mb-3">
+          <span className="text-[#FF6500] font-bold text-xs sm:text-sm tracking-widest uppercase inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF6500]/10 border border-[#FF6500]/20 mb-2 sm:mb-3">
             <Compass className="w-3.5 h-3.5 text-[#FF6500]" />
             About Atmabala Travels
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0B192C] dark:text-white tracking-tight">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#0B192C] dark:text-white tracking-tight">
             Gokarna's Native Travel Partner
           </h1>
-          <p className="text-slate-600 dark:text-slate-300 mt-4 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 mt-2 sm:mt-4 text-sm sm:text-lg leading-relaxed">
             Founded by <strong>Harish G</strong>, Atmabala Travels is Gokarna's dedicated chauffeur and tourist cab service, connecting travelers to sacred temples, pristine beaches, and airport hubs across Karnataka and Goa.
           </p>
         </motion.div>
@@ -84,11 +84,11 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-[#0B192C] via-[#0F223D] to-[#071322] text-white rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl border border-slate-700/80 mb-16 relative overflow-hidden"
+          className="bg-gradient-to-br from-[#0B192C] via-[#0F223D] to-[#071322] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-10 lg:p-14 shadow-2xl border border-slate-700/80 mb-8 sm:mb-16 relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#FF6500]/10 rounded-full blur-3xl pointer-events-none" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center relative z-10">
             <div className="lg:col-span-4 flex flex-col items-center text-center">
               <div className="relative">
                 <img
@@ -101,42 +101,42 @@ export default function AboutSection() {
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).src = '/images/gokarna-beach.jpg';
                   }}
-                  className="w-44 h-44 sm:w-52 sm:h-52 rounded-2xl object-cover border-4 border-[#FF6500] shadow-xl"
+                  className="w-32 h-32 sm:w-52 sm:h-52 rounded-2xl object-cover border-4 border-[#FF6500] shadow-xl"
                 />
-                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-[#FF6500] text-white text-xs font-black uppercase tracking-wider rounded-full shadow-md whitespace-nowrap">
-                  12+ Years in Gokarna
+                <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-[#FF6500] text-white text-[10px] sm:text-xs font-black uppercase tracking-wider rounded-full shadow-md whitespace-nowrap">
+                  4+ Years in Gokarna
                 </span>
               </div>
-              <h3 className="text-2xl font-black mt-5">Harish. G</h3>
+              <h3 className="text-xl sm:text-2xl font-black mt-4 sm:mt-5">Harish. G</h3>
               <p className="text-xs text-[#FF6500] font-bold uppercase tracking-wider">Proprietor &amp; Chief Coordinator</p>
-              <p className="text-xs text-slate-400 mt-1">Native of Gokarna, Uttara Kannada</p>
+              <p className="text-xs text-slate-400 mt-0.5">Native of Gokarna, Uttara Kannada</p>
             </div>
 
             <div className="lg:col-span-8 flex flex-col justify-center">
-              <span className="text-[#FF6500] text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-1.5">
+              <span className="text-[#FF6500] text-xs font-bold uppercase tracking-widest mb-1.5 sm:mb-2 flex items-center gap-1.5">
                 <Award className="w-4 h-4 text-[#FF6500]" />
                 Founder's Commitment
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight text-white mb-4">
+              <h2 className="text-xl sm:text-3xl font-extrabold leading-tight text-white mb-3 sm:mb-4">
                 "Hospitality and honest guidance are our heartfelt tradition."
               </h2>
-              <div className="space-y-3.5 text-sm sm:text-base text-slate-300 leading-relaxed">
+              <div className="space-y-2.5 sm:space-y-3.5 text-xs sm:text-base text-slate-300 leading-relaxed">
                 <p>
-                  "When visitors travel to Gokarna, whether for a sacred pilgrimage to Lord Mahabaleshwar or a peaceful beach holiday, transportation should never be stressful. Over the past 12 years, I have built Atmabala Travels with a single principle: treat every traveler like an honored guest in our home."
+                  "When visitors travel to Gokarna, whether for a sacred pilgrimage to Lord Mahabaleshwar or a peaceful beach holiday, transportation should never be stressful. Over the past 4+ years, I have built Atmabala Travels with a single principle: treat every traveler like an honored guest in our home."
                 </p>
                 <p>
                   "We eliminate guesswork by providing customized WhatsApp quotations tailored directly to your schedule. Whether you need a simple station pickup from Kumta or a multi-day coastal circuit covering Yana Caves, Murudeshwar, and Jog Falls, our drivers ensure comfort, safety, and genuine local hospitality."
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3.5 mt-8 pt-6 border-t border-slate-700/80">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 mt-5 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-700/80">
                 <motion.a
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
                   href="https://wa.me/918073756776?text=Hi%20Harish%20G,%20I%20would%20like%20to%20get%20a%20price%20quote%20for%20a%20cab%20in%20Gokarna."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-slate-950 font-bold text-sm shadow-md hover:bg-[#1EBE5D] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#25D366] text-slate-950 font-bold text-xs sm:text-sm shadow-md hover:bg-[#1EBE5D] transition-colors cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Chat with Harish G on WhatsApp</span>
@@ -146,7 +146,7 @@ export default function AboutSection() {
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
                   href={`tel:${COMPANY_DETAILS.rawPhone}`}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs sm:text-sm border border-white/20 transition-colors"
                 >
                   <Phone className="w-4 h-4 text-[#FF6500]" />
                   <span>Call {COMPANY_DETAILS.phone}</span>
@@ -157,17 +157,17 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Why Choose Us Values Grid */}
-        <div className="mb-16">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B192C] dark:text-white">
+        <div className="mb-8 sm:mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+            <h2 className="text-xl sm:text-3xl font-extrabold text-[#0B192C] dark:text-white">
               Why Travelers Prefer Atmabala Travels
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
+            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-1 sm:mt-2">
               Built on dependability, clean air-conditioned vehicles, and verified local chauffeurs.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6 lg:gap-8">
             {values.map((v, i) => (
               <motion.div
                 key={v.title}
@@ -176,12 +176,12 @@ export default function AboutSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 whileHover={{ y: -5 }}
-                className="p-6 sm:p-8 rounded-2xl bg-[#F4F7F6] dark:bg-[#0F1B2B] border border-slate-200 dark:border-slate-800 transition-all shadow-xs hover:shadow-lg"
+                className="p-4 sm:p-6 lg:p-8 rounded-2xl bg-[#F4F7F6] dark:bg-[#0F1B2B] border border-slate-200 dark:border-slate-800 transition-all shadow-xs hover:shadow-lg"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#0B192C] dark:bg-slate-800 flex items-center justify-center text-[#FF6500] mb-5">
-                  <v.icon className="w-6 h-6" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#0B192C] dark:bg-slate-800 flex items-center justify-center text-[#FF6500] mb-3 sm:mb-5">
+                  <v.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-[#0B192C] dark:text-white mb-2">
+                <h3 className="text-base sm:text-lg font-bold text-[#0B192C] dark:text-white mb-1.5 sm:mb-2">
                   {v.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -197,34 +197,34 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-slate-100 dark:bg-slate-900 rounded-3xl p-8 sm:p-10 border border-slate-200 dark:border-slate-800 mb-16"
+          className="bg-slate-100 dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-slate-200 dark:border-slate-800 mb-8 sm:mb-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
             <div className="lg:col-span-7">
-              <span className="text-[#FF6500] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 mb-2">
+              <span className="text-[#FF6500] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 mb-1.5 sm:mb-2">
                 <MapPin className="w-4 h-4 text-[#FF6500]" />
                 Registered Headquarters
               </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0B192C] dark:text-white">
+              <h3 className="text-xl sm:text-3xl font-extrabold text-[#0B192C] dark:text-white">
                 Visit Our Gokarna Office
               </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 mb-6">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 sm:mt-2 mb-4 sm:mb-6">
                 Centrally located in Gokarna town, convenient for travelers arriving from bus terminals, railway stations, and beach resorts.
               </p>
 
-              <div className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#FF6500] shrink-0 mt-0.5" />
+              <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6500] shrink-0 mt-0.5" />
                   <div>
                     <strong>Office Address:</strong>
-                    <div className="text-slate-600 dark:text-slate-400">
+                    <div className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm">
                       Kamat Complex, Ganjigadde, Gokarna, Uttara Kannada, Karnataka - 581326 (Near Canara Bank)
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-[#FF6500] shrink-0" />
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6500] shrink-0" />
                   <div>
                     <strong>Helpline:</strong>{' '}
                     <a href={`tel:${COMPANY_DETAILS.rawPhone}`} className="text-[#FF6500] font-bold hover:underline">
@@ -234,20 +234,20 @@ export default function AboutSection() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <div>
                     <strong>Operating Hours:</strong> 24 Hours / 7 Days a Week (All-weather dispatch)
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-5 sm:mt-8 flex flex-wrap gap-2.5 sm:gap-3">
                 <a
                   href="https://maps.app.goo.gl/D8Nh5CjvQevnhewNA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl bg-[#0B192C] dark:bg-[#FF6500] text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#0B192C] dark:bg-[#FF6500] text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
                 >
                   <MapPin className="w-4 h-4" />
                   <span>Open in Google Maps ↗</span>
@@ -255,7 +255,7 @@ export default function AboutSection() {
 
                 <a
                   href={`tel:${COMPANY_DETAILS.rawPhone}`}
-                  className="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm hover:border-[#FF6500] hover:text-[#FF6500] transition-colors"
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm hover:border-[#FF6500] hover:text-[#FF6500] transition-colors"
                 >
                   Call Office Directly
                 </a>
@@ -271,9 +271,9 @@ export default function AboutSection() {
                   height={500}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-5 text-white">
-                  <span className="text-[11px] font-bold text-[#FF6500] uppercase tracking-wider">Convenient Gokarna Town Hub</span>
-                  <p className="text-xs text-slate-200 mt-0.5">Quick 5-minute dispatch to Kudle Beach, Om Beach &amp; Mahabaleshwar Temple.</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
+                  <span className="text-[10px] sm:text-[11px] font-bold text-[#FF6500] uppercase tracking-wider">Convenient Gokarna Town Hub</span>
+                  <p className="text-[11px] sm:text-xs text-slate-200 mt-0.5">Quick 5-minute dispatch to Kudle Beach, Om Beach &amp; Mahabaleshwar Temple.</p>
                 </div>
               </div>
             </div>

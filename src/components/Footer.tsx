@@ -16,11 +16,14 @@ import {
   Facebook,
   Code2,
   Heart,
-  Clock
+  Clock,
+  Palette
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { COMPANY_DETAILS } from '../data';
 import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../context/ThemeContext';
+import VisitorCounter from './VisitorCounter';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
@@ -32,6 +35,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [activeLegalTab, setActiveLegalTab] = useState<LegalTab>('privacy');
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
+  const { palette, setIsPaletteModalOpen } = useTheme();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,10 +50,10 @@ export default function Footer({ setActiveTab }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#0B192C] text-white pt-16 pb-12 border-t border-slate-800">
+    <footer className="bg-[#0B192C] text-white pt-8 sm:pt-16 pb-8 sm:pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 pb-8 sm:pb-12 border-b border-slate-800">
           
           {/* Brand Info & E-E-A-T signals */}
           <div className="space-y-4">
@@ -214,7 +218,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   }}
                   className="hover:text-[#FF6500] transition-colors cursor-pointer text-left"
                 >
-                  Our Fleet (Dzire, Crysta, Tempo)
+                  Our Fleet (Glanza, Ertiga, Minibus, Dzire)
                 </button>
               </li>
             </ul>
@@ -380,19 +384,19 @@ export default function Footer({ setActiveTab }: FooterProps) {
         </div>
 
         {/* Website Developer & Creator Section: YOGESH NAIK */}
-        <div className="my-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0B1523] to-slate-900 border border-slate-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#FF6500] to-amber-500 text-white font-black text-sm flex items-center justify-center shadow-lg shadow-[#FF6500]/20 shrink-0 border border-amber-400/40">
+        <div className="my-4 sm:my-6 p-3 sm:p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0B1523] to-slate-900 border border-slate-800 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <div className="flex items-center gap-3 sm:gap-3.5">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-[#FF6500] to-amber-500 text-white font-black text-xs sm:text-sm flex items-center justify-center shadow-lg shadow-[#FF6500]/20 shrink-0 border border-amber-400/40">
               YN
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-400">Website Designed &amp; Developed by</span>
-                <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FF6500]/15 text-[#FF6500] font-extrabold border border-[#FF6500]/30">
+                <span className="text-[11px] sm:text-xs text-slate-400">Website Designed &amp; Developed by</span>
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#FF6500]/15 text-[#FF6500] font-extrabold border border-[#FF6500]/30">
                   Creator
                 </span>
               </div>
-              <h4 className="text-base font-extrabold text-white tracking-wide mt-0.5 flex items-center gap-2">
+              <h4 className="text-sm sm:text-base font-extrabold text-white tracking-wide mt-0.5 flex items-center gap-2">
                 <span>YOGESH NAIK</span>
                 <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" />
               </h4>
@@ -407,13 +411,18 @@ export default function Footer({ setActiveTab }: FooterProps) {
               onClick={(e) => {
                 e.preventDefault();
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 text-slate-200 text-xs font-bold border border-slate-700 transition-all shadow-xs cursor-pointer group"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 text-slate-200 text-xs font-bold border border-slate-700 transition-all shadow-xs cursor-pointer group"
               title="Portfolio & social links will be updated soon"
             >
               <Code2 className="w-4 h-4 text-[#FF6500] group-hover:rotate-12 transition-transform" />
               <span>Yogesh Naik (Portfolio Links Coming Soon)</span>
             </motion.a>
           </div>
+        </div>
+
+        {/* Working Visitor Counter with Animated Coastal Scooter (Starting at 3800) */}
+        <div className="pb-4 sm:pb-8">
+          <VisitorCounter />
         </div>
 
         {/* Bottom Bar */}
@@ -446,10 +455,26 @@ export default function Footer({ setActiveTab }: FooterProps) {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="text-slate-400">
               Proprietor: <strong className="text-slate-300">Harish. G</strong> • Ph: +91 {COMPANY_DETAILS.phone}
             </span>
+
+            {/* 8-Theme Palette Button */}
+            <button
+              onClick={() => setIsPaletteModalOpen(true)}
+              type="button"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800 text-slate-200 border border-slate-700 hover:text-white hover:border-[#FF6500] text-xs font-semibold transition-all cursor-pointer"
+              title="Select Color Palette (4 Dark & 4 Light Presets)"
+            >
+              <span
+                className="w-2.5 h-2.5 rounded-full shadow-xs shrink-0"
+                style={{ backgroundColor: palette.primary }}
+              />
+              <Palette className="w-3.5 h-3.5 text-[#FF6500]" />
+              <span>{palette.code}</span>
+            </button>
+
             <ThemeToggle id="theme-toggle-footer-btn" showLabel className="bg-slate-800 text-slate-200 border-slate-700 hover:text-white" />
           </div>
         </div>
@@ -615,7 +640,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                     </div>
                   </div>
                   <p>
-                    Born and raised in Gokarna, Harish G established ATMABALA Travels to provide clean, fair-priced, and dependable taxi services across Coastal Karnataka and Goa. With over 10 years in coastal transport logistics, Harish has personally overseen more than 15,000 successful guest journeys.
+                    Born and raised in Gokarna, Harish G established ATMABALA Travels to provide clean, fair-priced, and dependable taxi services across Coastal Karnataka and Goa. With over 4 years in coastal transport logistics, Harish has personally overseen thousands of successful guest journeys ({COMPANY_DETAILS.stats.happyCustomers} happy travelers).
                   </p>
                   <p>
                     <strong>Registered Address:</strong> Kamat Complex, Near Canara Bank, Gokarna Main Road, Gokarna, Uttara Kannada, Karnataka - 581326, India.<br />

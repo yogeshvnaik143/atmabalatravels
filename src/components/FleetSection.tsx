@@ -13,11 +13,11 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
 
   const categories = [
     { id: 'all', label: 'All Fleet (6 Models)' },
-    { id: 'Sedan', label: 'Sedans (4+1)' },
+    { id: 'Sedan', label: 'Sedan & Glanza (4+1)' },
     { id: 'MUV', label: 'Ertiga (6+1)' },
-    { id: 'Luxury MPV', label: 'Innova Crysta' },
-    { id: 'Luxury Van', label: 'Force Urbania (9+1)' },
+    { id: 'Luxury MPV', label: 'Innova Crysta (7+1)' },
     { id: 'Mini Coach', label: 'Tempo Traveler (12+1)' },
+    { id: 'Minibus', label: 'Minibus Coach (21+1)' },
   ];
 
   const filteredFleet = selectedCategory === 'all'
@@ -26,11 +26,22 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
 
   const handleVehicleQuote = (vehicle: FleetVehicle) => {
     const text = `Hi Harish G, I would like to get a price quotation for booking ${vehicle.name} (${vehicle.capacity}) with Atmabala Travels. Please share availability and best fare.`;
-    window.open(`https://wa.me/918073756776?text=${encodeURIComponent(text)}`, '_blank');
+    const url = `https://wa.me/918073756776?text=${encodeURIComponent(text)}`;
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.location.href = url;
+    }
   };
 
   return (
-    <section id="fleet" className="py-16 sm:py-20 bg-white dark:bg-[#070D18] transition-colors">
+    <section id="fleet" className="py-8 sm:py-16 md:py-20 bg-white dark:bg-[#070D18] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -39,16 +50,16 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12"
+          className="text-center max-w-3xl mx-auto mb-6 sm:mb-12"
         >
           <span className="text-[#FF6500] font-bold text-xs sm:text-sm tracking-wider uppercase inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF6500]/10 border border-[#FF6500]/20">
             <Sparkles className="w-4 h-4 text-[#FF6500]" />
             Clean, Reliable &amp; Air Conditioned
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B192C] dark:text-white mt-3 tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0B192C] dark:text-white mt-2 sm:mt-3 tracking-tight">
             Our Premium Fleet
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 mt-3 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-300 mt-2 sm:mt-3 text-xs sm:text-base">
             Choose from well-maintained sedans, luxury MPVs, and group Tempo Travellers with courteous, experienced local chauffeurs. Instant quotations available on WhatsApp.
           </p>
 
@@ -130,7 +141,7 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
         </div>
 
         {/* Fleet Grid with motion layout (Zero Prices, Direct WhatsApp Quote) */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           <AnimatePresence>
             {filteredFleet.map((vehicle) => (
               <motion.div
@@ -144,7 +155,7 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
                 className="flex flex-col bg-[#F4F7F6] dark:bg-[#0F1B2B] rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-xl transition-all group"
               >
                 {/* Vehicle Image Container */}
-                <div className="relative h-52 w-full overflow-hidden bg-slate-800">
+                <div className="relative h-40 sm:h-52 w-full overflow-hidden bg-slate-800">
                   <img
                     src={vehicle.image}
                     alt={`Atmabala ${vehicle.name} rental cab Gokarna`}
@@ -166,7 +177,7 @@ export default function FleetSection({ onBookVehicle: _onBookVehicle }: FleetSec
                 </div>
 
                 {/* Vehicle Info */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between">
                   <div>
                     <h3 className="text-xl font-bold text-[#0B192C] dark:text-white group-hover:text-[#FF6500] transition-colors">
                       {vehicle.name}

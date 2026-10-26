@@ -5,6 +5,25 @@ import {
   CustomerTestimonial
 } from './types';
 
+// Real-time dynamic happy customer calculator
+// Base: 7,500 happy customers + 5 customers added automatically every calendar day
+const BASELINE_DATE = new Date('2026-10-01T00:00:00Z').getTime();
+const BASELINE_CUSTOMERS = 7500;
+const DAILY_INCREMENT = 5;
+
+export function getDynamicHappyCustomers() {
+  const now = Date.now();
+  const elapsedDays = Math.max(0, Math.floor((now - BASELINE_DATE) / (1000 * 60 * 60 * 24)));
+  const total = BASELINE_CUSTOMERS + (elapsedDays * DAILY_INCREMENT);
+  return {
+    count: total,
+    formatted: `${total.toLocaleString('en-IN')}+`,
+    rawCount: total,
+    daysAdded: elapsedDays * DAILY_INCREMENT,
+    dailyRate: DAILY_INCREMENT
+  };
+}
+
 export const COMPANY_DETAILS = {
   name: 'ATMABALA Travels',
   tagline: 'Your Journey, Our Drive.',
@@ -20,18 +39,20 @@ export const COMPANY_DETAILS = {
     gokarnaMapsUrl: 'https://maps.app.goo.gl/D8Nh5CjvQevnhewNA'
   },
   stats: {
-    happyCustomers: '15,000+',
+    get happyCustomers() {
+      return getDynamicHappyCustomers().formatted;
+    },
     successfulTrips: '850+',
     premiumCars: '45+',
     rating: '4.9 ★',
-    yearsServing: '12+ Years'
+    yearsServing: '4+ Years'
   }
 };
 
 export const FLEET_VEHICLES: FleetVehicle[] = [
   {
     id: 'swift-dzire',
-    name: 'Sedan 4+1 A/c (Swift Dzire / Etios)',
+    name: 'Sedan 4+1 A/c (Swift Dzire)',
     category: 'Sedan (4+1)',
     capacity: '4 + 1 Passengers',
     luggage: '2 Medium Bags',
@@ -42,6 +63,20 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
     pricePerKm: 13,
     perDayEstimate: 2400,
     features: ['Chilled Air Conditioning', 'Bluetooth Audio System', 'Generous Legroom', 'Clean & Sanitized Interiors', 'Toll & Bata Transparent']
+  },
+  {
+    id: 'toyota-glanza',
+    name: 'Toyota Glanza 4+1 A/c',
+    category: 'Sedan & Glanza (4+1)',
+    capacity: '4 + 1 Passengers',
+    luggage: '2-3 Medium Bags',
+    ac: true,
+    image: '/images/swift-dzire.jpg',
+    tagline: 'Modern, fuel-efficient & ultra-smooth premium car for couples and coastal drives.',
+    description: 'High-comfort Toyota Glanza with automatic chilled AC, refined suspension, and exceptional maneuverability on narrow Gokarna beach lanes and coastal roads.',
+    pricePerKm: 14,
+    perDayEstimate: 2500,
+    features: ['Automatic Climate Control', 'Modern Touchscreen & USB', 'Clean & Sanitized Interiors', 'Comfortable 4+1 Seating', 'Zero Surge Pricing']
   },
   {
     id: 'ertiga-smart',
@@ -58,20 +93,6 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
     features: ['Dual Zone AC Vents', 'Foldable 3rd Row', 'USB Fast Charging', 'Smooth Ghat Suspension', '6+1 Passenger Seating']
   },
   {
-    id: 'innova-crysta',
-    name: 'Innova Crysta 6+1 A/c',
-    category: 'Luxury MPV (6+1)',
-    capacity: '6 + 1 Passengers',
-    luggage: '4 Large Bags',
-    ac: true,
-    image: '/images/innova-crysta.jpg',
-    tagline: 'Plush Captain Seat luxury comfort for coastal highways and VIP family vacations.',
-    description: 'The premier benchmark of road comfort in Karnataka. Executive reclining captain seats, dual-zone digital AC, and supreme ride stability.',
-    pricePerKm: 19,
-    perDayEstimate: 3800,
-    features: ['Plush Captain Seats', 'Individual AC Louvers', 'Highway Cruising Stability', 'Roof Carrier Available', 'Generous Boot Space']
-  },
-  {
     id: 'innova-crysta-7plus1',
     name: 'Innova Crysta 7+1 A/c',
     category: 'Luxury MPV (7+1)',
@@ -80,24 +101,10 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
     ac: true,
     image: '/images/fleet-innova-silver.jpg',
     tagline: 'Executive 7+1 seating for larger families and pilgrimage groups.',
-    description: 'Spacious bench configuration accommodating up to 7 passengers with generous boot space and full climate control.',
+    description: 'Spacious bench configuration accommodating up to 7 passengers with generous boot space, supreme ride stability, and full climate control.',
     pricePerKm: 21,
     perDayEstimate: 4200,
     features: ['7+1 Executive Seating', 'Rear Digital AC', 'Premium Leather Upholstery', 'Highway Stability Control', 'Luggage Carrier Ready']
-  },
-  {
-    id: 'urbania-9plus1',
-    name: 'Urbania 9+1 A/c',
-    category: 'Luxury Van (9+1)',
-    capacity: '9 + 1 Passengers',
-    luggage: '6-8 Large Bags',
-    ac: true,
-    image: '/images/urbania-van.jpg',
-    tagline: 'Next-gen luxury van with individual reclining seats, panoramic windows & high ceiling.',
-    description: 'Ultra-modern Force Urbania 9+1. Walk-in cabin height, individual AC vents, reading lights, and international-standard ergonomics.',
-    pricePerKm: 24,
-    perDayEstimate: 4800,
-    features: ['9+1 Luxury Reclining Seats', 'Walk-in Tall Cabin', 'Panoramic Tinted Windows', 'Individual USB Charging', 'Dedicated Luggage Bay']
   },
   {
     id: 'tempo-traveller',
@@ -112,6 +119,20 @@ export const FLEET_VEHICLES: FleetVehicle[] = [
     pricePerKm: 26,
     perDayEstimate: 5500,
     features: ['Pushback Recliner Seats', 'High Ceiling Dual AC Flow', 'LED Entertainment TV', 'Heavy-Duty Rooftop Carrier', 'Experienced Ghat Chauffeur']
+  },
+  {
+    id: 'minibus-21plus1',
+    name: 'Minibus 21+1 A/c',
+    category: 'Minibus Coach (21+1)',
+    capacity: '21 + 1 Passengers',
+    luggage: '20+ Bags & Luggage Deck',
+    ac: true,
+    image: '/images/tempo-traveller.jpg',
+    tagline: 'Spacious 21+1 air-conditioned coach for large wedding parties, pilgrimages & tour groups.',
+    description: 'Executive 21+1 passenger coach featuring high-back pushback recliner seats, powerful multi-vent dual air conditioning, extensive rooftop & boot luggage bays, and experienced Western Ghats tour chauffeurs.',
+    pricePerKm: 32,
+    perDayEstimate: 7500,
+    features: ['21+1 Pushback Recliner Seats', 'Dual Blower Chilled AC', 'Rooftop & Boot Luggage Bay', 'PA Audio System & Mic', 'Veteran Tour Chauffeur']
   }
 ];
 
@@ -145,17 +166,45 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     image: '/images/innova-crysta.jpg'
   },
   {
-    id: 'hubli-airport-gokarna',
-    source: 'Hubli Airport / Hubli Junction (HBX)',
-    destination: 'Gokarna / Kumta',
-    distanceKm: 152,
-    driveTime: '3.2 Hours',
-    sedanFare: 4000,
-    suvFare: 5000,
-    crystaFare: 5800,
-    tempoFare: 8000,
+    id: 'mangaluru-airport-gokarna',
+    source: 'Mangaluru International Airport (IXE)',
+    destination: 'Gokarna / Murudeshwar',
+    distanceKm: 232,
+    driveTime: '4.5 Hours',
+    sedanFare: 6500,
+    suvFare: 7500,
+    crystaFare: 8800,
+    tempoFare: 12000,
     popular: true,
-    highlights: ['Smooth Yellapur Western Ghats Route', 'Synchronized Flight / Train Arrival Pickup', '24/7 Night Arrival Chauffeur Support'],
+    highlights: ['Scenic Coastal Highway NH-66 via Udupi & Kundapura', 'Doorstep Drop to Any Hotel / Resort / Shack', 'Flight Arrival Tracking & Rest Stops'],
+    image: '/images/tempo-traveller.jpg'
+  },
+  {
+    id: 'bengaluru-airport-gokarna',
+    source: 'Bengaluru Kempegowda Airport (BLR)',
+    destination: 'Gokarna / Coastal Karnataka',
+    distanceKm: 495,
+    driveTime: '8.5 Hours',
+    sedanFare: 11500,
+    suvFare: 13500,
+    crystaFare: 15500,
+    tempoFare: 21000,
+    popular: false,
+    highlights: ['Comfortable Long-Distance Express Cruise', 'Scenic Western Ghats Transit via Shivamogga/Sirsi', 'Experienced Chauffeur with Rest Breaks'],
+    image: '/images/fleet-innova-silver.jpg'
+  },
+  {
+    id: 'gokarna-road-station',
+    source: 'Gokarna Road Railway Station (GOK)',
+    destination: 'Gokarna Town / Kudle / Om Beach',
+    distanceKm: 9,
+    driveTime: '15 Mins',
+    sedanFare: 600,
+    suvFare: 800,
+    crystaFare: 1100,
+    tempoFare: 1600,
+    popular: true,
+    highlights: ['Immediate Platform Exit Chauffeur Pickup', 'Doorstep Drop to Any Town Lodge or Beach Resort', 'Transparent Fixed Rates With Luggage Assistance'],
     image: '/images/swift-dzire.jpg'
   },
   {
@@ -173,8 +222,78 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     image: '/images/maruti-ertiga.jpg'
   },
   {
+    id: 'mangaluru-junction-central',
+    source: 'Mangaluru Junction (MAJN) & Central (MAQ)',
+    destination: 'Gokarna / Kumta',
+    distanceKm: 235,
+    driveTime: '4.5 Hours',
+    sedanFare: 6200,
+    suvFare: 7200,
+    crystaFare: 8500,
+    tempoFare: 11500,
+    popular: false,
+    highlights: ['Station Concourse Meet & Greet', 'Coastal NH-66 4-Lane Highway Ride', 'Convenient Pickup for Southern Railway Passengers'],
+    image: '/images/swift-dzire.jpg'
+  },
+  {
+    id: 'madgaon-railway-gokarna',
+    source: 'Madgaon Railway Station (MAO, Goa)',
+    destination: 'Gokarna / Kumta',
+    distanceKm: 135,
+    driveTime: '2.8 Hours',
+    sedanFare: 4200,
+    suvFare: 5200,
+    crystaFare: 6200,
+    tempoFare: 8200,
+    popular: true,
+    highlights: ['Goa Border Commercial Permit Included', 'Fast Express Transfer for Rajdhani & Tejas Express', 'Direct Car to Beach Shack Access'],
+    image: '/images/innova-crysta.jpg'
+  },
+  {
+    id: 'udupi-gokarna',
+    source: 'Udupi Sri Krishna Matha / Railway Station',
+    destination: 'Gokarna / Murudeshwar',
+    distanceKm: 178,
+    driveTime: '3.5 Hours',
+    sedanFare: 4800,
+    suvFare: 5800,
+    crystaFare: 6800,
+    tempoFare: 9200,
+    popular: false,
+    highlights: ['Pilgrimage Concourse & Malpe Beach Pickup', 'Four-Lane Coastal NH-66 Cruise', 'En-Route Maravanthe Sea Beach Photo Halt'],
+    image: '/images/maruti-ertiga.jpg'
+  },
+  {
+    id: 'shivamogga-gokarna',
+    source: 'Shivamogga (Shimoga) Railway / Town',
+    destination: 'Gokarna / Honnavar',
+    distanceKm: 205,
+    driveTime: '4.2 Hours',
+    sedanFare: 5600,
+    suvFare: 6600,
+    crystaFare: 7800,
+    tempoFare: 10500,
+    popular: false,
+    highlights: ['Scenic Sharavathi Valley & Jog Falls Transit Route', 'Western Ghats Specialist Drivers', 'Doorstep Pickup from Shimoga Town'],
+    image: '/images/tempo-traveller.jpg'
+  },
+  {
+    id: 'hubli-airport-gokarna',
+    source: 'Hubli Airport / Hubli Junction (HBX)',
+    destination: 'Gokarna / Kumta',
+    distanceKm: 152,
+    driveTime: '3.2 Hours',
+    sedanFare: 4000,
+    suvFare: 5000,
+    crystaFare: 5800,
+    tempoFare: 8000,
+    popular: true,
+    highlights: ['Smooth Yellapur Western Ghats Route', 'Synchronized Flight / Train Arrival Pickup', '24/7 Night Arrival Chauffeur Support'],
+    image: '/images/swift-dzire.jpg'
+  },
+  {
     id: 'karwar-station-gokarna',
-    source: 'Karwar Railway Station / Madgaon',
+    source: 'Karwar Railway Station / Port',
     destination: 'Gokarna / Kumta',
     distanceKm: 65,
     driveTime: '1.2 Hours',
@@ -185,20 +304,6 @@ export const AIRPORT_TRANSFER_ROUTES: AirportTransferRoute[] = [
     popular: false,
     highlights: ['Coastal NH-66 Kali River Bridge Views', 'Fastest Transfer for Goa border arrivals', 'Experienced Local Chauffeurs'],
     image: '/images/swift-dzire.jpg'
-  },
-  {
-    id: 'mangalore-airport-gokarna',
-    source: 'Mangalore International Airport (IXE)',
-    destination: 'Murudeshwar / Gokarna',
-    distanceKm: 230,
-    driveTime: '4.5 Hours',
-    sedanFare: 6500,
-    suvFare: 7500,
-    crystaFare: 8800,
-    tempoFare: 12000,
-    popular: false,
-    highlights: ['Scenic Coastal Highway NH-66 via Udupi & Kundapura', 'Doorstep Drop to Any Hotel / Resort', 'Complimentary Rest Stops on Route'],
-    image: '/images/tempo-traveller.jpg'
   }
 ];
 

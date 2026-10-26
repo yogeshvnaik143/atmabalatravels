@@ -17,6 +17,8 @@ import LocationSection from './components/LocationSection';
 import TripPlanner from './components/TripPlanner';
 import Footer from './components/Footer';
 import WelcomeScreen from './components/WelcomeScreen';
+import ThemePaletteModal from './components/ThemePaletteModal';
+import FloatingPaletteButton from './components/FloatingPaletteButton';
 import { Phone, MessageCircle } from 'lucide-react';
 
 export default function App() {
@@ -32,6 +34,12 @@ export default function App() {
     <div className="min-h-screen bg-[#F4F7F6] dark:bg-[#070D18] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-[#FF6500] selection:text-white transition-colors duration-300">
       {/* Sleek 1.8s Fullscreen Welcome / Loading Screen Overlay with Smooth Scale-Down Exit */}
       <WelcomeScreen minDuration={1800} />
+
+      {/* 8-Theme Palette Studio Modal */}
+      <ThemePaletteModal />
+
+      {/* Floating Theme Switcher Quick Pill (Bottom Left) */}
+      <FloatingPaletteButton />
 
       {/* Skip to Main Content Link for Accessibility (WCAG 2.1) */}
       <a

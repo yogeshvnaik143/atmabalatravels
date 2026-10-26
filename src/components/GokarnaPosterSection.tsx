@@ -51,17 +51,17 @@ export default function GokarnaPosterSection() {
   };
 
   return (
-    <section id="places" className="py-16 sm:py-20 bg-[#050814] text-white min-h-screen">
+    <section id="places" className="py-8 sm:py-14 md:py-20 bg-[#050814] text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Page Top Header */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-8 pb-4 sm:pb-6 border-b border-slate-800">
           <div className="text-center md:text-left">
-            <span className="text-[#D4AF37] font-['Cinzel'] tracking-widest text-xs font-bold uppercase inline-flex items-center gap-1.5">
+            <span className="text-[#D4AF37] font-['Cinzel'] tracking-widest text-[11px] sm:text-xs font-bold uppercase inline-flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#D4AF37]" />
               Tourist Places &amp; Sightseeing Gallery
             </span>
-            <h1 className="text-2xl sm:text-4xl font-extrabold font-['Cinzel'] text-white mt-1">
+            <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-['Cinzel'] text-white mt-1">
               {TOURIST_DESTINATIONS.length} Must-Visit Places Around Gokarna &amp; Uttara Kannada
             </h1>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">
@@ -114,26 +114,26 @@ export default function GokarnaPosterSection() {
 
         {/* LEFT-TO-RIGHT MARQUEE FLOW */}
         {(viewMode === 'both' || viewMode === 'marquee') && (
-          <div className="mb-12">
-            <div className="flex items-center justify-between mb-3 px-1">
+          <div className="mb-6 sm:mb-12">
+            <div className="flex items-center justify-between mb-2 sm:mb-3 px-1">
               <span className="inline-flex items-center gap-2 text-xs font-bold text-[#FFF7A1]">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
                 <span>Continuous Scenic Carousel (Hover to pause, click to view)</span>
               </span>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0a1128] via-[#100c24] to-[#160a2b] p-4 border-2 border-[#D4AF37]/50 shadow-2xl pause-on-hover">
-              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#0a1128] to-transparent z-10" />
-              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-[#160a2b] to-transparent z-10" />
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0a1128] via-[#100c24] to-[#160a2b] p-2.5 sm:p-4 border-2 border-[#D4AF37]/50 shadow-2xl pause-on-hover">
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-[#0a1128] to-transparent z-10" />
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-[#160a2b] to-transparent z-10" />
 
-              <div className="animate-marquee-ltr flex gap-5 py-1">
+              <div className="animate-marquee-ltr flex gap-3 sm:gap-5 py-1">
                 {marqueePlaces.map((place, idx) => (
                   <div
                     key={`${place.id}-marquee-${idx}`}
                     onClick={() => setSelectedPlace(place)}
-                    className="w-64 sm:w-72 shrink-0 flex flex-col items-center text-center cursor-pointer group bg-black/50 p-3 rounded-xl border border-[#D4AF37]/30 hover:border-[#FFF7A1] transition-all"
+                    className="w-56 sm:w-72 shrink-0 flex flex-col items-center text-center cursor-pointer group bg-black/50 p-2.5 sm:p-3 rounded-xl border border-[#D4AF37]/30 hover:border-[#FFF7A1] transition-all"
                   >
-                    <div className="relative w-full h-40 rounded-lg overflow-hidden border-2 border-[#D4AF37] shadow-lg group-hover:border-[#FFF7A1] transition-all bg-slate-900">
+                    <div className="relative w-full h-32 sm:h-40 rounded-lg overflow-hidden border-2 border-[#D4AF37] shadow-lg group-hover:border-[#FFF7A1] transition-all bg-slate-900">
                       <img
                         src={place.image}
                         alt={`Atmabala tour place - ${place.title}`}
@@ -146,18 +146,18 @@ export default function GokarnaPosterSection() {
                         }}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 text-[10px] font-bold text-[#FFF7A1] backdrop-blur-xs border border-[#D4AF37]/30">
+                      <span className="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded bg-black/80 text-[10px] font-bold text-[#FFF7A1] backdrop-blur-xs border border-[#D4AF37]/30">
                         {place.distanceFromGokarna}
                       </span>
                     </div>
 
-                    <h3 className="font-['Great_Vibes'] text-[#F1C40F] text-2xl mt-2 font-normal group-hover:text-[#FFF7A1] transition-colors leading-tight">
+                    <h3 className="font-['Great_Vibes'] text-[#F1C40F] text-xl sm:text-2xl mt-1.5 sm:mt-2 font-normal group-hover:text-[#FFF7A1] transition-colors leading-tight">
                       {place.title}
                     </h3>
-                    <p className="text-[11px] text-slate-300 mt-1 line-clamp-2 px-1">
+                    <p className="text-[10px] sm:text-[11px] text-slate-300 mt-0.5 sm:mt-1 line-clamp-2 px-1">
                       {place.description}
                     </p>
-                    <span className="text-[10px] text-emerald-400 font-bold mt-2 flex items-center gap-1 group-hover:underline">
+                    <span className="text-[10px] text-emerald-400 font-bold mt-1.5 sm:mt-2 flex items-center gap-1 group-hover:underline">
                       <MessageCircle className="w-3 h-3" />
                       Ask Cab Fare on WhatsApp →
                     </span>
@@ -169,13 +169,13 @@ export default function GokarnaPosterSection() {
         )}
 
         {/* Search & Category Filter */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-between items-center mb-8">
-          <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between items-center mb-5 sm:mb-8">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 w-full sm:w-auto">
             {categories.map((c) => (
               <button
                 key={c.id}
                 onClick={() => setActiveCategory(c.id)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
                   activeCategory === c.id
                     ? 'bg-[#D4AF37] text-[#0a1128] shadow-md shadow-[#D4AF37]/30'
                     : 'bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-[#D4AF37]/50'
@@ -203,20 +203,20 @@ export default function GokarnaPosterSection() {
 
         {/* POSTER GRID CONTAINER (Zero Prices, Direct WhatsApp Quotes) */}
         {(viewMode === 'both' || viewMode === 'grid') && (
-          <div className="rounded-2xl p-6 sm:p-10 lg:p-12 bg-gradient-to-br from-[#0a1128] via-[#100c24] to-[#160a2b] border-4 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.25)] relative overflow-hidden">
+          <div className="rounded-2xl p-3.5 sm:p-8 lg:p-12 bg-gradient-to-br from-[#0a1128] via-[#100c24] to-[#160a2b] border-2 sm:border-4 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.25)] relative overflow-hidden">
             
             {/* Header Title */}
-            <div className="text-center mb-10">
-              <h2 className="text-3xl sm:text-5xl font-black font-['Cinzel'] tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-[#FFF7A1] via-[#D4AF37] to-[#996515] drop-shadow-md">
+            <div className="text-center mb-5 sm:mb-10">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black font-['Cinzel'] tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-[#FFF7A1] via-[#D4AF37] to-[#996515] drop-shadow-md">
                 ATMABALA GOKARNA TRAVELS
               </h2>
-              <p className="text-[#FFF7A1]/90 text-xs sm:text-sm font-medium tracking-widest uppercase mt-2">
+              <p className="text-[#FFF7A1]/90 text-[11px] sm:text-sm font-medium tracking-widest uppercase mt-1 sm:mt-2">
                 Sightseeing Directory &amp; Cab Quotations • No Hidden Fees
               </p>
             </div>
 
             {/* 3-Column Poster Grid */}
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               <AnimatePresence>
                 {filteredPlaces.map((place) => (
                   <motion.div
@@ -227,12 +227,12 @@ export default function GokarnaPosterSection() {
                     exit={{ opacity: 0, scale: 0.95 }}
                     whileHover={{ scale: 1.02, y: -4 }}
                     transition={{ duration: 0.25 }}
-                    className="flex flex-col bg-black/40 rounded-2xl overflow-hidden border-2 border-[#D4AF37]/40 hover:border-[#FFF7A1] transition-all p-4 group"
+                    className="flex flex-col bg-black/40 rounded-2xl overflow-hidden border-2 border-[#D4AF37]/40 hover:border-[#FFF7A1] transition-all p-3 sm:p-4 group"
                   >
                     {/* Gold Framed Image */}
                     <div
                       onClick={() => setSelectedPlace(place)}
-                      className="relative w-full h-52 rounded-xl overflow-hidden border-2 border-[#D4AF37] shadow-xl transition-all bg-slate-900 cursor-pointer"
+                      className="relative w-full h-40 sm:h-52 rounded-xl overflow-hidden border-2 border-[#D4AF37] shadow-xl transition-all bg-slate-900 cursor-pointer"
                     >
                       <img
                         src={place.image}
@@ -289,19 +289,19 @@ export default function GokarnaPosterSection() {
             </motion.div>
 
             {/* Poster Footer / Contact Bar */}
-            <div className="text-center mt-14 pt-8 border-t-2 border-dashed border-[#D4AF37]/40 flex flex-col items-center">
-              <span className="text-xs uppercase tracking-widest text-[#FFF7A1]/80 mb-2 font-['Cinzel']">
+            <div className="text-center mt-6 sm:mt-12 pt-5 sm:pt-8 border-t-2 border-dashed border-[#D4AF37]/40 flex flex-col items-center">
+              <span className="text-[11px] sm:text-xs uppercase tracking-widest text-[#FFF7A1]/80 mb-1.5 sm:mb-2 font-['Cinzel']">
                 Direct Booking &amp; Customized Tour Inquiries
               </span>
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="tel:8073756776"
-                className="inline-block px-6 sm:px-8 py-3 rounded-full bg-black/60 border-2 border-[#D4AF37] text-[#FFF7A1] font-['Cinzel'] font-bold text-xl sm:text-2xl hover:bg-[#D4AF37]/20 transition-all shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
+                className="inline-block px-5 sm:px-8 py-2.5 sm:py-3 rounded-full bg-black/60 border-2 border-[#D4AF37] text-[#FFF7A1] font-['Cinzel'] font-bold text-lg sm:text-2xl hover:bg-[#D4AF37]/20 transition-all shadow-[0_5px_15px_rgba(0,0,0,0.5)]"
               >
                 +91 8073756776 (Harish.G)
               </motion.a>
-              <p className="text-xs text-slate-400 mt-2">
+              <p className="text-[11px] sm:text-xs text-slate-400 mt-2">
                 Prompt door-to-door cab service for all 15 tourist locations across Gokarna, Kumta, and Karwar.
               </p>
             </div>

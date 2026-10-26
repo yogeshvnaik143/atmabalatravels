@@ -23,11 +23,22 @@ export default function AirportTransfersSection({ onBookTransfer: _onBookTransfe
 📏 Distance: ${route.distanceKm} km (~${route.driveTime})
 
 Please share availability and best quotation.`;
-    window.open(`https://wa.me/918073756776?text=${encodeURIComponent(text)}`, '_blank');
+    const url = `https://wa.me/918073756776?text=${encodeURIComponent(text)}`;
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      window.location.href = url;
+    }
   };
 
   return (
-    <section id="transfers" className="py-16 sm:py-20 bg-[#0B192C] text-white relative overflow-hidden">
+    <section id="transfers" className="py-8 sm:py-16 md:py-20 bg-[#0B192C] text-white relative overflow-hidden">
       {/* Decorative Background Accents */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FF6500]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -39,17 +50,17 @@ Please share availability and best quotation.`;
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-12"
+          className="text-center max-w-3xl mx-auto mb-6 sm:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6500]/20 text-[#FF6500] border border-[#FF6500]/30 text-xs font-bold uppercase tracking-wider mb-3">
-            <Plane className="w-4 h-4" />
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FF6500]/20 text-[#FF6500] border border-[#FF6500]/30 text-xs font-bold uppercase tracking-wider mb-2.5 sm:mb-3">
+            <Plane className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>Dedicated Express Connectivity</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
             Airport &amp; Railway Transfers
           </h2>
-          <p className="text-slate-300 mt-4 text-base sm:text-lg">
-            Guaranteed on-time pickups from Goa Mopa (GOX), Dabolim (GOI), Hubli Airport, and Kumta Railway Station with flight tracking and 24/7 night arrivals.
+          <p className="text-slate-300 mt-2 sm:mt-4 text-xs sm:text-base">
+            Guaranteed on-time pickups from Goa Mopa (GOX), Dabolim (GOI), Mangaluru, Bengaluru, Hubli, and all coastal railway stations with flight tracking and 24/7 night arrivals.
           </p>
 
           {/* Filter Tabs */}
@@ -129,7 +140,7 @@ Please share availability and best quotation.`;
         </div>
 
         {/* Airport Route Cards Grid (Zero Prices) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {filteredRoutes.map((route, idx) => (
             <motion.div
               key={route.id}
@@ -137,10 +148,10 @@ Please share availability and best quotation.`;
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="bg-slate-800/80 rounded-3xl overflow-hidden border border-slate-700/80 hover:border-[#FF6500]/50 transition-all shadow-xl hover:shadow-2xl flex flex-col group"
+              className="bg-slate-800/80 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-700/80 hover:border-[#FF6500]/50 transition-all shadow-xl hover:shadow-2xl flex flex-col group"
             >
               {/* Route Card Visual Banner */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-36 sm:h-48 overflow-hidden">
                 <img
                   src={route.image}
                   alt={`Atmabala airport cab - ${route.source} to Gokarna`}

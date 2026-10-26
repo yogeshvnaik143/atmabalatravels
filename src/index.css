@@ -6,6 +6,57 @@ html.dark {
   color-scheme: dark;
 }
 
+:root {
+  --color-primary: #FF6500;
+  --color-primary-hover: #E55A00;
+  --color-primary-light: rgba(255, 101, 0, 0.15);
+  --color-primary-border: rgba(255, 101, 0, 0.3);
+}
+
+/* Dynamic Accent Variable Overrides for 8 Palette Switcher */
+[class*="text-[#FF6500]"] {
+  color: var(--color-primary) !important;
+}
+
+[class*="bg-[#FF6500]"] {
+  background-color: var(--color-primary) !important;
+}
+
+[class*="hover:bg-[#E55A00]"]:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+[class*="border-[#FF6500]"] {
+  border-color: var(--color-primary) !important;
+}
+
+[class*="fill-[#FF6500]"] {
+  fill: var(--color-primary) !important;
+}
+
+[class*="bg-[#FF6500]/10"],
+[class*="bg-[#FF6500]/15"],
+[class*="bg-[#FF6500]/20"] {
+  background-color: var(--color-primary-light) !important;
+}
+
+[class*="border-[#FF6500]/20"],
+[class*="border-[#FF6500]/30"],
+[class*="border-[#FF6500]/40"] {
+  border-color: var(--color-primary-border) !important;
+}
+
+/* Dynamic Theme Background Tints */
+html[data-palette="dark-1"] body { background-color: #070D18 !important; }
+html[data-palette="dark-2"] body { background-color: #06131A !important; }
+html[data-palette="dark-3"] body { background-color: #070D22 !important; }
+html[data-palette="dark-4"] body { background-color: #0D0D11 !important; }
+
+html[data-palette="light-1"] body { background-color: #F8FAFC !important; }
+html[data-palette="light-2"] body { background-color: #F0FDF4 !important; }
+html[data-palette="light-3"] body { background-color: #F8FAFC !important; }
+html[data-palette="light-4"] body { background-color: #FFFBEB !important; }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;

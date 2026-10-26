@@ -13,7 +13,7 @@ export default function LocationSection() {
   ];
 
   return (
-    <section id="location-section" className="py-16 sm:py-20 bg-slate-100 dark:bg-[#070D18] text-slate-900 dark:text-white transition-colors relative overflow-hidden border-t border-slate-200 dark:border-slate-800">
+    <section id="location-section" className="py-8 sm:py-14 md:py-20 bg-slate-100 dark:bg-[#070D18] text-slate-900 dark:text-white transition-colors relative overflow-hidden border-t border-slate-200 dark:border-slate-800">
       
       {/* Background Animated Gradient Blobs */}
       <motion.div
@@ -41,23 +41,23 @@ export default function LocationSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12"
+          className="text-center max-w-3xl mx-auto mb-6 sm:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6500]/10 dark:bg-[#FF6500]/20 text-[#FF6500] text-xs font-bold uppercase tracking-wider mb-3 border border-[#FF6500]/30 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FF6500]/10 dark:bg-[#FF6500]/20 text-[#FF6500] text-xs font-bold uppercase tracking-wider mb-2 sm:mb-3 border border-[#FF6500]/30 shadow-2xs">
             <Compass className="w-4 h-4 text-[#FF6500]" />
             <span>Official Operating Headquarters</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0B192C] dark:text-white">
+          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#0B192C] dark:text-white">
             Find Atmabala Travels in Gokarna
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 mt-3 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-300 mt-2 sm:mt-3 text-sm sm:text-lg">
             Conveniently situated in central Gokarna town for quick 24/7 cab pickups, airport departures, and temple darshan drops.
           </p>
         </motion.div>
 
         {/* Location Display Card Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-stretch">
           
           {/* Left Column: Office Details & Proximity */}
           <motion.div
@@ -65,11 +65,11 @@ export default function LocationSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="lg:col-span-6 bg-white dark:bg-[#0B1523] rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/90 dark:border-slate-800 flex flex-col justify-between"
+            className="lg:col-span-6 bg-white dark:bg-[#0B1523] rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl border border-slate-200/90 dark:border-slate-800 flex flex-col justify-between"
           >
             <div>
               {/* Live Status Pill with Pulsing Dot */}
-              <div className="flex items-center justify-between mb-5 pb-4 border-b border-slate-100 dark:border-slate-800">
+              <div className="flex items-center justify-between mb-4 pb-3 sm:mb-5 sm:pb-4 border-b border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-2.5">
                   <span className="relative flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -85,38 +85,38 @@ export default function LocationSection() {
               </div>
 
               {/* Exact Address */}
-              <div className="flex items-start gap-3.5 mb-6">
-                <div className="p-3 rounded-2xl bg-[#FF6500]/10 text-[#FF6500] shrink-0 mt-0.5">
-                  <MapPin className="w-6 h-6" />
+              <div className="flex items-start gap-3 sm:gap-3.5 mb-4 sm:mb-6">
+                <div className="p-2.5 sm:p-3 rounded-2xl bg-[#FF6500]/10 text-[#FF6500] shrink-0 mt-0.5">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0B192C] dark:text-white leading-snug">
+                  <h3 className="text-base sm:text-xl font-bold text-[#0B192C] dark:text-white leading-snug">
                     Atmabala Travels Head Office
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
                     Kamat Complex, Ganjigadde, Gokarna, Uttara Kannada, Karnataka - 581326
                   </p>
-                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">
                     Landmark: Near Canara Bank &amp; Gokarna Main Road Junction
                   </p>
                 </div>
               </div>
 
               {/* Key Proximities from Office */}
-              <div className="mb-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-3">
+              <div className="mb-4 sm:mb-6">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2 sm:mb-3">
                   Nearby Distance from Office Hub:
                 </span>
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
                   {distances.map((d) => (
                     <div
                       key={d.name}
-                      className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex flex-col"
+                      className="p-2 sm:p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex flex-col"
                     >
-                      <span className="text-xs font-bold text-[#0B192C] dark:text-white truncate">
+                      <span className="text-[11px] sm:text-xs font-bold text-[#0B192C] dark:text-white truncate">
                         {d.name}
                       </span>
-                      <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-semibold">
+                      <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 font-semibold">
                         <span>{d.distance}</span>
                         <span className="text-[#FF6500] font-bold">{d.time}</span>
                       </div>
@@ -126,29 +126,29 @@ export default function LocationSection() {
               </div>
 
               {/* Timings & Highlights */}
-              <div className="space-y-2 mb-6 text-xs text-slate-600 dark:text-slate-300">
+              <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 text-xs text-slate-600 dark:text-slate-300">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#FF6500] shrink-0" />
-                  <span><strong>Service Hours:</strong> 24 Hours / 7 Days a week (Day &amp; Night Cabs)</span>
+                  <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF6500] shrink-0" />
+                  <span><strong>Service Hours:</strong> 24 Hours / 7 Days a week</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span><strong>Doorstep Pickup:</strong> Within 10 minutes anywhere across Gokarna town &amp; beach resorts</span>
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-500 shrink-0" />
+                  <span><strong>Doorstep Pickup:</strong> Within 10 mins across Gokarna</span>
                 </div>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800">
               <motion.a
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 href={mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 min-w-[180px] py-3 px-4 rounded-xl bg-[#0B192C] dark:bg-[#FF6500] text-white font-bold text-xs sm:text-sm shadow-md hover:bg-[#162740] dark:hover:bg-[#E55A00] transition-colors flex items-center justify-center gap-2 text-center"
+                className="flex-1 min-w-[140px] py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl bg-[#0B192C] dark:bg-[#FF6500] text-white font-bold text-xs sm:text-sm shadow-md hover:bg-[#162740] dark:hover:bg-[#E55A00] transition-colors flex items-center justify-center gap-1.5 text-center"
               >
-                <Navigation className="w-4 h-4" />
+                <Navigation className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 <span>Open in Google Maps ↗</span>
               </motion.a>
 
@@ -156,9 +156,9 @@ export default function LocationSection() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 href={`tel:${COMPANY_DETAILS.rawPhone}`}
-                className="py-3 px-4 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm hover:border-[#FF6500] hover:text-[#FF6500] transition-colors flex items-center justify-center gap-2"
+                className="py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm hover:border-[#FF6500] hover:text-[#FF6500] transition-colors flex items-center justify-center gap-1.5"
               >
-                <Phone className="w-4 h-4 text-[#FF6500]" />
+                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF6500]" />
                 <span>Call Office</span>
               </motion.a>
             </div>
@@ -170,7 +170,7 @@ export default function LocationSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="lg:col-span-6 rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 dark:border-slate-800 bg-[#0B192C] relative min-h-[380px] flex flex-col justify-between group"
+            className="lg:col-span-6 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 dark:border-slate-800 bg-[#0B192C] relative min-h-[260px] sm:min-h-[380px] flex flex-col justify-between group"
           >
             {/* Background Visual Map Satellite/Aerial graphic with coastal feel */}
             <div className="absolute inset-0 z-0">

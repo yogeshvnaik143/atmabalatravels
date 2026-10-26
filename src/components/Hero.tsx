@@ -13,7 +13,7 @@ interface HeroProps {
 export default function Hero({ onNavigateTab }: HeroProps) {
   const todayStr = new Date().toISOString().split('T')[0];
   const [pickup, setPickup] = useState('Gokarna Town / Beach');
-  const [vehicle, setVehicle] = useState('innova-crysta');
+  const [vehicle, setVehicle] = useState('innova-crysta-7plus1');
   const [tripType, setTripType] = useState('Gokarna Local Sightseeing');
   const [date, setDate] = useState(todayStr);
 
@@ -55,7 +55,7 @@ Please share your best quotation and availability.`;
   };
 
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-[#F4F7F6] via-white to-[#F4F7F6] dark:from-[#070D18] dark:via-[#091120] dark:to-[#070D18] transition-colors duration-300">
+    <section className="relative pt-20 pb-8 sm:pt-28 sm:pb-14 md:pt-36 md:pb-20 overflow-hidden bg-gradient-to-b from-[#F4F7F6] via-white to-[#F4F7F6] dark:from-[#070D18] dark:via-[#091120] dark:to-[#070D18] transition-colors duration-300">
       {/* Background Decorative Accents */}
       <motion.div
         animate={{
@@ -75,7 +75,7 @@ Please share your best quotation and availability.`;
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
           
           {/* Left Column: Hero Content & Call to Action */}
           <motion.div
@@ -92,26 +92,26 @@ Please share your best quotation and availability.`;
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.4 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B192C]/10 dark:bg-slate-800/80 text-[#0B192C] dark:text-slate-200 text-xs sm:text-sm font-bold tracking-wider mb-6 border border-[#0B192C]/10 dark:border-slate-700 shadow-2xs hover:bg-[#FF6500]/10 hover:border-[#FF6500]/30 transition-all group"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#0B192C]/10 dark:bg-slate-800/80 text-[#0B192C] dark:text-slate-200 text-xs sm:text-sm font-bold tracking-wider mb-3 sm:mb-5 border border-[#0B192C]/10 dark:border-slate-700 shadow-2xs hover:bg-[#FF6500]/10 hover:border-[#FF6500]/30 transition-all group"
               title="View exact office location on Google Maps"
             >
-              <MapPin className="w-4 h-4 text-[#FF6500] group-hover:scale-110 transition-transform" />
-              <span>Gokarna Hub: Kamat Complex, Ganjigadde</span>
-              <span className="text-[10px] bg-[#FF6500] text-white px-2 py-0.5 rounded-full uppercase font-black tracking-wider ml-1">
-                View on Map ↗
+              <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF6500] group-hover:scale-110 transition-transform" />
+              <span className="truncate max-w-[220px] sm:max-w-none">Gokarna: Kamat Complex, Ganjigadde</span>
+              <span className="text-[10px] bg-[#FF6500] text-white px-1.5 sm:px-2 py-0.2 rounded-full uppercase font-black tracking-wider ml-1 shrink-0">
+                Map ↗
               </span>
             </motion.a>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B192C] dark:text-white tracking-tight leading-[1.15] mb-6">
-              <span className="block text-xs sm:text-sm uppercase tracking-widest font-extrabold text-[#FF6500] mb-2 font-mono">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0B192C] dark:text-white tracking-tight leading-[1.15] mb-3 sm:mb-5">
+              <span className="block text-xs uppercase tracking-widest font-extrabold text-[#FF6500] mb-1 font-mono">
                 Atmabala Travels Gokarna
               </span>
               Your{' '}
               <span className="relative inline-block text-[#FF6500]">
                 Journey
                 <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 text-[#FF6500]/40"
+                  className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-2.5 sm:h-3 text-[#FF6500]/40"
                   viewBox="0 0 100 20"
                   preserveAspectRatio="none"
                 >
@@ -122,8 +122,8 @@ Please share your best quotation and availability.`;
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed mb-6">
-              {COMPANY_DETAILS.subtitle} Goa Mopa &amp; Dabolim airport transfers, station drops, temple pilgrimage circuits, and scenic beach trails. Get instant quotations via WhatsApp.
+            <p className="text-sm sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed mb-4 sm:mb-6">
+              {COMPANY_DETAILS.subtitle} Goa Mopa, Dabolim &amp; Mangaluru airport transfers, station drops, temple pilgrimage circuits, and beach trails.
             </p>
 
             {/* Quick Feature Badges */}
@@ -228,7 +228,7 @@ Please share your best quotation and availability.`;
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-900 dark:text-slate-100">4.9 ★ Rating</div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400">15,000+ Happy Guests</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">{COMPANY_DETAILS.stats.happyCustomers} Happy Guests</div>
                 </div>
               </div>
             </div>
@@ -257,31 +257,31 @@ Please share your best quotation and availability.`;
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).src = '/images/swift-dzire.jpg';
                 }}
-                className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-44 sm:h-64 lg:h-80 object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent flex flex-col justify-end p-4 sm:p-6">
                 <span className="text-[#FF6500] text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-[#FF6500]" />
                   Premium Showroom Fleet
                 </span>
-                <h2 className="text-white text-2xl font-bold">Innova Crysta, Ertiga &amp; Tempo Travellers</h2>
-                <p className="text-slate-300 text-xs mt-1">Immaculate condition • Chilled AC • Ample luggage room</p>
+                <h2 className="text-white text-lg sm:text-2xl font-bold">Innova Crysta, Ertiga &amp; Tempo Travellers</h2>
+                <p className="text-slate-300 text-xs mt-0.5 sm:mt-1">Immaculate condition • Chilled AC • Ample luggage room</p>
               </div>
             </motion.div>
 
             {/* Quick Quotation Form on WhatsApp */}
-            <div className="w-full mt-6 bg-white dark:bg-[#0B1523] rounded-3xl shadow-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 transition-colors duration-300">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-base font-bold text-[#0B192C] dark:text-white flex items-center gap-2">
+            <div className="w-full mt-4 sm:mt-6 bg-white dark:bg-[#0B1523] rounded-3xl shadow-xl border border-slate-200/90 dark:border-slate-800 p-4 sm:p-6 transition-colors duration-300">
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <h2 className="text-sm sm:text-base font-bold text-[#0B192C] dark:text-white flex items-center gap-2">
                   <Car className="w-4 h-4 text-[#FF6500]" />
                   Get Quotation via WhatsApp
                 </h2>
-                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
+                <span className="text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                   Instant Reply
                 </span>
               </div>
 
-              <form onSubmit={handleQuickInquiry} className="space-y-3.5" aria-label="Quick Price Quotation Form">
+              <form onSubmit={handleQuickInquiry} className="space-y-2.5 sm:space-y-3.5" aria-label="Quick Price Quotation Form">
                 <div>
                   <label htmlFor="hero-pickup-select" className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">
                     Pickup Location
@@ -291,12 +291,19 @@ Please share your best quotation and availability.`;
                     name="heroPickup"
                     value={pickup}
                     onChange={(e) => setPickup(e.target.value)}
-                    className="w-full px-3 py-2 text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
+                    className="w-full px-3 py-2 text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[#FF6500] transition-all"
                   >
                     <option value="Gokarna Town / Beach">Gokarna Town / Beach</option>
+                    <option value="Gokarna Road Railway Station (GOK)">Gokarna Road Railway Station (GOK)</option>
                     <option value="Kumta Railway Station (KT)">Kumta Railway Station (KT)</option>
                     <option value="Goa Mopa Airport (GOX)">Goa Mopa Airport (GOX)</option>
                     <option value="Goa Dabolim Airport (GOI)">Goa Dabolim Airport (GOI)</option>
+                    <option value="Mangaluru International Airport (IXE)">Mangaluru International Airport (IXE)</option>
+                    <option value="Bengaluru Kempegowda Airport (BLR)">Bengaluru Kempegowda Airport (BLR)</option>
+                    <option value="Madgaon Railway Station (MAO, Goa)">Madgaon Railway Station (MAO, Goa)</option>
+                    <option value="Mangaluru Junction (MAJN) & Central (MAQ)">Mangaluru Junction & Central (MAJN/MAQ)</option>
+                    <option value="Udupi Sri Krishna Matha / Malpe">Udupi Sri Krishna Matha / Malpe</option>
+                    <option value="Shivamogga / Shimoga">Shivamogga / Shimoga</option>
                     <option value="Hubli Airport / Junction">Hubli Airport / Junction (HBX)</option>
                     <option value="Karwar Railway Station">Karwar Railway Station</option>
                     <option value="Murudeshwar Temple">Murudeshwar Temple</option>

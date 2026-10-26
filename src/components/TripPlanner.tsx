@@ -24,12 +24,18 @@ import { COMPANY_DETAILS, FLEET_VEHICLES } from '../data';
 const STARTING_LOCATIONS = [
   'Gokarna Town / Main Bus Stand',
   'Kudle Beach / Om Beach Resorts',
-  'Kumta Railway Station (KT)',
   'Gokarna Road Railway Station (GOK)',
+  'Kumta Railway Station (KT)',
   'Goa Mopa International Airport (GOX)',
   'Goa Dabolim Airport (GOI)',
+  'Mangaluru International Airport (IXE)',
+  'Bengaluru Kempegowda Airport (BLR)',
+  'Madgaon Railway Station (MAO, Goa)',
+  'Mangaluru Junction (MAJN)',
+  'Mangaluru Central Railway Station (MAQ)',
+  'Udupi Sri Krishna Matha / Malpe',
+  'Shivamogga / Shimoga',
   'Hubli Airport / Railway Station (HBX)',
-  'Mangalore Airport (IXE)',
   'Murudeshwar Town / Temple Beach',
   'Honnavar Town / Eco Beach',
   'Karwar City / Railway Station',
@@ -48,9 +54,16 @@ const DESTINATIONS = [
   'Jog Falls Western Ghats Full-Day Tour',
   'Honnavar Mangrove Boardwalk & Sharavati Boating',
   'Apsara Konda Waterfalls & Kasarkod Eco Beach',
-  'Goa South Beaches (Palolem, Agonda & Colva)',
-  'Goa Mopa Airport (GOX) / Dabolim (GOI) Drop',
+  'Udupi Sri Krishna Matha & Malpe St. Mary Island',
+  'Mangaluru International Airport (IXE) Drop',
+  'Bengaluru Kempegowda Airport (BLR) Drop',
+  'Mangaluru Junction (MAJN) & Central (MAQ) Drop',
+  'Madgaon Railway Station (MAO, Goa) Drop',
+  'Shivamogga / Shimoga Transit',
+  'Gokarna Road Railway Station (GOK) Drop',
   'Kumta Railway Station (KT) Drop',
+  'Goa Mopa Airport (GOX) / Dabolim (GOI) Drop',
+  'Goa South Beaches (Palolem, Agonda & Colva)',
   'Hubli Junction / Airport Transfer',
   'Dandeli River Rafting & Wildlife Jungle Safari',
   'Karwar Coastal & INS Chapal Warship Museum',
@@ -139,7 +152,7 @@ export default function TripPlanner() {
   const [destination, setDestination] = useState<string>('Yana Rocks & Vibhuti Waterfalls (Sahyadri Forest Circuit)');
   const [customDest, setCustomDest] = useState<string>('');
   const [tripType, setTripType] = useState<string>('Full Day Sightseeing (Round Trip)');
-  const [vehicle, setVehicle] = useState<string>('innova-crysta');
+  const [vehicle, setVehicle] = useState<string>('innova-crysta-7plus1');
   const [travelDate, setTravelDate] = useState<string>(tomorrowStr);
   const [passengerCount, setPassengerCount] = useState<string>('4 - 6 Passengers');
   const [pickupTime, setPickupTime] = useState<string>('08:30 AM (Morning Tour)');
@@ -218,7 +231,7 @@ Please provide your best all-inclusive quotation and availability. Thank you!`;
   };
 
   return (
-    <section id="trip-planner" className="py-16 sm:py-20 bg-slate-50 dark:bg-[#070D18] text-slate-900 dark:text-white transition-colors duration-300 relative overflow-hidden border-t border-slate-200 dark:border-slate-800">
+    <section id="trip-planner" className="py-8 sm:py-16 md:py-20 bg-slate-50 dark:bg-[#070D18] text-slate-900 dark:text-white transition-colors duration-300 relative overflow-hidden border-t border-slate-200 dark:border-slate-800">
       
       {/* Background Accent Gradients */}
       <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-[#FF6500]/10 dark:bg-[#FF6500]/15 blur-3xl pointer-events-none" />
@@ -232,23 +245,23 @@ Please provide your best all-inclusive quotation and availability. Thank you!`;
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
+          className="text-center max-w-3xl mx-auto mb-6 sm:mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF6500]/10 dark:bg-[#FF6500]/20 text-[#FF6500] text-xs font-bold uppercase tracking-wider mb-3.5 border border-[#FF6500]/30 shadow-2xs">
-            <Compass className="w-4 h-4 text-[#FF6500]" />
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FF6500]/10 dark:bg-[#FF6500]/20 text-[#FF6500] text-xs font-bold uppercase tracking-wider mb-2.5 sm:mb-3.5 border border-[#FF6500]/30 shadow-2xs">
+            <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FF6500]" />
             <span>Interactive Route &amp; Cab Quotation Builder</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0B192C] dark:text-white">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0B192C] dark:text-white">
             Plan Your Coastal Journey
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 mt-3 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-300 mt-2 sm:mt-3 text-xs sm:text-base max-w-2xl mx-auto">
             Select your starting point, sightseeing route, and favorite vehicle to generate a tailor-made quotation message instantly sent to proprietor Harish G.
           </p>
         </motion.div>
 
         {/* Main 2-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-start">
           
           {/* Left Column: Interactive Form Controls (7 cols) */}
           <motion.div
@@ -256,7 +269,7 @@ Please provide your best all-inclusive quotation and availability. Thank you!`;
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-7 bg-white dark:bg-[#0B1523] rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200/90 dark:border-slate-800 space-y-6"
+            className="lg:col-span-7 bg-white dark:bg-[#0B1523] rounded-3xl p-4 sm:p-7 shadow-xl border border-slate-200/90 dark:border-slate-800 space-y-4 sm:space-y-6"
           >
             {/* Step 1: Origin & Destination with 1-Click Swap */}
             <div className="space-y-4">
@@ -503,10 +516,10 @@ Please provide your best all-inclusive quotation and availability. Thank you!`;
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-5 space-y-6"
+            className="lg:col-span-5 space-y-4 sm:space-y-6"
           >
             {/* Route Insights Snapshot Card */}
-            <div className="bg-[#0B192C] text-white rounded-3xl p-6 sm:p-7 shadow-xl border border-slate-800 relative overflow-hidden">
+            <div className="bg-[#0B192C] text-white rounded-3xl p-4 sm:p-7 shadow-xl border border-slate-800 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
                 <Compass className="w-36 h-36 text-[#FF6500]" />
               </div>
@@ -574,7 +587,7 @@ Please provide your best all-inclusive quotation and availability. Thank you!`;
             </div>
 
             {/* Customized WhatsApp Message Generator Card */}
-            <div className="bg-white dark:bg-[#0B1523] rounded-3xl p-6 sm:p-7 shadow-xl border border-slate-200/90 dark:border-slate-800">
+            <div className="bg-white dark:bg-[#0B1523] rounded-3xl p-4 sm:p-7 shadow-xl border border-slate-200/90 dark:border-slate-800">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />

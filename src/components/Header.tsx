@@ -6,11 +6,13 @@ import {
   X,
   Compass,
   MapPin,
-  Home
+  Home,
+  Palette
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { COMPANY_DETAILS } from '../data';
 import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../context/ThemeContext';
 
 interface HeaderProps {
   activeTab: string;
@@ -22,6 +24,7 @@ interface HeaderProps {
 export default function Header({ activeTab, setActiveTab }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { palette, setIsPaletteModalOpen } = useTheme();
 
   // Sticky header background transition
   useEffect(() => {
@@ -128,6 +131,24 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
         {/* Desktop Action Cluster (Strictly lg:flex to avoid tablet collision) */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
+          {/* 8-Theme Palette Studio Opener */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsPaletteModalOpen(true)}
+            type="button"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:border-[#FF6500] hover:text-[#FF6500] dark:hover:border-[#FF6500] dark:hover:text-[#FF6500] transition-colors shadow-xs cursor-pointer group"
+            title="Choose Theme: 4 Dark & 4 Light Presets"
+            aria-label="Open Theme Palette Selector"
+          >
+            <span
+              className="w-2.5 h-2.5 rounded-full shadow-xs shrink-0"
+              style={{ backgroundColor: palette.primary }}
+            />
+            <Palette className="w-3.5 h-3.5 text-[#FF6500] group-hover:rotate-45 transition-transform" />
+            <span>{palette.code}</span>
+          </motion.button>
+
           <ThemeToggle id="theme-toggle-btn" />
 
           <motion.a
@@ -157,6 +178,16 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
 
         {/* Mobile & Tablet Controls (Clean, Fixed Positioning) */}
         <div className="flex lg:hidden items-center gap-2 shrink-0">
+          <motion.button
+            whileTap={{ scale: 0.92 }}
+            onClick={() => setIsPaletteModalOpen(true)}
+            type="button"
+            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-[#FF6500] border border-slate-200 dark:border-slate-700 cursor-pointer"
+            title="Palette Selector (8 Themes)"
+            aria-label="Palette Selector (8 Themes)"
+          >
+            <Palette className="w-5 h-5" />
+          </motion.button>
           <ThemeToggle id="theme-toggle-mobile-btn" />
           <motion.a
             whileTap={{ scale: 0.92 }}
